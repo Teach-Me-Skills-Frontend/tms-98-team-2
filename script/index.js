@@ -1,1 +1,3 @@
-console.log('Start project from here');
+import { TaskController } from './app.js';
+
+new TaskController ('test');
