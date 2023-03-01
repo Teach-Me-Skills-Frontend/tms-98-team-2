@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap');
+
+*,
+*:before,
+*:after{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Roboto';
+    font-style: normal;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#header{
+    width: 100%;
+}
+
+
+/*Создать рамочку*/
+.frame{
+    margin: auto;
+ border: 2px solid rgba(0, 0, 0, 0.564);
+ background-color: rgba(233, 127, 213, 0.539);
+ width: 70%;
+ height: 25ex;
+ display: flex;
+ justify-content: space-around;
+ align-items: center;
+ border-radius: 10px;
+ }
+ h1{
+    font-size: 2.5em;
+    font-weight: 200;
+    font-family: 'Roboto', sans-serif;
+ }
+ /*Создаю место для цифровых часов класса "clock"*/
+ #clock{
+    width: 15%;
+    background-color: #171717;
+    border: 2px solid #1919198e;
+    border-radius: 10px;
+    height: 6ex;
+    color: #ffffff;
+    padding-top: 10px;
+    font-size: 1.4em;
+    text-align: center;
+    letter-spacing: 2px;
+    font-family: 'Roboto', sans-serif;
+ }
+ 
+ 
+ 
