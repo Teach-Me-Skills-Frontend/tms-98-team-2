@@ -14,4 +14,89 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+}
+.wrapper {
+    width: 1440px;
+    margin: 0 auto;
+}
+
+.card_container {
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+.card_wrapper {
+    width: 23%;
+    border: 1px solid #000;
+    border-radius: 5px ;
+}
+.card_header {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 10px;
+    background-color: blueviolet;
+}
+
+.card_status {
+    display: flex;
+    justify-content: space-between;
+    
+} 
+.card_status::after {
+    content: ':';
+}
+
+.card {
+    width: 100%;
+    margin: 20px;
+    min-height: 30vh;
+
+}
+
+.counter_task {
+    font-size: 24px;
+}
+
+.button {
+width: 100%;
+padding: 10px;
+border: 1px solid #000;
+border-radius: 0 0 5px 5px;
+cursor: pointer;
+}
+
+.button_add:hover,
+.button_add:active
+ {
+    background-color: #00FA9A;
+    border: 1px solid #00FA9A;
+}
+
+.button_add {
+    background-color: #00FF7F;
+    border: 1px solid #00FF7F;
+}
+
+.button_delete_all {
+    background-color: #FA8072;
+    border: 1px solid #FA8072;
+}
+
+.button_delete_all:active,
+.button_delete_all:hover {
+    background-color: #F08080;
+    border: 1px solid #F08080;
+}
+.button_done_all {
+    background-color: #FFFF33;
+    border: 1px solid #FFFF33;
+}
+
+.button_done_all:active,
+.button_done_all:hover {
+    background-color: #FFFF99;
+    border: 1px solid #FFFF99;
 }
