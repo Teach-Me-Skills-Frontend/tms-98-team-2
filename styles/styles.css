@@ -93,7 +93,7 @@ body {
   background-color: #ffff99;
   border: 1px solid #ffff99;
 }
-.modal_container {
+.modal_add, .modal_edit {
   width: 50%;
   height: 300px;
   border-radius: 36px;
@@ -101,6 +101,9 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+.modal_edit {
+  background-color:cadetblue;
 }
 .modal {
   width: 80%;
