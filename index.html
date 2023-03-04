@@ -155,45 +155,9 @@
         <button class="button button_delete_all" id="button_delete_all">Delete all</button>
       </div>
     </main>
-    <div class="modal_container">
-      <form class="modal" id="modal_add">
-        <input type="text" placeholder="Title" class="input_title" id="add_title" />
-        <input type="text" placeholder="Desciption" class="input_info" id="add_description" />
-        <div class="modal_btn">
-          <select name="users" class="modal_select" id="select_user_edit">
-            <option value="user1">User 1</option>
-            <option value="user2">User 2</option>
-            <option value="user3">User 3</option>
-            <option value="user4">User 4</option>
-          </select>
-          <button class="modal_btn_cancel" id="modal_add_cancel">Cancel</button>
-          <button class="modal_btn_confirm" id="modal_add_confirm">Confirm</button>
-        </div>
-      </form>
-    </div>
-    <div class="modal_container">
-      <form class="modal" id="modal_edit">
-        <input type="text" placeholder="Title" class="input_title" id="edit_title" />
-        <input type="text" placeholder="Desciption" class="input_info" id="edit_description" />
-        <div class="modal_btn">
-          <select name="users" class="modal_select" id="select_user_edit">
-            <option value="user1">User 1</option>
-            <option value="user2">User 2</option>
-            <option value="user3">User 3</option>
-            <option value="user4">User 4</option>
-          </select>
-          <button class="modal_btn_cancel" id="modal_edit_cancel">Cancel</button>
-          <button class="modal_btn_confirm" id="modal_edit_confirm">Confirm</button>
-        </div>
-      </form>
-    </div>
-    <div class="modal_warning" id="modal_warning">
-      <p class="modal_warning_text">Warning!</p>
-      <div class="modal_warning_btn">
-        <button class="modal_warning_cancel" id="modal_create_cancel">Cancel</button>
-        <button class="modal_warning_confirm" id="modal_create_confirm">Confirm</button>
-      </div>
-    </div>
+    <div class="modal_add" id="modal_add"></div>
+    <div class="modal_edit" id="modal_edit"></div>
+    <div class="modal_warning" id="modal_warning"></div>
     <script src="./script/index.js" type="module"></script>
   </body>
 </html>
