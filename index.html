@@ -1,82 +1,199 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./styles/styles.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./styles/styles.css" />
     <title>Trello clone app</title>
-</head>
-<body>
+  </head>
+  <body>
     <header class="header" id="header"></header>
     <main class="wrapper">
-        <div class="card_container">
-            <div class="card_wrapper" id="card_progress_add">
-                <div class="card_header">
-                    <h2 class="card_status">TODO</h2>
-                    <p class="counter_task counter_add" id="counter_add">1</p>
-                </div>
-                <div class="card" id="card"></div>
-                <button class="button button_add" id="button_add">Add TODO</button>
-            </div>
-            <div class="card_wrapper" id="card_progress_inprogress">
-                <div class="card_header">
-                    <h2 class="card_status">IN PROGRESS</h2>
-                    <p class="counter_task counter_inprogress" id="counter_inprogress">1</p>
-                </div >
-                <div class="card" id="card"></div>
-                <button class="button button_done_all" id="button_done_all">Done All</button>
-            </div>
-            <div class="card_wrapper" id="card_progress_done">
-                <div class="card_header">
-                    <h2 class="card_status">DONE</h2>
-                    <p class="counter_task counter_done" id="counter_done">1</p>
-                </div>
-                <div class="card" id="card"></div>
-                <button class="button button_delete_all" id="button_delete_all">Delete all</button>
-            </div>
+      <div class="card_wrapper" id="card_progress_add">
+        <div class="card_wrapper_header">
+          <h2 class="card_status">TODO</h2>
+          <p class="counter_task counter_add" id="counter_add">1</p>
         </div>
+        <div class="card_container">
+          <div class="card" id="card">
+            <div class="card_header">
+              <h4>Title</h4>
+            </div>
+            <div class="card_description">
+              <h5>Task description</h5>
+              <p>
+                efwe Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis enim, quasi
+                saepe aperiam, veniam optio, nihil inventore repudiandae minima repellendus odit
+                tempore quia asperiores quisquam libero quas doloribus eum molestiae!
+              </p>
+            </div>
+            <div class="card_information">
+              <div class="card_user">
+                <h5>user</h5>
+                <p>user1</p>
+              </div>
+              <div class="card_time">
+                <h5>time</h5>
+              </div>
+            </div>
+            <div class="card_buttons">
+              <div id="card_edit">
+                <button>edit</button>
+                <button>delete</button>
+              </div>
+              <div class="card_navigation">
+                <button>add task</button>
+              </div>
+            </div>
+          </div>
+          <div class="card" id="card">
+            <div class="card_header">
+              <h4>Title</h4>
+            </div>
+            <div class="card_description">
+              <h5>Task description</h5>
+              <p>
+                efwe Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis enim, quasi
+                saepe aperiam, veniam optio, nihil inventore repudiandae minima repellendus odit
+                tempore quia asperiores quisquam libero quas doloribus eum molestiae!
+              </p>
+            </div>
+            <div class="card_information">
+              <div class="card_user">
+                <h5>user</h5>
+                <p>user1</p>
+              </div>
+              <div class="card_time">
+                <h5>time</h5>
+              </div>
+            </div>
+            <div class="card_buttons">
+              <div id="card_edit">
+                <button>edit</button>
+                <button>delete</button>
+              </div>
+              <div class="card_navigation">
+                <button>add task</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button class="button button_add" id="button_add">Add TODO</button>
+      </div>
+      <div class="card_wrapper" id="card_progress_inprogress">
+        <div class="card_wrapper_header">
+          <h2 class="card_status">IN PROGRESS</h2>
+          <p class="counter_task counter_inprogress" id="counter_inprogress">1</p>
+        </div>
+        <div class="card_container">
+          <div class="card" id="card">
+            <div class="card_header">
+              <h4>Title</h4>
+            </div>
+            <div class="card_description">
+              <h5>Task description</h5>
+              <p>
+                efwe Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis enim, quasi
+                saepe aperiam, veniam optio, nihil inventore repudiandae minima repellendus odit
+                tempore quia asperiores quisquam libero quas doloribus eum molestiae!
+              </p>
+            </div>
+            <div class="card_information">
+              <div class="card_user">
+                <h5>user</h5>
+                <p>user1</p>
+              </div>
+              <div class="card_time">
+                <h5>time</h5>
+              </div>
+            </div>
+            <div class="card_buttons">
+              <div class="card_navigation">
+                <button>back</button>
+                <button>complete task</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button class="button button_done_all" id="button_done_all">Done All</button>
+      </div>
+      <div class="card_wrapper" id="card_progress_done">
+        <div class="card_wrapper_header">
+          <h2 class="card_status">DONE</h2>
+          <p class="counter_task counter_done" id="counter_done">1</p>
+        </div>
+        <div class="card_container">
+          <div class="card" id="card">
+            <div class="card_header">
+              <h4>Title</h4>
+            </div>
+            <div class="card_description">
+              <h5>Task description</h5>
+              <p>
+                efwe Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis enim, quasi
+                saepe aperiam, veniam optio, nihil inventore repudiandae minima repellendus odit
+                tempore quia asperiores quisquam libero quas doloribus eum molestiae!
+              </p>
+            </div>
+            <div class="card_information">
+              <div class="card_user">
+                <h5>user</h5>
+                <p>user1</p>
+              </div>
+              <div class="card_time">
+                <h5>time</h5>
+              </div>
+            </div>
+            <div class="card_buttons">
+              <div class="card_navigation">
+                <button>undo task</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button class="button button_delete_all" id="button_delete_all">Delete all</button>
+      </div>
     </main>
     <div class="modal_container">
-        <form class="modal" id="modal_add">
-            <input type="text" placeholder="Title" class="input_title" id="add_title">
-            <input type="text" placeholder="Desciption" class="input_info" id="add_description">
-            <div class="modal_btn">
-                <select name="users" class="modal_select" id="select_user_edit">
-                    <option value="user1">User 1</option>
-                    <option value="user2">User 2</option>
-                    <option value="user3">User 3</option>
-                    <option value="user4">User 4</option>
-                </select>
-                <button class="modal_btn_cancel" id="modal_add_cancel">Cancel</button>
-                <button class="modal_btn_confirm" id="modal_add_confirm">Confirm</button>
-            </div>
-        </form>
+      <form class="modal" id="modal_add">
+        <input type="text" placeholder="Title" class="input_title" id="add_title" />
+        <input type="text" placeholder="Desciption" class="input_info" id="add_description" />
+        <div class="modal_btn">
+          <select name="users" class="modal_select" id="select_user_edit">
+            <option value="user1">User 1</option>
+            <option value="user2">User 2</option>
+            <option value="user3">User 3</option>
+            <option value="user4">User 4</option>
+          </select>
+          <button class="modal_btn_cancel" id="modal_add_cancel">Cancel</button>
+          <button class="modal_btn_confirm" id="modal_add_confirm">Confirm</button>
+        </div>
+      </form>
     </div>
     <div class="modal_container">
-        <form class="modal" id="modal_edit">
-            <input type="text" placeholder="Title" class="input_title" id="edit_title">
-            <input type="text" placeholder="Desciption" class="input_info" id="edit_description">
-            <div class="modal_btn">
-                <select name="users" class="modal_select" id="select_user_edit">
-                    <option value="user1">User 1</option>
-                    <option value="user2">User 2</option>
-                    <option value="user3">User 3</option>
-                    <option value="user4">User 4</option>
-                </select>
-                <button class="modal_btn_cancel" id="modal_edit_cancel">Cancel</button>
-                <button class="modal_btn_confirm" id="modal_edit_confirm">Confirm</button>
-            </div>
-        </form>
+      <form class="modal" id="modal_edit">
+        <input type="text" placeholder="Title" class="input_title" id="edit_title" />
+        <input type="text" placeholder="Desciption" class="input_info" id="edit_description" />
+        <div class="modal_btn">
+          <select name="users" class="modal_select" id="select_user_edit">
+            <option value="user1">User 1</option>
+            <option value="user2">User 2</option>
+            <option value="user3">User 3</option>
+            <option value="user4">User 4</option>
+          </select>
+          <button class="modal_btn_cancel" id="modal_edit_cancel">Cancel</button>
+          <button class="modal_btn_confirm" id="modal_edit_confirm">Confirm</button>
+        </div>
+      </form>
     </div>
     <div class="modal_warning" id="modal_warning">
-        <p class="modal_warning_text">Warning!</p>
-        <div class="modal_warning_btn">
-            <button class="modal_warning_cancel" id="modal_create_cancel">Cancel</button>
-            <button class="modal_warning_confirm" id="modal_create_confirm">Confirm</button>
-        </div>
-    </div>
+      <p class="modal_warning_text">Warning!</p>
+      <div class="modal_warning_btn">
+        <button class="modal_warning_cancel" id="modal_create_cancel">Cancel</button>
+        <button class="modal_warning_confirm" id="modal_create_confirm">Confirm</button>
+      </div>
     </div>
     <script src="./script/index.js" type="module"></script>
-</body>
+  </body>
 </html>
