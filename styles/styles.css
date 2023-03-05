@@ -93,7 +93,8 @@ body {
   background-color: #ffff99;
   border: 1px solid #ffff99;
 }
-.modal_add, .modal_edit {
+.modal_add,
+.modal_edit {
   width: 50%;
   height: 300px;
   border-radius: 36px;
@@ -103,7 +104,7 @@ body {
   align-items: center;
 }
 .modal_edit {
-  background-color:cadetblue;
+  background-color: cadetblue;
 }
 .modal {
   width: 80%;
@@ -200,9 +201,10 @@ body {
   gap: 10px;
 }
 .card_navigation {
+  width: 100%;
   display: flex;
   flex-direction: row;
-  gap: 14vw;
+  justify-content: space-between;
 }
 .card_user {
   display: flex;
@@ -226,4 +228,21 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+}
+
+.card_buttons button {
+  cursor: pointer;
+  padding: 5px;
+  border: 0;
+  border-radius: 7px;
+}
+
+.edit_button {
+  background-color: #ff0;
+}
+.delete_button {
+  background-color: #f00;
+}
+.navButtons {
+  background-color: #004cff9f;
 }
