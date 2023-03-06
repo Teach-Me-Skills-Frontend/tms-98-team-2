@@ -1,17 +1,248 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap");
 
 *,
 *:before,
-*:after{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+*:after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 body {
-    font-family: 'Roboto';
-    font-style: normal;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  font-family: "Roboto";
+  font-style: normal;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+.card_wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 27%;
+  border: 1px solid #000;
+  border-radius: 5px;
+}
+.card_wrapper_header {
+  width: 100%;
+  height: 40px;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 10px;
+  align-items: center;
+  background-color: blueviolet;
+  border-radius: 5px 5px 0 0;
+}
+
+.card_status {
+  display: flex;
+  justify-content: space-between;
+}
+.card_status::after {
+  content: ":";
+}
+
+.counter_task {
+  font-size: 24px;
+}
+
+.button {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #000;
+  border-radius: 0 0 5px 5px;
+  cursor: pointer;
+}
+
+.button_add:hover,
+.button_add:active {
+  background-color: #00fa9a;
+  border: 1px solid #00fa9a;
+}
+
+.button_add {
+  background-color: #00ff7f;
+  border: 1px solid #00ff7f;
+}
+
+.button_delete_all {
+  background-color: #fa8072;
+  border: 1px solid #fa8072;
+}
+
+.button_delete_all:active,
+.button_delete_all:hover {
+  background-color: #f08080;
+  border: 1px solid #f08080;
+}
+.button_done_all {
+  background-color: #ffff33;
+  border: 1px solid #ffff33;
+}
+
+.button_done_all:active,
+.button_done_all:hover {
+  background-color: #ffff99;
+  border: 1px solid #ffff99;
+}
+.modal_add,
+.modal_edit {
+  width: 50%;
+  height: 300px;
+  border-radius: 36px;
+  background-color: #0a72d1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.modal_edit {
+  background-color: cadetblue;
+}
+.modal {
+  width: 80%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+.input_title {
+  width: 30%;
+  text-align: center;
+  padding: 4px;
+  border: none;
+  border-radius: 12px;
+}
+.input_info {
+  width: 100%;
+  height: 150px;
+  text-align: center;
+  padding: 4px;
+  border: none;
+  border-radius: 12px;
+}
+.modal_btn {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.modal_select,
+.modal_btn_cancel,
+.modal_btn_confirm {
+  width: 30%;
+  height: 30px;
+  border: none;
+  border-radius: 12px;
+  text-align: center;
+}
+.modal_warning {
+  width: 50%;
+  height: 150px;
+  border-radius: 35px;
+  background-color: #c80d0d;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.modal_warning p {
+  color: white;
+}
+.modal_warning_btn {
+  width: 80%;
+  display: flex;
+  justify-content: space-evenly;
+}
+.modal_warning_btn button {
+  width: 30%;
+  height: 30px;
+  border: none;
+  border-radius: 12px;
+}
+.card_container {
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  overflow-y: auto;
+}
+.card {
+  width: 95%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #000;
+  background: transparent; /* green #7fffa38a  red #ff1f1f99 */
+}
+.card_header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.card_buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.card_edit {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+.card_navigation {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.card_user {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 5px;
+  font-size: 15px;
+}
+.card_description {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.card_description p {
+  border-radius: 5px;
+  padding: 0 5px;
+  background: #c3c3c3;
+}
+.card_information {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.card_buttons button {
+  cursor: pointer;
+  padding: 5px;
+  border: 0;
+  border-radius: 7px;
+}
+
+.edit_button {
+  background-color: #ff0;
+}
+.delete_button {
+  background-color: #f00;
+}
+.navButtons {
+  background-color: #004cff9f;
 }

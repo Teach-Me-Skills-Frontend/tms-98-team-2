@@ -1,20 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./styles/styles.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./styles/styles.css" />
     <title>Trello clone app</title>
-</head>
-<body>
+  </head>
+  <body>
     <header class="header" id="header"></header>
     <main class="wrapper">
-        <div class="card_container" id="container">
-            <div class="card" id="card"></div>
+      <div class="card_wrapper" id="card_progress_add">
+        <div class="card_wrapper_header" id="header_add">
+          <h2 class="card_status">TODO</h2>
         </div>
+        <div class="card_container" id="card_container_add"></div>
+      </div>
+      <div class="card_wrapper" id="card_progress_inprogress">
+        <div class="card_wrapper_header" id="header_inprogress">
+          <h2 class="card_status">IN PROGRESS</h2>
+        </div>
+        <div class="card_container" id="card_container_inprogress"></div>
+      </div>
+      <div class="card_wrapper" id="card_progress_done">
+        <div class="card_wrapper_header" id="header_done">
+          <h2 class="card_status">DONE</h2>
+        </div>
+        <div class="card_container" id="card_container_done"></div>
+      </div>
     </main>
-    <div class="modal" id="modal"></div>
+    <div class="modal_add" id="modal_add"></div>
+    <div class="modal_edit" id="modal_edit"></div>
+    <div class="modal_warning" id="modal_warning"></div>
     <script src="./script/index.js" type="module"></script>
-</body>
+  </body>
 </html>
