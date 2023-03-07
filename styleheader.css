@@ -1,0 +1,36 @@
+/*Поставил  шрифт Roboto как по макету*/
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Roboto:wght@400&display=swap');
+
+/*Создать рамочку*/
+.wrapper{
+   margin: auto;
+border: 2px solid rgba(0, 0, 0, 0.564);
+background-color: rgba(233, 127, 213, 0.539);
+width: 70%;
+height: 25ex;
+display: flex;
+justify-content: space-around;
+align-items: center;
+border-radius: 10px;
+}
+h1{
+   font-size: 2.5em;
+   font-weight: 200;
+   font-family: 'Roboto', sans-serif;
+}
+/*Создаю место для цифровых часов класса "clock"*/
+#clock{
+   width: 15%;
+   background-color: #171717;
+   border: 2px solid #1919198e;
+   border-radius: 10px;
+   height: 6ex;
+   color: #ffffff;
+   padding-top: 10px;
+   font-size: 1.4em;
+   text-align: center;
+   letter-spacing: 2px;
+   font-family: 'Roboto', sans-serif;
+}
+
+
