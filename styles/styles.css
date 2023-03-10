@@ -15,6 +15,7 @@ body {
     justify-content: center;
     align-items: center;
 }
+<<<<<<< HEAD
 #header{
     width: 100%;
 }
@@ -22,6 +23,11 @@ body {
 
 /*Создать рамочку*/
 .frame{
+=======
+
+/*Создать рамочку*/
+.wrapper{
+>>>>>>> 32df6e2c90de05fb9043cf4283fd6fcc5519646b
     margin: auto;
  border: 2px solid rgba(0, 0, 0, 0.564);
  background-color: rgba(233, 127, 213, 0.539);
