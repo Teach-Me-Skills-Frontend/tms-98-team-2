@@ -7,11 +7,22 @@ export function createTaskModal (cancelId, confirmId, valueTitle, valueDescripti
     
     const inputTitle = createTextInput ({ name: ModalInputAttr.TaskTitleInput, placeholder: 'Title'})
     inputTitle.classList.add('input_title');
-    inputTitle.value = valueTitle
+    
+    if (!valueTitle) {
+        inputTitle.value = '';
+    } else {
+        inputTitle.value = valueTitle
+    }
 
     const inputDescription = createTextInput ({ name: ModalInputAttr.TaskDescriptionInput, placeholder: 'Description' })
     inputDescription.classList.add('input_info');
-    inputDescription.value = valueDescription;
+
+    if (!valueDescription) {
+        inputDescription.value = '';
+    } else {
+        inputDescription.value = valueDescription;
+    }
+    
 
     const btnContainer = document.createElement('div')
     btnContainer.classList.add('modal_btn');
