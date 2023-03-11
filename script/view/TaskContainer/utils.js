@@ -1,28 +1,35 @@
 import { createButton } from "../utils.js";
 
-export function createAddButton() {
-   const addButton = createButton('Add task', 'button_add', {
-      type: 'button',
-      name: 'addTaskButton',
-   })
+export function createContainerButton (title, className, buttonProps, id) {
+   const btn = createButton (title, className, buttonProps);
+   btn.id = id;
 
-   addButton.id ='button_add';
-   addButton.classList.add('button');
-
-   return addButton
+   return btn
 }
 
-export function createInProgressButton() {
-   const inProgressButton = createButton('Done all', 'button_done_all', {
-      type: 'button',
-      name: 'doneTaskButton',
-   })
+// export function createAddButton() {
+//    const addButton = createButton('Add task', 'button_add', {
+//       type: 'button',
+//       name: 'addTaskButton',
+//    })
 
-   inProgressButton.id ='button_done_all';
-   inProgressButton.classList.add('button');
+//    addButton.id ='button_add';
+//    addButton.classList.add('button');
 
-   return inProgressButton
-}
+//    return addButton
+// }
+
+// export function createInProgressButton() {
+//    const inProgressButton = createButton('Done all', 'button_done_all', {
+//       type: 'button',
+//       name: 'doneTaskButton',
+//    })
+
+//    inProgressButton.id ='button_done_all';
+//    inProgressButton.classList.add('button');
+
+//    return inProgressButton
+// }
 
 export function createDeleteAllButton() {
    const deleteAllButton = createButton('Delete all', 'button_delete_all', {
