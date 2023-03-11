@@ -1,20 +1,32 @@
 import { ModalInputAttr } from './constant.js';
-import { createTaskModal, createModalWarning } from './utils.js';
+import { createTaskModal } from './utils.js';
+import { TaskStatus } from '../../constant.js';
 export class ModalView {
-    constructor(containerId, cancelId, confirmId, valueTitle, valueDescription) {
+    constructor(containerId, cancelId, confirmId, valueTitle, valueDescription, onTaskAdd) {
+        this.onTaskAdd = onTaskAdd;
         this.modal = document.getElementById(containerId);
         this.modalForm = createTaskModal(cancelId, confirmId, valueTitle, valueDescription);
         this.modalForm.classList.add('add');
         this.modal.append(this.modalForm);
+   
 
         this.modal.addEventListener('submit', (event) => {
             event.preventDefault();
 
             const inputTittleValue = this.modalForm.elements[ModalInputAttr.TaskTitleInput].value.trim();
             const inputDescriptionValue = this.modalForm.elements[ModalInputAttr.TaskDescriptionInput].value.trim();
+            const select = this.modalForm.elements['users'].value;
           if (inputTittleValue && inputDescriptionValue) {
-            console.log(`Title: ${inputTittleValue}`);
-            console.log(`Decription: ${inputDescriptionValue}`);
+            const newTask = {
+                title: inputTittleValue,
+                description: inputDescriptionValue,
+                user: select,
+                date: new Date (),
+                status: TaskStatus.toDo,
+                id: window.crypto.randomUUID()
+            };
+            this.onTaskAdd(newTask)
+            
             this.modalForm.reset()
           } else (
             alert('No text')
