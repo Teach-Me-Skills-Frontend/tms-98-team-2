@@ -1,15 +1,12 @@
-import { ModalAddView, ModalEditView, ModalWarningView } from "./ModalView/index.js";
-import {
-  TaskTodoContainer,
-  TaskInProgressContainer,
-  TaskDoneContainer,
-} from "./TaskContainer/index.js";
+import { ModalView } from "./ModalView/ModalView.js";
+import { ModalWarningView } from "./ModalView/ModalWarning.js";
+import { TaskTodoContainer, TaskInProgressContainer, TaskDoneContainer } from "./TaskContainer/index.js";
 import { TaskCard } from "./CardView/TaskCard.js";
 
 export class TaskView {
   constructor() {
-    this.modalAdd = new ModalAddView("modal_add");
-    this.modalEdit = new ModalEditView("modal_edit");
+    this.modalAdd = new ModalView('modal_add', 'modal_add_cancel', 'modal_add_confirm', 'Title', 'Description');
+    this.modalEdit = new ModalView('modal_edit', 'modal_edit_cancel', 'modal_edit_confirm', 'Task 1', 'This is Task 1 Description', 1);
     this.modalWarning = new ModalWarningView("modal_warning");
 
     this.todoContainer = new TaskTodoContainer("card_progress_add", "header_add");
@@ -23,4 +20,5 @@ export class TaskView {
     this.card_inProgress = new TaskCard("card_container_inprogress");
     this.card_done = new TaskCard("card_container_done");
   }
+
 }
