@@ -4,8 +4,8 @@ import { TaskContainer } from "./TaskContainer/TaskContainer.js";
 import { TaskCard } from "./CardView/TaskCard.js";
 
 export class TaskView {
-  constructor() {
-    this.modalAdd = new ModalView('modal_add', 'modal_add_cancel', 'modal_add_confirm', 'Title', 'Description');
+  constructor({tasks, onTaskAdd}) {
+    this.modalAdd = new ModalView('modal_add', 'modal_add_cancel', 'modal_add_confirm', '', '', onTaskAdd);
     this.modalEdit = new ModalView('modal_edit', 'modal_edit_cancel', 'modal_edit_confirm', 'Task 1', 'This is Task 1 Description', 1);
     this.modalWarning = new ModalWarningView("modal_warning");
 
@@ -53,4 +53,8 @@ export class TaskView {
     this.card_done = new TaskCard("card_container_done");
   }
 
+
+  createNewTask = (newTask) => {
+    console.log(newTask)
+  }
 }
