@@ -1,4 +1,4 @@
-import { ModalEditView } from "../ModalView/index.js";
+import { ModalView } from "../ModalView/ModalView.js";
 import { taskContainers } from "./constants.js";
 import { createButton, createElementWithClass } from "../utils.js";
 import { toInProgressTask, toCompleteTask, toEditTask, deleteTask } from "./utils.js";
@@ -8,7 +8,7 @@ export function containerCheck(containerId, navButtons, buttons) {
     const editButtons = createElementWithClass("div", "card_edit");
 
     const editModal = () => {
-      new ModalEditView(containerId);
+      new ModalView(containerId);
       editBtn.removeEventListener("click", editModal);
     };
 
