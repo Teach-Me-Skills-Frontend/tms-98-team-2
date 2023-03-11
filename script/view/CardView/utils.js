@@ -1,57 +1,24 @@
-import { ModalEditView } from "../ModalView/index.js";
 import { taskContainers } from "./constants.js";
-import { createButton, createElementWithClass } from "../utils.js";
+import { TaskCard } from "./TaskCard.js";
 
-export function containerCheck(containerId, navButtons, buttons) {
-  if (containerId === taskContainers.add) {
-    const editButtons = createElementWithClass("div", "card_edit");
+export function toInProgressTask(el) {
+  el.parentNode.parentNode.parentNode.remove();
 
-    const editBtn = createButton("Edit", "edit_button");
-    editBtn.addEventListener("click", () => {
-      const modalEdit = new ModalEditView(containerId);
-      console.log("edit");
-    });
+  new TaskCard(taskContainers.inProgress);
+}
 
-    const deleteBtn = createButton("Delete", "delete_button");
-    deleteBtn.addEventListener("click", () => {
-      console.log("delete");
-    });
+export function toEditTask(el) {
+  el.parentNode.parentNode.parentNode.remove();
 
-    editButtons.append(editBtn, deleteBtn);
+  new TaskCard(taskContainers.add);
+}
 
-    const addBtn = createButton("Add", "navButtons");
-    addBtn.addEventListener("click", ({ target }) => {
-      console.log("add");
-      //toInProgressTask(target);
-    });
+export function toCompleteTask(el) {
+  el.parentNode.parentNode.parentNode.remove();
 
-    navButtons.style.width = "auto";
-    navButtons.append(addBtn);
+  new TaskCard(taskContainers.completed);
+}
 
-    buttons.append(editButtons, navButtons);
-  } else if (containerId === taskContainers.inProgress) {
-    const backBtn = createButton("Back", "navButtons");
-    backBtn.addEventListener("click", ({ target }) => {
-      console.log("back");
-      //toEditTask(target);
-    });
-
-    const completedBtn = createButton("Complete", "navButtons");
-    completedBtn.addEventListener("click", (target) => {
-      console.log("complete");
-      //toCompleteTask(target);
-    });
-
-    navButtons.append(backBtn, completedBtn);
-    buttons.append(navButtons);
-  } else {
-    const undoBtn = createButton("Undo", "navButtons");
-    undoBtn.addEventListener("click", (target) => {
-      console.log("undo");
-      //toInprogressTask(target);
-    });
-
-    navButtons.append(undoBtn);
-    buttons.append(navButtons);
-  }
+export function deleteTask(el) {
+  el.parentNode.parentNode.parentNode.remove();
 }

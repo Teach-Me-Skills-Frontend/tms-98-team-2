@@ -1,9 +1,9 @@
 import { createInnerElement, createElementWithClass } from "../utils.js";
 import { taskConstants } from "./constants.js";
-import { containerCheck } from "./utils.js";
+import { containerCheck } from "./listeners.js";
 
 export class TaskCard {
-  constructor(containerId = "root") {
+  constructor(containerId = "root", tasks) {
     const root = document.getElementById(containerId);
 
     const card = createElementWithClass("div", "card");
@@ -16,7 +16,7 @@ export class TaskCard {
   getDate = () => {
     const date = new Date();
 
-    const day = date.getDate(),
+    let day = date.getDate(),
       month = date.getMonth(),
       year = date.getFullYear();
 
@@ -45,7 +45,9 @@ export class TaskCard {
         "card_user"
       )
     );
-    information.append(createInnerElement("div", [taskConstants.tagHeader], ["time"], "card_user"));
+    information.append(
+      createInnerElement("div", [taskConstants.tagHeader], [this.getDate()], "card_user")
+    );
 
     const buttons = createElementWithClass("div", "card_buttons");
     const navButtons = createElementWithClass("div", "card_navigation");
