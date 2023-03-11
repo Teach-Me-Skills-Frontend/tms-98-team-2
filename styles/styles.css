@@ -33,6 +33,8 @@ body {
   border: 1px solid #000;
   border-radius: 5px;
 }
+
+
 .card_wrapper_header {
   width: 100%;
   height: 40px;
@@ -56,42 +58,42 @@ body {
   font-size: 24px;
 }
 
-.button {
+.card_wrapper > button {
   width: 100%;
   padding: 10px;
-  border: 1px solid #000;
   border-radius: 0 0 5px 5px;
   cursor: pointer;
 }
 
-.button_add:hover,
-.button_add:active {
+
+#card_progress_add > button:hover,
+#card_progress_add > button:active {
   background-color: #00fa9a;
   border: 1px solid #00fa9a;
 }
 
-.button_add {
+#card_progress_add > button {
   background-color: #00ff7f;
   border: 1px solid #00ff7f;
 }
 
-.button_delete_all {
+#card_progress_done > button {
   background-color: #fa8072;
   border: 1px solid #fa8072;
 }
 
-.button_delete_all:active,
-.button_delete_all:hover {
+#card_progress_done > button:active,
+#card_progress_done > button:hover {
   background-color: #f08080;
   border: 1px solid #f08080;
 }
-.button_done_all {
+#card_progress_inprogress > button {
   background-color: #ffff33;
   border: 1px solid #ffff33;
 }
 
-.button_done_all:active,
-.button_done_all:hover {
+#card_progress_inprogress > button:active,
+#card_progress_inprogress > button:hover {
   background-color: #ffff99;
   border: 1px solid #ffff99;
 }
