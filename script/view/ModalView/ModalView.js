@@ -1,5 +1,5 @@
 import { ModalInputAttr } from './constant.js';
-import { createTaskModal } from './utils.js';
+import { createTaskModal,getDate } from './utils.js';
 import { TaskStatus } from '../../constant.js';
 export class ModalView {
     constructor(containerId, cancelId, confirmId, valueTitle, valueDescription, onTaskAdd) {
@@ -21,7 +21,7 @@ export class ModalView {
                 title: inputTittleValue,
                 description: inputDescriptionValue,
                 user: select,
-                date: new Date (),
+                date: getDate(),
                 status: TaskStatus.toDo,
                 id: window.crypto.randomUUID()
             };

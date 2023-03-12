@@ -1,37 +1,55 @@
 import { createInnerElement, createElementWithClass } from "../utils.js";
-import { taskConstants } from "./constants.js";
+import { taskConstants, taskContainersId } from "./constants.js";
 import { containerCheck } from "./listeners.js";
 
 export class TaskCard {
-  constructor(containerId = "root", tasks) {
-    const root = document.getElementById(containerId);
+  constructor(tasks, index = tasks.length - 1) {
+    if (tasks.length != 0) {
+      if (index === -1) {
+        this.createNewCard(tasks);
+      } else {
+        const task = tasks[index];
 
-    const card = createElementWithClass("div", "card");
+        for (const key in taskContainersId) {
+          if (key === task.status) {
+            const root = document.getElementById(taskContainersId[key]);
 
-    this.createInnerCard(card, containerId);
+            const card = createElementWithClass("div", "card");
+            card.setAttribute("id", task.id);
 
-    root.append(card);
+            this.createInnerCard(card, task, tasks);
+
+            root.append(card);
+          }
+        }
+      }
+    }
   }
 
-  getDate = () => {
-    const date = new Date();
+  createNewCard = (tasks) => {
+    for (const task of tasks) {
+      for (const key in taskContainersId) {
+        if (key === task.status) {
+          const root = document.getElementById(taskContainersId[key]);
 
-    let day = date.getDate(),
-      month = date.getMonth(),
-      year = date.getFullYear();
+          const card = createElementWithClass("div", "card");
+          card.setAttribute("id", task.id);
 
-    day < 10 ? (day = "0" + day) : day;
-    month < 10 ? (month = "0" + month) : month;
-    return `${day}.${month}.${year}`;
+          this.createInnerCard(card, task, tasks);
+
+          root.append(card);
+        }
+      }
+    }
   };
 
-  createInnerCard = (card, containerId, tasks) => {
-    const title = createInnerElement("div", [taskConstants.title], ["task title"], "card_header");
+  createInnerCard = (card, task, tasks) => {
+    const title = createInnerElement("div", [taskConstants.title], [task.title], "card_header");
 
     const description = createInnerElement(
       "div",
       [taskConstants.tagHeader, taskConstants.tagInner],
-      [taskConstants.description, "task text"],
+      [taskConstants.description, task.description],
       "card_description"
     );
 
@@ -41,17 +59,17 @@ export class TaskCard {
       createInnerElement(
         "div",
         [taskConstants.tagHeader, taskConstants.tagInner],
-        [taskConstants.user, "name"],
+        [taskConstants.user, task.user],
         "card_user"
       )
     );
     information.append(
-      createInnerElement("div", [taskConstants.tagHeader], [this.getDate()], "card_user")
+      createInnerElement("div", [taskConstants.tagHeader], [task.date], "card_user")
     );
 
     const buttons = createElementWithClass("div", "card_buttons");
     const navButtons = createElementWithClass("div", "card_navigation");
-    containerCheck(containerId, navButtons, buttons);
+    containerCheck(task, navButtons, buttons, tasks);
 
     card.append(title, description, information, buttons);
   };
