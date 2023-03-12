@@ -1,24 +1,65 @@
-import { taskContainers } from "./constants.js";
+import { taskContainersId } from "./constants.js";
 import { TaskCard } from "./TaskCard.js";
+import { TaskStatus } from "../../constant.js";
+import { TaskModel } from "../../model/index.js";
 
-export function toInProgressTask(el) {
-  el.parentNode.parentNode.parentNode.remove();
+export function taskActions(el, tasks, action) {
+  const element = el.parentNode.parentNode.parentNode;
 
-  new TaskCard(taskContainers.inProgress);
-}
+  switch (action) {
+    case "todo": {
+      for (const task of tasks) {
+        if (element.id === task.id) {
+          task.status = TaskStatus.toDo;
 
-export function toEditTask(el) {
-  el.parentNode.parentNode.parentNode.remove();
+          element.remove();
 
-  new TaskCard(taskContainers.add);
-}
+          new TaskCard(tasks, tasks.indexOf(task));
+        }
+      }
+      console.log(tasks);
+      break;
+    }
+    case "toInProgress": {
+      for (const task of tasks) {
+        if (element.id === task.id) {
+          task.status = TaskStatus.inProgress;
 
-export function toCompleteTask(el) {
-  el.parentNode.parentNode.parentNode.remove();
+          element.remove();
 
-  new TaskCard(taskContainers.completed);
-}
+          new TaskCard(tasks, tasks.indexOf(task));
+        }
+      }
+      console.log(tasks);
+      break;
+    }
+    case "edit": {
+      break;
+    }
+    case "delete": {
+      for (const task of tasks) {
+        if (element.id === task.id) {
+          const taskIndex = tasks.indexOf(task);
+          tasks.splice(taskIndex, 1);
+          console.log(tasks);
+        }
+      }
+      element.remove();
+      console.log(tasks);
+      break;
+    }
+    case "done": {
+      for (const task of tasks) {
+        if (element.id === task.id) {
+          task.status = TaskStatus.done;
 
-export function deleteTask(el) {
-  el.parentNode.parentNode.parentNode.remove();
+          element.remove();
+
+          new TaskCard(tasks, tasks.indexOf(task));
+        }
+      }
+      console.log(tasks);
+      break;
+    }
+  }
 }
