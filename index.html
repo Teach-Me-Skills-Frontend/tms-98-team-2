@@ -8,19 +8,26 @@
     <title>Trello clone app</title>
 </head>
 <body>
-    <header class="header" id="header">
-        <div class="frame">
-            <!--Создаю рамку где будет находится текст, дата и часы-->
-            <h1 class="maintext" id="maintext">Trello</h1>
-            <!--реализую эти цифровые часы с помощью js (В js будет находится new Date и current time)-->
-            <div class="clock" id="clock"></div>
+    <body>
+        <header class="header" id="header">
+            <div class="container">
+                <div class="frame">
+                   <!--Создаю рамку где будет находится текст, дата и часы-->
+                   <h1 class="maintext" id="maintext">Trello</h1>
+                   <!--реализую эти цифровые часы с помощью js (В js будет находится new Date и current time)-->
+                   <div class="clock" id="clock"></div>
+                </div>
+             </div>
+             
+        </header>
+        <main class="wrapper">
+            <div class="card_container" id="container">
+                <div class="card" id="card"></div>
             </div>
-    </header>
-    <main class="wrapper">
-        <div class="card_container" id="container">
-            <div class="card" id="card"></div>
-        </div>
-    </main>
+        </main>
+        <div class="modal" id="modal"></div>
+        <script src="./script/index.js" type="module"></script>
+    </body>
     <div class="modal" id="modal"></div>
     <script src="./script/scriptignat.js" type="module"></script>
 </body>
