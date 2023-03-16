@@ -1,7 +1,7 @@
 import { createButton } from "../utils.js";
 
-export function createContainerButton (title,/*  className, */ buttonProps, buttonId) {
-   const btn = createButton (title,/*  className, */ buttonProps);
+export function createContainerButton (title, className, buttonProps, buttonId) {
+   const btn = createButton (title, className, buttonProps, buttonId);
    btn.id = buttonId;
 
    return btn
