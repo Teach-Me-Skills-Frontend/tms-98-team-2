@@ -1,0 +1,82 @@
+.card_container {
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  overflow-y: auto;
+}
+.card {
+  width: 95%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #000;
+  background: transparent; /* green #7fffa38a  red #ff1f1f99 */
+}
+.card_header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.card_buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.card_edit {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+.card_navigation {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.card_user {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 5px;
+  font-size: 15px;
+}
+.card_description {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.card_description p {
+  border-radius: 5px;
+  padding: 0 5px;
+  background: #c3c3c3;
+}
+.card_information {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.card_buttons button {
+  cursor: pointer;
+  padding: 5px;
+  border: 0;
+  border-radius: 7px;
+}
+
+.edit_button {
+  background-color: #ff0;
+}
+.delete_button {
+  background-color: #f00;
+}
+.add_button {
+  background-color: #004cff9f;
+}
+.complete_button {
+  background-color: #4dff009f;
+}
