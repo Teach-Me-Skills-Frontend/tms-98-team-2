@@ -27,11 +27,12 @@ export class TaskView {
       containerId: "card_progress_add",
       headerId: "header_add",
       title: "Add task",
+      className: 'button_add',
       buttonProps: {
         type: "button",
         name: "addTaskButton",
       },
-      id: "button_add",
+      buttonId: "button_add",
       value: 0,
       counterId: "counter_todo",
     });
@@ -40,11 +41,12 @@ export class TaskView {
       containerId: "card_progress_inprogress",
       headerId: "header_inprogress",
       title: "Done all",
+      className: 'button_done_all',
       buttonProps: {
         type: "button",
         name: "doneTaskButton",
       },
-      id: "button_done_all",
+      buttonId: "button_done_all",
       value: 0,
       counterId: "counter_inprogress",
     });
@@ -53,13 +55,14 @@ export class TaskView {
       containerId: "card_progress_done",
       headerId: "header_done",
       title: "Delete all",
+      className: 'button_delete_all',
       buttonProps: {
         type: "button",
         name: "deleteTaskButton",
       },
-      id: "button_delete_all",
+      buttonId: "button_delete_all",
       value: 0,
-      counterId: "counter_done",
+      counterId: "counter_delete_all",
     });
 
     this.card = new TaskCard(tasks, -1);
