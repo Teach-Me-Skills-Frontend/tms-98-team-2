@@ -72,6 +72,6 @@ export class TaskView {
   }
 
   createNewTask = (newTask) => {
-    console.log(newTask);
+    this.card.createNewTaskCard(newTask)
   };
 }

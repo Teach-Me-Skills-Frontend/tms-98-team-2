@@ -5,9 +5,9 @@ import { addUser } from "./utils.js";
 
 export class Header {
   constructor(users, onUserAdd) {
-    console.log(users);
+
     this.onUserAdd = onUserAdd;
-    console.log(this.onUserAdd);
+    
     const root = document.getElementById("header");
 
     const title = createElementWithClass("div", "header_title");
