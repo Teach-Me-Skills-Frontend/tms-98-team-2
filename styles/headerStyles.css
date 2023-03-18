@@ -1,0 +1,22 @@
+#header {
+  background-color: rgba(255, 0, 195, 0.35);
+  width: 95%;
+  height: 100px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  border: 2px solid rgb(255, 0, 195);
+  border-radius: 15px;
+}
+
+.header_title {
+  font-size: 25px;
+}
+
+.header_date {
+  background-color: rgb(255, 255, 255);
+  padding: 5px;
+  font-size: 15px;
+  border: 2px solid rgb(149, 149, 149);
+}

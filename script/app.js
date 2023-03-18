@@ -8,9 +8,11 @@ export class TaskController {
 
     this.view = new TaskView({
       tasks: this.model.getCurrentTasks(),
+      users: this.model.getUsers(),
       onTaskAdd: this.createNewTask,
       onTaskDel:this.deleteTask,
-      onTaskStatus:this.setStatus
+      onTaskStatus:this.setStatus,
+      onUserAdd:this.newUser,
     });
   }
 
@@ -24,5 +26,8 @@ export class TaskController {
 
   setStatus=(taskId,toStatus)=>{
     this.model.setTaskStatus(taskId,toStatus);
-  }
+  };
+  newUser = (userName) => {
+    this.model.addUser(userName);
+  };
 }

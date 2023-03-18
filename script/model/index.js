@@ -5,6 +5,9 @@ export class TaskModel {
     const savedTasks = localStorage.getItem(LocalStorageKey.Tasks);
     const tasks = savedTasks ? JSON.parse(savedTasks) : [];
 
+    const savedUsers = localStorage.getItem(LocalStorageKey.Users);
+    const users = savedUsers ? JSON.parse(savedUsers) : [];
+
     this.getCurrentTasks = () => {
       return tasks.slice();
     };
@@ -31,7 +34,7 @@ export class TaskModel {
     this.setTaskStatus = (taskId, taskStatus) => {
       
       const taskIndex = tasks.findIndex(({ id }) => id === taskId);
-      
+
       if (taskIndex >= 0) {
         tasks[taskIndex] = {
           ...tasks[taskIndex],
@@ -39,6 +42,15 @@ export class TaskModel {
         };
         localStorage.setItem(LocalStorageKey.Tasks, JSON.stringify(tasks));
       }
+    };
+
+    this.getUsers = () => {
+      return users.slice();
+    };
+
+    this.addUser = (userName) => {
+      users.push(userName);
+      localStorage.setItem(LocalStorageKey.Users, JSON.stringify(users));
     };
   }
 }

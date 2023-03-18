@@ -53,3 +53,15 @@ export function createElementWithClass(tagName, className) {
 
   return element;
 }
+
+export function getDate() {
+  const date = new Date();
+
+  let day = date.getDate(),
+    month = date.getMonth() + 1,
+    year = date.getFullYear();
+
+  day < 10 ? (day = "0" + day) : day;
+  month < 10 ? (month = "0" + month) : month;
+  return `${day}.${month}.${year}`;
+}

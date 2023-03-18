@@ -2,9 +2,12 @@ import { ModalView } from "./ModalView/ModalView.js";
 import { ModalWarningView } from "./ModalView/ModalWarning.js";
 import { TaskContainer } from "./TaskContainer/TaskContainer.js";
 import { TaskCard } from "./CardView/TaskCard.js";
+import { Header } from "./header/index.js";
 
 export class TaskView {
-  constructor({ tasks, onTaskAdd, onTaskDel, onTaskStatus }) {
+  constructor({ tasks, users, onTaskAdd, onTaskDel, onTaskStatus, onUserAdd }) {
+    this.header = new Header(users, onUserAdd);
+
     this.modalAdd = new ModalView(
       "modal_add",
       "modal_add_cancel",
