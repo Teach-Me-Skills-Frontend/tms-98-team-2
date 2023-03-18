@@ -2,6 +2,7 @@ import { ModalView } from "./ModalView/ModalView.js";
 import { ModalWarningView } from "./ModalView/ModalWarning.js";
 import { TaskContainer } from "./TaskContainer/TaskContainer.js";
 import { TaskCard } from "./CardView/TaskCard.js";
+import { Header } from "./header/index.js";
 
 export class TaskView {
   constructor({ tasks, users, onTaskAdd, onTaskDel, onTaskStatus, onUserAdd }) {
