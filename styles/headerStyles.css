@@ -9,6 +9,10 @@
   border: 2px solid rgb(255, 0, 195);
   border-radius: 15px;
 }
+.header h3 {
+  font-size: 20px;
+  font-weight: 400;
+}
 
 .header_title {
   font-size: 25px;
@@ -19,4 +23,49 @@
   padding: 5px;
   font-size: 15px;
   border: 2px solid rgb(149, 149, 149);
+  border-radius: 10px;
+}
+
+.header_user {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.current_users {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 10px;
+}
+
+.user_form {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.user_form input {
+  border: 0;
+  padding: 0 5px;
+  border-radius: 5px 0 0 5px;
+  height: 30px;
+}
+
+.user_form button {
+  cursor: pointer;
+  font-size: 15px;
+  padding: 0 5px;
+  border-radius: 0 5px 5px 0;
+  background: rgb(221, 255, 0);
+  border: 2px solid rgba(221, 255, 0, 0.2);
+}
+
+.users {
+  height: 25px;
+  border: 0;
+  border-radius: 5px;
+  font-size: 15px;
 }
