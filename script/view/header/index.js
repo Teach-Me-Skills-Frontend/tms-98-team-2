@@ -5,9 +5,8 @@ import { addUser } from "./utils.js";
 
 export class Header {
   constructor(users, onUserAdd) {
-
     this.onUserAdd = onUserAdd;
-    
+
     const root = document.getElementById("header");
 
     const title = createElementWithClass("div", "header_title");
@@ -46,7 +45,7 @@ export class Header {
     const currentUsers = createElementWithClass("div", "current_users");
 
     const currentUsersTitle = document.createElement("h3");
-    currentUsersTitle.innerText = "Users";
+    currentUsersTitle.innerText = "Users:";
 
     const currentUsersName = createElementWithClass("select", "users");
     currentUsersName.setAttribute("id", "user_names");
