@@ -4,7 +4,7 @@ import { TaskContainer } from "./TaskContainer/TaskContainer.js";
 import { TaskCard } from "./CardView/TaskCard.js";
 
 export class TaskView {
-  constructor({ tasks, onTaskAdd }) {
+  constructor({ tasks, onTaskAdd, onTaskDel, onTaskStatus }) {
     this.modalAdd = new ModalView(
       "modal_add",
       "modal_add_cancel",
@@ -27,7 +27,7 @@ export class TaskView {
       containerId: "card_progress_add",
       headerId: "header_add",
       title: "Add task",
-      className: 'button_add',
+      className: "button_add",
       buttonProps: {
         type: "button",
         name: "addTaskButton",
@@ -41,7 +41,7 @@ export class TaskView {
       containerId: "card_progress_inprogress",
       headerId: "header_inprogress",
       title: "Done all",
-      className: 'button_done_all',
+      className: "button_done_all",
       buttonProps: {
         type: "button",
         name: "doneTaskButton",
@@ -55,7 +55,7 @@ export class TaskView {
       containerId: "card_progress_done",
       headerId: "header_done",
       title: "Delete all",
-      className: 'button_delete_all',
+      className: "button_delete_all",
       buttonProps: {
         type: "button",
         name: "deleteTaskButton",
@@ -65,7 +65,7 @@ export class TaskView {
       counterId: "counter_delete_all",
     });
 
-    this.card = new TaskCard(tasks, -1);
+    this.card = new TaskCard(tasks, -1, onTaskDel, onTaskStatus);
   }
 
   createNewTask = (newTask) => {

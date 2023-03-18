@@ -15,5 +15,30 @@ export class TaskModel {
 
       return newTask;
     };
+
+    this.removeTask = (taskId) => {
+      
+      const taskIndex = tasks.findIndex(({ id }) => id === taskId);
+
+      if (taskIndex >= 0) {
+        tasks.splice(taskIndex, 1);
+        localStorage.setItem(LocalStorageKey.Tasks, JSON.stringify(tasks));
+      }
+
+      return taskIndex > -1;
+    };
+
+    this.setTaskStatus = (taskId, taskStatus) => {
+      
+      const taskIndex = tasks.findIndex(({ id }) => id === taskId);
+      
+      if (taskIndex >= 0) {
+        tasks[taskIndex] = {
+          ...tasks[taskIndex],
+          status: taskStatus,
+        };
+        localStorage.setItem(LocalStorageKey.Tasks, JSON.stringify(tasks));
+      }
+    };
   }
 }
