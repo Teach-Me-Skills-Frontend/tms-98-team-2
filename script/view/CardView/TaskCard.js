@@ -1,9 +1,12 @@
 import { createInnerElement, createElementWithClass } from "../utils.js";
 import { taskConstants, taskContainersId } from "./constants.js";
-import { containerCheck } from "./listeners.js";
+import { buttonActions } from "./listeners.js";
 
 export class TaskCard {
-  constructor(tasks, index = tasks.length - 1) {
+  constructor(tasks, index = tasks.length - 1, onTaskDel, onTaskStatus) {
+    this.onTaskStatus = onTaskStatus;
+    this.onTaskDel = onTaskDel;
+
     if (tasks.length != 0) {
       if (index === -1) {
         this.createNewCard(tasks);
@@ -17,7 +20,7 @@ export class TaskCard {
             const card = createElementWithClass("div", "card");
             card.setAttribute("id", task.id);
 
-            this.createInnerCard(card, task, tasks);
+            this.createInnerCard(card, task, tasks, this.onTaskDel, this.onTaskStatus);
 
             root.append(card);
           }
@@ -35,7 +38,7 @@ export class TaskCard {
           const card = createElementWithClass("div", "card");
           card.setAttribute("id", task.id);
 
-          this.createInnerCard(card, task, tasks);
+          this.createInnerCard(card, task, tasks, this.onTaskDel, this.onTaskStatus);
 
           root.append(card);
         }
@@ -43,7 +46,7 @@ export class TaskCard {
     }
   };
 
-  createInnerCard = (card, task, tasks) => {
+  createInnerCard = (card, task, tasks, onTaskDel, onTaskStatus) => {
     const title = createInnerElement("div", [taskConstants.title], [task.title], "card_header");
 
     const description = createInnerElement(
@@ -69,7 +72,7 @@ export class TaskCard {
 
     const buttons = createElementWithClass("div", "card_buttons");
     const navButtons = createElementWithClass("div", "card_navigation");
-    containerCheck(task, navButtons, buttons, tasks);
+    buttonActions(task, navButtons, buttons, tasks, onTaskDel, onTaskStatus);
 
     card.append(title, description, information, buttons);
   };
