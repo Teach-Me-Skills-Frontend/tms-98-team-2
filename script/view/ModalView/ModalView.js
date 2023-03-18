@@ -1,6 +1,8 @@
 import { ModalInputAttr } from './constant.js';
-import { createTaskModal,getDate } from './utils.js';
+import { createTaskModal } from './utils.js';
 import { TaskStatus } from '../../constant.js';
+import { getDate } from '../utils.js';
+
 export class ModalView {
     constructor(containerId, cancelId, confirmId, valueTitle, valueDescription, onTaskAdd) {
         this.onTaskAdd = onTaskAdd;

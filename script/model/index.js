@@ -5,6 +5,9 @@ export class TaskModel {
     const savedTasks = localStorage.getItem(LocalStorageKey.Tasks);
     const tasks = savedTasks ? JSON.parse(savedTasks) : [];
 
+    const savedUsers = localStorage.getItem(LocalStorageKey.Users);
+    const users = savedUsers ? JSON.parse(savedUsers) : [];
+
     this.getCurrentTasks = () => {
       return tasks.slice();
     };
