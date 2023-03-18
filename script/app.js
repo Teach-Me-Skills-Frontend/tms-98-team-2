@@ -18,6 +18,7 @@ export class TaskController {
 
   createNewTask = (newTask) => {
     this.model.addTask(newTask);
+    this.view.createNewTask(newTask)
   };
 
   deleteTask=(taskId)=>{
