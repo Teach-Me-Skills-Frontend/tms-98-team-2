@@ -3,7 +3,7 @@ import { createButton, createElementWithClass } from "../utils.js";
 import { taskActions, statusActions } from "./utils.js";
 import { TaskStatus } from "../../constant.js";
 
-export function buttonActions(task, navButtons, buttons, tasks, onTaskDel, onTaskStatus) {
+export function buttonActions(task, navButtons, buttons, onTaskDel, onTaskStatus, tasks) {
   switch (task.status) {
     case "ToDo": {
       const editButtons = createElementWithClass("div", "card_edit");
@@ -37,7 +37,14 @@ export function buttonActions(task, navButtons, buttons, tasks, onTaskDel, onTas
 
       const addBtn = createButton("Add", "add_button");
       addBtn.addEventListener("click", ({ target }) => {
-        statusActions(target, tasks, "toInProgress", onTaskStatus, TaskStatus.inProgress,onTaskDel);
+        statusActions(
+          target,
+          tasks,
+          "toInProgress",
+          onTaskStatus,
+          TaskStatus.inProgress,
+          onTaskDel
+        );
       });
 
       navButtons.style.width = "auto";
@@ -49,12 +56,12 @@ export function buttonActions(task, navButtons, buttons, tasks, onTaskDel, onTas
     case "InProgress": {
       const backBtn = createButton("Back", "edit_button");
       backBtn.addEventListener("click", ({ target }) => {
-        statusActions(target, tasks, "todo", onTaskStatus, TaskStatus.toDo,onTaskDel);
+        statusActions(target, tasks, "todo", onTaskStatus, TaskStatus.toDo, onTaskDel);
       });
 
       const completedBtn = createButton("Complete", "complete_button");
       completedBtn.addEventListener("click", ({ target }) => {
-        statusActions(target, tasks, "done", onTaskStatus, TaskStatus.done,onTaskDel);
+        statusActions(target, tasks, "done", onTaskStatus, TaskStatus.done, onTaskDel);
       });
 
       navButtons.append(backBtn, completedBtn);
@@ -64,7 +71,14 @@ export function buttonActions(task, navButtons, buttons, tasks, onTaskDel, onTas
     case "Done": {
       const undoBtn = createButton("Undo", "delete_button");
       undoBtn.addEventListener("click", ({ target }) => {
-        statusActions(target, tasks, "toInProgress", onTaskStatus, TaskStatus.inProgress,onTaskDel);
+        statusActions(
+          target,
+          tasks,
+          "toInProgress",
+          onTaskStatus,
+          TaskStatus.inProgress,
+          onTaskDel
+        );
       });
 
       navButtons.append(undoBtn);
