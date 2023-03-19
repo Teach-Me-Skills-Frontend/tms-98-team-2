@@ -102,26 +102,18 @@ document.addEventListener('click', ({ target }) => {
       this.modalWarning.modal.style.visibility = 'visible'
       const body = document.querySelector('body')
       const marginSize = window.innerWidth - body.clientWidth;
-          if (marginSize) {
-              body.style.marginRight = marginSize + "px";
-          }
-      
+      if (marginSize) {
+        body.style.marginRight = marginSize + "px";
+      }
       body.style.overflow = 'hidden'
+      }
     }
-  }
-  
-  
- }
- 
- )
-
- 
- 
+  })
 
   }
 
-  createNewTask = (newTask) => {
-    this.card.createNewTaskCard(newTask)
+  createNewTask = (newTask, tasks) => {
+    this.card.createNewTaskCard(newTask, tasks)
   };
 
   
