@@ -8,24 +8,6 @@ export class TaskView {
   constructor({ tasks, users, onTaskAdd, onTaskDel, onTaskStatus, onUserAdd }) {
     this.header = new Header(users, onUserAdd);
 
-    this.modalAdd = new ModalView(
-      "modal_add",
-      "modal_add_cancel",
-      "modal_add_confirm",
-      "",
-      "",
-      onTaskAdd
-    );
-    this.modalEdit = new ModalView(
-      "modal_edit",
-      "modal_edit_cancel",
-      "modal_edit_confirm",
-      "Task 1",
-      "This is Task 1 Description",
-      1
-    );
-    this.modalWarning = new ModalWarningView("modal_warning");
-
     this.todoContainer = new TaskContainer({
       containerId: "card_progress_add",
       headerId: "header_add",
@@ -68,10 +50,76 @@ export class TaskView {
       counterId: "counter_delete_all",
     });
 
-    this.card = new TaskCard(tasks, -1, onTaskDel, onTaskStatus);
+    this.card = new TaskCard(tasks, onTaskDel, onTaskStatus);
+
+    this.todoContainer.container.addEventListener('click', ( { target } ) => {
+      if (target.id === 'button_add') {
+        this.modalAdd = new ModalView(
+          "modal_add",
+          "modal_add_cancel",
+          "modal_add_confirm",
+          "",
+          "",
+          users,
+          onTaskAdd,
+        );
+        this.modalAdd.modal.style.visibility = 'visible'
+        const body = document.querySelector('body')
+        const marginSize = window.innerWidth - body.clientWidth;
+            if (marginSize) {
+                body.style.marginRight = marginSize + "px";
+            }
+        
+        body.style.overflow = 'hidden'
+      }
+   })
+
+   this.doneContainer.container.addEventListener('click', ( { target } ) => {
+    if (target.id === 'button_delete_all') {
+      this.modalWarning = new ModalWarningView("modal_warning", 'Are you sure you want to delete all tasks?', onDeleteAllTasks);
+      this.modalWarning.modal.style.visibility = 'visible'
+      const body = document.querySelector('body')
+      const marginSize = window.innerWidth - body.clientWidth;
+          if (marginSize) {
+              body.style.marginRight = marginSize + "px";
+          }
+      
+      body.style.overflow = 'hidden'
+    }
+ })
+
+ this.inprogressContainer.container.addEventListener('click', ( { target } ) => {
+  if (target.id === 'button_done_all') {
+      this.onDoneAllTasks();
+  } 
+ })
+
+document.addEventListener('click', ({ target }) => {
+  if (target.id === 'add') {
+    if (counters.inProgress >= 6) {
+      this.modalWarning = new ModalWarningView("modal_warning");
+      this.modalWarning.modal.style.visibility = 'visible'
+      const body = document.querySelector('body')
+      const marginSize = window.innerWidth - body.clientWidth;
+          if (marginSize) {
+              body.style.marginRight = marginSize + "px";
+          }
+      
+      body.style.overflow = 'hidden'
+    }
+  }
+  
+  
+ }
+ 
+ )
+
+ 
+ 
+
   }
 
-  createNewTask = (newTask) => {
-    this.card.createNewTaskCard(newTask)
+  createNewTask = (newTask, tasks) => {
+    this.card.createNewTaskCard(newTask, tasks)
   };
 }

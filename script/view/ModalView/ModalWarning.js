@@ -13,7 +13,10 @@ export class ModalWarningView {
         this.modalBtn.addEventListener('click', ({ target }) => {
             
             if (target.id === 'modal_warning_cancel') {
-                console.log('This is cancel button in warning')
+                this.modal.style.visibility = 'hidden'
+                this.modal.replaceChildren()
+                const body = document.querySelector('body')
+                body.removeAttribute('style')
             }
             if (target.id === 'modal_warning_confirm') {
                 console.log('This is confirm button in warning')

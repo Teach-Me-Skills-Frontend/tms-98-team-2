@@ -1,29 +1,36 @@
 .modal_add,
 .modal_edit {
-  width: 50%;
-  height: 300px;
-  border-radius: 36px;
-  background-color: #0a72d1;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
   display: flex;
+  position: fixed;
   flex-direction: column;
   align-items: center;
-}
-.modal_edit {
-  background-color: cadetblue;
+  justify-content: center;
+  visibility: hidden;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
 }
 .modal {
   width: 80%;
-  height: 100%;
+  height: 50%;
   display: flex;
   flex-direction: column;
+  background-color: #4E6E81;
   justify-content: space-evenly;
+  padding: 32px;
+  border-radius: 8px;
 }
 .input_title {
-  width: 30%;
+  width: 40%;
+  height: 10%;
   text-align: center;
   padding: 4px;
   border: none;
-  border-radius: 12px;
+  border-radius: 8px;
 }
 .input_info {
   width: 100%;
@@ -31,7 +38,7 @@
   text-align: center;
   padding: 4px;
   border: none;
-  border-radius: 12px;
+  border-radius: 8px;
 }
 .modal_btn {
   width: 100%;
@@ -44,14 +51,40 @@
   width: 30%;
   height: 30px;
   border: none;
-  border-radius: 12px;
+  border-radius: 8px;
   text-align: center;
+}
+.modal_btn_confirm {
+  background-color: #245953;
+  color: white;
+}
+.modal_btn_confirm:disabled {
+  opacity: 0.5;
+}
+.modal_btn_cancel {
+  background-color: #CF0A0A;
+  color: white;
+}
+.modal_warning_wrapper {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  position: fixed;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  visibility: hidden;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
 }
 .modal_warning {
   width: 50%;
   height: 150px;
   border-radius: 35px;
-  background-color: #c80d0d;
+  background-color: #F05454;
   display: flex;
   flex-direction: column;
   align-items: center;

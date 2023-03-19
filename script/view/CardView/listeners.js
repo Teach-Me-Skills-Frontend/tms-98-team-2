@@ -3,20 +3,28 @@ import { createButton, createElementWithClass } from "../utils.js";
 import { taskActions, statusActions } from "./utils.js";
 import { TaskStatus } from "../../constant.js";
 
-export function buttonActions(task, navButtons, buttons, onTaskDel, onTaskStatus, tasks) {
+export function buttonActions(task, navButtons, buttons, onTaskDel, onTaskStatus, tasks, createNewTaskCard) {
   switch (task.status) {
     case "ToDo": {
       const editButtons = createElementWithClass("div", "card_edit");
 
       const editModal = () => {
-        new ModalView(
+        const editmod = new ModalView(
           "modal_edit",
           "modal_edit_cancel",
           "modal_edit_confirm",
           task.title,
           task.description
         );
-        editBtn.removeEventListener("click", editModal);
+        editmod.modal.style.visibility = 'visible'
+        const body = document.querySelector('body')
+        const marginSize = window.innerWidth - body.clientWidth;
+            if (marginSize) {
+                body.style.marginRight = marginSize + "px";
+            }
+        
+        body.style.overflow = 'hidden'
+        // editBtn.removeEventListener("click", editModal);
       };
 
       const editBtn = createButton("Edit", "edit_button");
@@ -43,11 +51,11 @@ export function buttonActions(task, navButtons, buttons, onTaskDel, onTaskStatus
           "toInProgress",
           onTaskStatus,
           TaskStatus.inProgress,
-          onTaskDel
+          createNewTaskCard
         );
       });
 
-      navButtons.style.width = "auto";
+      // navButtons.style.width = "auto";
       navButtons.append(addBtn);
 
       buttons.append(editButtons, navButtons);
@@ -56,12 +64,12 @@ export function buttonActions(task, navButtons, buttons, onTaskDel, onTaskStatus
     case "InProgress": {
       const backBtn = createButton("Back", "edit_button");
       backBtn.addEventListener("click", ({ target }) => {
-        statusActions(target, tasks, "todo", onTaskStatus, TaskStatus.toDo, onTaskDel);
+        statusActions(target, tasks, "todo", onTaskStatus, TaskStatus.toDo, createNewTaskCard);
       });
 
       const completedBtn = createButton("Complete", "complete_button");
       completedBtn.addEventListener("click", ({ target }) => {
-        statusActions(target, tasks, "done", onTaskStatus, TaskStatus.done, onTaskDel);
+        statusActions(target, tasks, "done", onTaskStatus, TaskStatus.done, createNewTaskCard);
       });
 
       navButtons.append(backBtn, completedBtn);
@@ -69,19 +77,18 @@ export function buttonActions(task, navButtons, buttons, onTaskDel, onTaskStatus
       break;
     }
     case "Done": {
-      const undoBtn = createButton("Undo", "delete_button");
-      undoBtn.addEventListener("click", ({ target }) => {
-        statusActions(
-          target,
-          tasks,
-          "toInProgress",
-          onTaskStatus,
-          TaskStatus.inProgress,
-          onTaskDel
-        );
+      const deleteBtn = createButton("Delete", "delete_button");
+      deleteBtn.addEventListener("click", ({ target }) => {
+        const element = target.parentNode.parentNode.parentNode;
+        for (const task of tasks) {
+          if (element.id === task.id) {
+            onTaskDel(task.id);
+            taskActions(element, tasks, "delete");
+          }
+        }
       });
 
-      navButtons.append(undoBtn);
+      navButtons.append(deleteBtn);
       buttons.append(navButtons);
       break;
     }
