@@ -1,10 +1,11 @@
 import { createModalWarning } from './utils.js';
 
 export class ModalWarningView {
-    constructor(containerId) {
+    constructor(containerId, text, onDeleteAllTasks) {
         this.modal = document.getElementById(containerId);
-        this.modalBtn = createModalWarning();
+        this.modalBtn = createModalWarning(text);
         this.modal.append(this.modalBtn);
+        this.onDeleteAll = onDeleteAllTasks
 
         this.modalBtn.addEventListener('submit', (event) => {
             event.preventDefault();
@@ -19,7 +20,11 @@ export class ModalWarningView {
                 body.removeAttribute('style')
             }
             if (target.id === 'modal_warning_confirm') {
-                console.log('This is confirm button in warning')
+                this.onDeleteAll()
+                this.modal.style.visibility = 'hidden'
+                this.modal.replaceChildren()
+                const body = document.querySelector('body')
+                body.removeAttribute('style')
             }
         })
     }

@@ -1,4 +1,5 @@
 import { LocalStorageKey } from "./constants.js";
+import { TaskStatus } from "../constant.js";
 
 export class TaskModel {
   constructor() {
@@ -43,6 +44,44 @@ export class TaskModel {
         localStorage.setItem(LocalStorageKey.Tasks, JSON.stringify(tasks));
       }
     };
+
+    this.doneAll = (tasks) => {
+      
+      for (const task of tasks) {
+        if (task.status === TaskStatus.inProgress) {
+          task.status = TaskStatus.done
+        }
+      }
+
+      localStorage.setItem(LocalStorageKey.Tasks, JSON.stringify(tasks));
+
+    }
+
+    this.getValue = (tasks) => {
+      let todoValue = 0;
+      let inProgressValue = 0;
+      let doneValue = 0;
+
+      for(const task of tasks) {
+          if (task.status === TaskStatus.toDo) {
+              todoValue += 1
+          } 
+          if (task.status === TaskStatus.inProgress) {
+              inProgressValue += 1
+          } 
+          if (task.status === TaskStatus.done) {
+              doneValue += 1
+          } 
+      }
+
+      const statusCount = {
+          todo: todoValue,
+          inProgress: inProgressValue,
+          done: doneValue,
+      }
+
+      return statusCount
+    }
 
     this.getUsers = () => {
       return users.slice();
