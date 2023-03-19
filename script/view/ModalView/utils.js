@@ -1,7 +1,7 @@
 import { ModalNameAttr, ModalInputAttr, ListOptions, ListOptionsLength } from './constant.js';
 import { createTextInput, createButton } from '../utils.js'; 
 
-export function createTaskModal (cancelId, confirmId, valueTitle, valueDescription) {
+export function createTaskModal (cancelId, confirmId, valueTitle, valueDescription, users = [1,2]) {
     const form = document.createElement('form');
     form.classList.add('modal');
     
@@ -30,10 +30,11 @@ export function createTaskModal (cancelId, confirmId, valueTitle, valueDescripti
     const select = document.createElement('select');
     select.classList.add('modal_select');
     select.setAttribute('name', 'users');
-    for (let i = 0; i < ListOptionsLength; i += 1) {
+    const usersLength = users.length;
+    for (let i = 0; i < usersLength; i += 1) {
         const option = document.createElement('option');
-        option.value = ListOptions[i];
-        option.text = ListOptions[i];
+        option.value = users[i];
+        option.text = users[i];
         select.add(option)
     }
     
@@ -48,6 +49,7 @@ export function createTaskModal (cancelId, confirmId, valueTitle, valueDescripti
         name: ModalNameAttr.TaskButtonConfirm
     });
     confirmBtn.id = confirmId;
+    confirmBtn.disabled = true;
 
     btnContainer.append(select, cancelBtn, confirmBtn);
     form.append(inputTitle, inputDescription, btnContainer);

@@ -33,7 +33,7 @@ body {
   gap: 10px;
   width: 27%;
   border: 1px solid #000;
-  border-radius: 5px;
+  border-radius: 8px;
 }
 
 .card_wrapper_header {
@@ -43,8 +43,8 @@ body {
   justify-content: space-between;
   padding: 0 10px;
   align-items: center;
-  background-color: blueviolet;
-  border-radius: 5px 5px 0 0;
+  background-color: #F9DBBB;
+  border-radius: 7px 7px 0 0;
 }
 
 .card_status {
@@ -62,38 +62,39 @@ body {
 .card_wrapper > button {
   width: 100%;
   padding: 10px;
-  border-radius: 0 0 5px 5px;
+  border-radius: 0 0 7px 7px;
   cursor: pointer;
+  color: white;
 }
 
 #card_progress_add > button:hover,
 #card_progress_add > button:active {
-  background-color: #00fa9a;
-  border: 1px solid #00fa9a;
+  background-color: #2E3866;
+  border: 1px solid #2E3866;
 }
 
 #card_progress_add > button {
-  background-color: #00ff7f;
-  border: 1px solid #00ff7f;
+  background-color: #2E3840;
+  border: 1px solid #2E3840;
 }
 
 #card_progress_done > button {
-  background-color: #fa8072;
-  border: 1px solid #fa8072;
+  background-color: #CF0A0A;
+  border: 1px solid #CF0A0A;
 }
 
 #card_progress_done > button:active,
 #card_progress_done > button:hover {
-  background-color: #f08080;
-  border: 1px solid #f08080;
+  background-color: #c80d0d;
+  border: 1px solid #c80d0d;
 }
 #card_progress_inprogress > button {
-  background-color: #ffff33;
-  border: 1px solid #ffff33;
+  background-color: #2E3840;
+  border: 1px solid #2E3840;
 }
 
 #card_progress_inprogress > button:active,
 #card_progress_inprogress > button:hover {
-  background-color: #ffff99;
-  border: 1px solid #ffff99;
+  background-color: #2E3866;
+  border: 1px solid #2E3866;
 }
