@@ -13,9 +13,7 @@ export class TaskContainer {
 
       this.container.addEventListener('click', ( { target } ) => {
          if (target.id === 'button_delete_all') {
-            while (document.getElementById('card_container_done').firstChild) {
-               document.getElementById('card_container_done').removeChild(document.getElementById('card_container_done').firstChild);
-            }
+            
          } else if (target.id === 'button_done_all') {
             console.log("done all task");
          } else if (target.id === 'button_add') {
