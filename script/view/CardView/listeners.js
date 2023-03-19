@@ -9,14 +9,22 @@ export function buttonActions(task, navButtons, buttons, onTaskDel, onTaskStatus
       const editButtons = createElementWithClass("div", "card_edit");
 
       const editModal = () => {
-        new ModalView(
+        const editmod = new ModalView(
           "modal_edit",
           "modal_edit_cancel",
           "modal_edit_confirm",
           task.title,
           task.description
         );
-        editBtn.removeEventListener("click", editModal);
+        editmod.modal.style.visibility = 'visible'
+        const body = document.querySelector('body')
+        const marginSize = window.innerWidth - body.clientWidth;
+            if (marginSize) {
+                body.style.marginRight = marginSize + "px";
+            }
+        
+        body.style.overflow = 'hidden'
+        // editBtn.removeEventListener("click", editModal);
       };
 
       const editBtn = createButton("Edit", "edit_button");
@@ -47,7 +55,7 @@ export function buttonActions(task, navButtons, buttons, onTaskDel, onTaskStatus
         );
       });
 
-      navButtons.style.width = "auto";
+      // navButtons.style.width = "auto";
       navButtons.append(addBtn);
 
       buttons.append(editButtons, navButtons);

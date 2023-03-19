@@ -8,23 +8,15 @@ export class TaskView {
   constructor({ tasks, users, onTaskAdd, onTaskDel, onTaskStatus, onUserAdd }) {
     this.header = new Header(users, onUserAdd);
 
-    this.modalAdd = new ModalView(
-      "modal_add",
-      "modal_add_cancel",
-      "modal_add_confirm",
-      "",
-      "",
-      onTaskAdd
-    );
-    this.modalEdit = new ModalView(
-      "modal_edit",
-      "modal_edit_cancel",
-      "modal_edit_confirm",
-      "Task 1",
-      "This is Task 1 Description",
-      1
-    );
-    this.modalWarning = new ModalWarningView("modal_warning");
+    // this.modalEdit = new ModalView(
+    //   "modal_edit",
+    //   "modal_edit_cancel",
+    //   "modal_edit_confirm",
+    //   "Task 1",
+    //   "This is Task 1 Description",
+    //   1
+    // );
+    
 
     this.todoContainer = new TaskContainer({
       containerId: "card_progress_add",
@@ -69,6 +61,49 @@ export class TaskView {
     });
 
     this.card = new TaskCard(tasks, -1, onTaskDel, onTaskStatus);
+    console.log(users)
+
+    this.todoContainer.container.addEventListener('click', ( { target } ) => {
+      if (target.id === 'button_add') {
+        this.modalAdd = new ModalView(
+          "modal_add",
+          "modal_add_cancel",
+          "modal_add_confirm",
+          "",
+          "",
+          users,
+          onTaskAdd,
+        );
+        this.modalAdd.modal.style.visibility = 'visible'
+        const body = document.querySelector('body')
+        const marginSize = window.innerWidth - body.clientWidth;
+        console.log(window.innerWidth)
+            if (marginSize) {
+                body.style.marginRight = marginSize + "px";
+            }
+        
+        body.style.overflow = 'hidden'
+         
+            // body.style.marginRight = "";
+      }
+   })
+
+   this.doneContainer.container.addEventListener('click', ( { target } ) => {
+    if (target.id === 'button_delete_all') {
+      this.modalWarning = new ModalWarningView("modal_warning");
+      this.modalWarning.modal.style.visibility = 'visible'
+      const body = document.querySelector('body')
+      const marginSize = window.innerWidth - body.clientWidth;
+      console.log(window.innerWidth)
+          if (marginSize) {
+              body.style.marginRight = marginSize + "px";
+          }
+      
+      body.style.overflow = 'hidden'
+       
+          // body.style.marginRight = "";
+    }
+ })
   }
 
   createNewTask = (newTask) => {
