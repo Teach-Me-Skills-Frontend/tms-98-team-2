@@ -1,71 +1,63 @@
 #header {
-  background-color: rgba(255, 0, 195, 0.35);
+  background-color: #F9DBBB;
   width: 95%;
   height: 100px;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-around;
-  border: 2px solid rgb(255, 0, 195);
-  border-radius: 15px;
+  border: 2px solid #F9DBBB;
+  border-radius: 8px;
 }
 .header h3 {
   font-size: 20px;
   font-weight: 400;
-}
-
+  }
 .header_title {
   font-size: 25px;
 }
-
 .header_date {
-  background-color: rgb(255, 255, 255);
+  background-color: #ffffff;
   padding: 5px;
   font-size: 15px;
-  border: 2px solid rgb(149, 149, 149);
-  border-radius: 10px;
+  border: 1px solid #919294;
+  border-radius: 8px;
 }
-
 .header_user {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 10px;
-}
-
+} 
 .current_users {
   display: flex;
   flex-direction: row;
   justify-content: center;
   gap: 10px;
 }
-
 .user_form {
   display: flex;
   flex-direction: row;
   justify-content: center;
-}
-
-.user_form input {
+}.user_form input {
   border: 0;
   padding: 0 5px;
-  border-radius: 5px 0 0 5px;
+  border-radius: 8px 0 0 8px;
   height: 30px;
 }
-
 .user_form button {
   cursor: pointer;
   font-size: 15px;
   padding: 0 5px;
-  border-radius: 0 5px 5px 0;
-  background: rgb(221, 255, 0);
-  border: 2px solid rgba(221, 255, 0, 0.2);
+  border-radius: 0 8px 8px 0;
+  background: #2E3840;
+  color: white;
+  border: 2px solid #2E3840;
 }
-
 .users {
   height: 25px;
   border: 0;
-  border-radius: 5px;
+  border-radius: 4px;
   font-size: 15px;
 }
