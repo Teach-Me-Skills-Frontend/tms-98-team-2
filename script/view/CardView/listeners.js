@@ -44,6 +44,7 @@ export function buttonActions(task, navButtons, buttons, onTaskDel, onTaskStatus
       editButtons.append(editBtn, deleteBtn);
 
       const addBtn = createButton("Add", "add_button");
+      addBtn.id = 'add';
       addBtn.addEventListener("click", ({ target }) => {
         statusActions(
           target,

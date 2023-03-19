@@ -57,12 +57,12 @@ export function createTaskModal (cancelId, confirmId, valueTitle, valueDescripti
     return form;
 }
 
-export function createModalWarning () {
+export function createModalWarning (value) {
     const modal = document.createElement('div');
     modal.classList.add('modal_warning');
 
     const text = document.createElement('p');
-    text.textContent = 'Warning!'
+    text.textContent = value
     text.classList.add('modal_warning_text')
 
     const btnContainer = document.createElement('div')
