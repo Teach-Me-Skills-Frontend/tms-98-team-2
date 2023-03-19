@@ -17,7 +17,7 @@ export class TaskModel {
       tasks.push(newTask);
       localStorage.setItem(LocalStorageKey.Tasks, JSON.stringify(tasks));
 
-      return newTask;
+      return tasks;
     };
 
     this.removeTask = (taskId) => {
