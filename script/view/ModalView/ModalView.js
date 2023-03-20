@@ -4,18 +4,29 @@ import { TaskStatus } from '../../constant.js';
 import { getDate } from '../utils.js';
 
 export class ModalView {
-    constructor(containerId, cancelId, confirmId, valueTitle, valueDescription, users, onTaskAdd) {
+    constructor(containerId, cancelId, confirmId, valueTitle, valueDescription, users, onTaskAdd, onEditTask) {
         this.onTaskAdd = onTaskAdd;
+        this.onEditTask = onEditTask;
         this.modal = document.getElementById(containerId);
         this.modalForm = createTaskModal(cancelId, confirmId, valueTitle, valueDescription, users);
-        this.modalForm.classList.add('add');
-        this.modal.append(this.modalForm);
+        
+        if (containerId === 'modal_add') {
+            this.modal.append(this.modalForm);
+            this.modalForm.addEventListener('input', this.onAddTaskChange);
+            this.modal.addEventListener('submit', this.addNewTask)
+            console.log('modal_add')
+        } else if (containerId === 'modal_edit') {
+            console.log('modal_edit')
+            this.modalForm.addEventListener('input', this.onEditTaskChange);
+            this.modal.append(this.modalForm);
+            this.modal.addEventListener('submit', this.EditTask)
+        }
         
    
         
-        this.modalForm.addEventListener('input', this.onAddTaskChange);
-        this.modalForm.addEventListener('input', this.onEditTaskChange);
-        this.modal.addEventListener('submit', this.addNewTask)
+        
+        
+        
         
 
         this.modalForm.addEventListener('click', ({ target }) => {
@@ -30,9 +41,6 @@ export class ModalView {
                 this.modal.removeChild(this.modalForm)
                 const body = document.querySelector('body')
                 body.removeAttribute('style')
-            }
-            if (target.id === 'modal_add_confirm') {
-                
             }
         })
     }
@@ -66,7 +74,6 @@ export class ModalView {
         const inputDescriptionValue = this.modalForm.elements[ModalInputAttr.TaskDescriptionInput].value.trim();
         if (inputTittleValue && inputDescriptionValue) {
             const btn = document.getElementById('modal_add_confirm')
-            console.log(btn)
             btn.disabled = false;
         } 
     }
@@ -76,8 +83,18 @@ export class ModalView {
         const inputDescriptionValue = this.modalForm.elements[ModalInputAttr.TaskDescriptionInput].value.trim();
         if (inputTittleValue && inputDescriptionValue) {
             const btn = document.getElementById('modal_edit_confirm')
-            console.log(btn)
             btn.disabled = false;
         } 
+    }
+
+    EditTask = (event) => {
+        event.preventDefault();
+        console.log('edit')
+        this.modalForm.reset()
+        this.modal.style.visibility = 'hidden'
+        
+        const body = document.querySelector('body')
+        body.removeAttribute('style')
+        this.modal.replaceChildren()
     }
 }
