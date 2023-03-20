@@ -14,6 +14,7 @@ export class TaskController {
       onTaskDel:this.deleteTask,
       onTaskStatus:this.setStatus,
       onUserAdd:this.newUser,
+      onUserDelete:this.deleteUser,
       onDeleteAllTasks: this.deleteAllTask,
       onDoneAllTasks: this.doneAllTasks,
     });
@@ -37,6 +38,9 @@ export class TaskController {
   newUser = (userName) => {
     this.model.addUser(userName);
   };
+  deleteUser=(index)=>{
+    this.model.delUser(index);
+  }
 
   deleteAllTask = () => {
     while (document.getElementById('card_container_done').firstChild) {

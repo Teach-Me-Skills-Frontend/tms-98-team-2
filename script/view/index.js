@@ -5,9 +5,9 @@ import { TaskCard } from "./CardView/TaskCard.js";
 import { Header } from "./header/index.js";
 
 export class TaskView {
-  constructor({ tasks, users, counters, onTaskAdd, onTaskDel, onTaskStatus, onUserAdd, onDeleteAllTasks, onDoneAllTasks }) {
+  constructor({ tasks, users, counters, onTaskAdd, onTaskDel, onTaskStatus, onUserAdd, onUserDelete, onDeleteAllTasks, onDoneAllTasks }) {
     this.onDoneAllTasks = onDoneAllTasks;
-    this.header = new Header(users, onUserAdd);
+    this.header = new Header(users, onUserAdd, onUserDelete);
 
     this.todoContainer = new TaskContainer({
       containerId: "card_progress_add",
