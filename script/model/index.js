@@ -91,5 +91,9 @@ export class TaskModel {
       users.push(userName);
       localStorage.setItem(LocalStorageKey.Users, JSON.stringify(users));
     };
+    this.delUser = (index) => {
+      users.splice(index, 1);
+      localStorage.setItem(LocalStorageKey.Users, JSON.stringify(users));
+    };
   }
 }
