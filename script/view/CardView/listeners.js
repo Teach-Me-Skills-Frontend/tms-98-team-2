@@ -3,7 +3,7 @@ import { createButton, createElementWithClass } from "../utils.js";
 import { taskActions, statusActions } from "./utils.js";
 import { TaskStatus } from "../../constant.js";
 
-export function buttonActions(task, navButtons, buttons, onTaskDel, onTaskStatus, tasks, createNewTaskCard) {
+export function buttonActions(task, navButtons, buttons, onTaskDel, onTaskStatus, tasks, createNewTaskCard, onEditTask) {
   switch (task.status) {
     case "ToDo": {
       const editButtons = createElementWithClass("div", "card_edit");
@@ -14,7 +14,8 @@ export function buttonActions(task, navButtons, buttons, onTaskDel, onTaskStatus
           "modal_edit_cancel",
           "modal_edit_confirm",
           task.title,
-          task.description
+          task.description,
+          
         );
         editmod.modal.style.visibility = 'visible'
         const body = document.querySelector('body')
@@ -28,7 +29,8 @@ export function buttonActions(task, navButtons, buttons, onTaskDel, onTaskStatus
       };
 
       const editBtn = createButton("Edit", "edit_button");
-      editBtn.addEventListener("click", editModal);
+      // editBtn.addEventListener("click", editModal);
+      editBtn.id = 'editbtn'
 
       const deleteBtn = createButton("Delete", "delete_button");
       deleteBtn.addEventListener("click", ({ target }) => {

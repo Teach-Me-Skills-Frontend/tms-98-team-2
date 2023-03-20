@@ -32,6 +32,11 @@ export class TaskModel {
       return taskIndex > -1;
     };
 
+    this.removeAllTask = (tasks) => {
+      tasks = tasks.filter((task) => task.status !== TaskStatus.done);
+      localStorage.setItem(LocalStorageKey.Tasks, JSON.stringify(tasks));
+    }
+
     this.setTaskStatus = (taskId, taskStatus) => {
       
       const taskIndex = tasks.findIndex(({ id }) => id === taskId);
@@ -45,7 +50,20 @@ export class TaskModel {
       }
     };
 
-    this.doneAll = (tasks) => {
+    this.editTask = (taskId, textTitle, textDescription) => {
+      const taskIndex = tasks.findIndex(({ id }) => id === taskId);
+
+      if (taskIndex >= 0) {
+        tasks[taskIndex] = {
+          ...tasks[taskIndex],
+          title: textTitle,
+          description: textDescription
+        };
+        localStorage.setItem(LocalStorageKey.Tasks, JSON.stringify(tasks));
+      }
+    }
+
+    this.doneAll = () => {
       
       for (const task of tasks) {
         if (task.status === TaskStatus.inProgress) {
@@ -58,30 +76,15 @@ export class TaskModel {
     }
 
     this.getValue = (tasks) => {
-      let todoValue = 0;
-      let inProgressValue = 0;
-      let doneValue = 0;
-
-      for(const task of tasks) {
-          if (task.status === TaskStatus.toDo) {
-              todoValue += 1
-          } 
-          if (task.status === TaskStatus.inProgress) {
-              inProgressValue += 1
-          } 
-          if (task.status === TaskStatus.done) {
-              doneValue += 1
-          } 
+      return tasks.reduce((acc, task) => {
+        acc[task.status] += 1;
+        return acc;
+      }, {
+        [TaskStatus.toDo]: 0,
+        [TaskStatus.inProgress]: 0,
+        [TaskStatus.done]: 0,
+      })
       }
-
-      const statusCount = {
-          todo: todoValue,
-          inProgress: inProgressValue,
-          done: doneValue,
-      }
-
-      return statusCount
-    }
 
     this.getUsers = () => {
       return users.slice();
@@ -91,6 +94,7 @@ export class TaskModel {
       users.push(userName);
       localStorage.setItem(LocalStorageKey.Users, JSON.stringify(users));
     };
+
     this.delUser = (index) => {
       users.splice(index, 1);
       localStorage.setItem(LocalStorageKey.Users, JSON.stringify(users));
