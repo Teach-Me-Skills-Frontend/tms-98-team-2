@@ -17,23 +17,46 @@ export class TaskController {
       onUserDelete:this.deleteUser,
       onDeleteAllTasks: this.deleteAllTask,
       onDoneAllTasks: this.doneAllTasks,
+      onEditTask: this.editTask,
     });
+  }
+
+  updateToDo = () => {
+    this.view.updateCounters(this.model.getValue(this.model.getCurrentTasks()), 'counter_todo')
+  }
+  updateInProg = () => {
+    this.view.updateCounters(this.model.getValue(this.model.getCurrentTasks()), 'counter_inprogress')
+  }
+  updateDone = () => {
+    this.view.updateCounters(this.model.getValue(this.model.getCurrentTasks()), 'counter_done')
   }
 
   createNewTask = (newTask) => {
     this.view.createNewTask(newTask, this.model.addTask(newTask));
+    this.updateToDo()
+    this.updateInProg()
+    this.updateDone()
   };
 
   deleteTask=(taskId)=>{
     this.model.removeTask(taskId);
+    this.updateToDo()
+    this.updateInProg()
+    this.updateDone()
   };
 
   setStatus=(taskId,toStatus)=>{
     this.model.setTaskStatus(taskId,toStatus);
+    this.updateToDo()
+    this.updateInProg()
+    this.updateDone()
   };
 
   doneAllTasks = () => {
     this.model.doneAll(this.model.getCurrentTasks())
+    this.updateToDo()
+    this.updateInProg()
+    this.updateDone()
   }
   newUser = (userName) => {
     this.model.addUser(userName);
@@ -43,8 +66,16 @@ export class TaskController {
   }
 
   deleteAllTask = () => {
-    while (document.getElementById('card_container_done').firstChild) {
-      document.getElementById('card_container_done').removeChild(document.getElementById('card_container_done').firstChild);
-   }
+   this.view.deleteAllTasks()
+   this.model.removeAllTask(this.model.getCurrentTasks());
+   this.updateToDo()
+   this.updateInProg()
+  //  this.updateDone()
   }
+
+  editTask = () => {
+    this.model.editTask()
+  }
+
+  
 }
