@@ -77,6 +77,11 @@ export function buttonActions(task, navButtons, buttons, onTaskDel, onTaskStatus
       break;
     }
     case "Done": {
+      const undoBtn = createButton("Undo", "delete_button");
+      undoBtn.addEventListener("click", ({ target }) => {
+        statusActions(target, tasks, "toInProgress", onTaskStatus, TaskStatus.inProgress, createNewTaskCard);
+      });
+
       const deleteBtn = createButton("Delete", "delete_button");
       deleteBtn.addEventListener("click", ({ target }) => {
         const element = target.parentNode.parentNode.parentNode;
@@ -88,7 +93,7 @@ export function buttonActions(task, navButtons, buttons, onTaskDel, onTaskStatus
         }
       });
 
-      navButtons.append(deleteBtn);
+      navButtons.append(undoBtn, deleteBtn);
       buttons.append(navButtons);
       break;
     }
