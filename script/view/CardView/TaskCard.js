@@ -1,3 +1,4 @@
+import { TaskStatus } from "../../constant.js";
 import { createInnerElement, createElementWithClass } from "../utils.js";
 import { taskConstants, taskContainersId } from "./constants.js";
 import { buttonActions } from "./listeners.js";
@@ -13,21 +14,6 @@ export class TaskCard {
       } 
     }
   }
-
-  createNewTaskCard = (task, tasks) => {
-    for (const key in taskContainersId) {
-      if (key === task.status) {
-        const root = document.getElementById(taskContainersId[key]);
-
-        const card = createElementWithClass("div", "card");
-        card.setAttribute("id", task.id);
-
-        this.createInnerCard(card, task, this.onTaskDel, this.onTaskStatus, tasks, this.createNewTaskCard.bind(this));
-
-        root.append(card);
-      }
-    }
-  };
 
   createInnerCard = (card, task, onTaskDel, onTaskStatus, tasks, createNewTaskCard) => {
     const title = createInnerElement("div", [taskConstants.title], [task.title], "card_header");
@@ -59,4 +45,29 @@ export class TaskCard {
 
     card.append(title, description, information, buttons);
   };
+
+  createNewTaskCard = (task, tasks) => {
+    for (const key in taskContainersId) {
+      if (key === task.status) {
+        const root = document.getElementById(taskContainersId[key]);
+
+        const card = createElementWithClass("div", "card");
+        card.setAttribute("id", task.id);
+
+        this.createInnerCard(card, task, this.onTaskDel, this.onTaskStatus, tasks, this.createNewTaskCard.bind(this));
+
+        root.append(card);
+      }
+    }
+  };
+
+  doneAllTasksInprogress = (tasks) => {
+    for(const task of tasks) {
+      if(task.status === TaskStatus.inProgress){
+        document.getElementById(task.id).remove();
+        task.status='Done';
+        this.createNewTaskCard(task, tasks);
+      }
+    }
+  }
 }
