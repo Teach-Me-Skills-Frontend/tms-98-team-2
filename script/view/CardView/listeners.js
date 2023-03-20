@@ -44,6 +44,7 @@ export function buttonActions(task, navButtons, buttons, onTaskDel, onTaskStatus
       editButtons.append(editBtn, deleteBtn);
 
       const addBtn = createButton("Add", "add_button");
+      addBtn.setAttribute('id','add');
       addBtn.addEventListener("click", ({ target }) => {
         statusActions(
           target,
@@ -55,7 +56,6 @@ export function buttonActions(task, navButtons, buttons, onTaskDel, onTaskStatus
         );
       });
 
-      // navButtons.style.width = "auto";
       navButtons.append(addBtn);
 
       buttons.append(editButtons, navButtons);

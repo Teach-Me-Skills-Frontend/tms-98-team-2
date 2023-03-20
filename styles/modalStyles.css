@@ -101,6 +101,7 @@
   justify-content: space-evenly;
 }
 .modal_warning_btn button {
+  cursor: pointer;
   width: 30%;
   height: 30px;
   border: none;
