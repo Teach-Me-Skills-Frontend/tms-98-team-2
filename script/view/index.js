@@ -87,8 +87,8 @@ export class TaskView {
     this.doneContainer.container.addEventListener('click', ( { target } ) => {
       if (target.id === 'button_delete_all') {
         this.modalWarning = new ModalWarningView("modal_warning", 'Are you sure you want to delete all tasks?', onDeleteAllTasks);
-        this.modalWarning.modal.style.visibility = 'visible'
-        const body = document.querySelector('body')
+        this.modalWarning.modal.style.visibility = 'visible';
+        const body = document.querySelector('body');
         const marginSize = window.innerWidth - body.clientWidth;
         if (marginSize) {
           body.style.marginRight = marginSize + "px";
