@@ -30,7 +30,29 @@
   align-items: center;
   gap: 10px;
 } 
-.current_users {
+.current_users{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+.current_users button{
+  cursor: pointer;
+  padding: 5px;
+  border: 0;
+  border-radius: 8px;
+  color: white;
+  height: 30px;
+  width: 70%;
+}
+.users {
+  height: 25px;
+  border: 0;
+  border-radius: 4px;
+  font-size: 15px;
+}
+
+.users_wrap {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -51,13 +73,12 @@
   font-size: 15px;
   padding: 0 5px;
   border-radius: 0 8px 8px 0;
-  background: #2E3840;
+  background: #245953;
+  border: 2px solid #245953;
   color: white;
-  border: 2px solid #2E3840;
 }
-.users {
-  height: 25px;
-  border: 0;
-  border-radius: 4px;
-  font-size: 15px;
+.header button:disabled{
+  cursor: default;
+  background: #2E3840;
+  border: 2px solid #2E3840;
 }

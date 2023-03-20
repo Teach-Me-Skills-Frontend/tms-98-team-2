@@ -53,6 +53,7 @@
   border: none;
   border-radius: 8px;
   text-align: center;
+  cursor: pointer;
 }
 .modal_btn_confirm {
   background-color: #245953;
@@ -60,6 +61,7 @@
 }
 .modal_btn_confirm:disabled {
   opacity: 0.5;
+  cursor: default;
 }
 .modal_btn_cancel {
   background-color: #CF0A0A;
