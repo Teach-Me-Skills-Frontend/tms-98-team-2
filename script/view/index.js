@@ -84,6 +84,34 @@ export class TaskView {
         
         body.style.overflow = 'hidden'
       }
+      if(target.id === 'edit_button'){
+        for(const task of tasks){
+          if(target.parentNode.parentNode.parentNode.id === task.id){
+          const editmod = new ModalView("modal_edit", "modal_edit_cancel", "modal_edit_confirm", task.title, task.description);
+          editmod.modal.style.visibility = 'visible'
+          const body = document.querySelector('body')
+          const marginSize = window.innerWidth - body.clientWidth;
+          if (marginSize) {
+            body.style.marginRight = marginSize + "px";
+          }
+          body.style.overflow = 'hidden'
+          }
+        }
+      }
+      if (target.id === 'add') {
+        console.log(counters)
+         if (counters.InProgress >= 6) {
+          console.log('add block')
+           this.modalWarning = new ModalWarningView("modal_warning");
+           this.modalWarning.modal.style.visibility = 'visible'
+           const body = document.querySelector('body');
+           const marginSize = window.innerWidth - body.clientWidth;
+           if (marginSize) {
+             body.style.marginRight = marginSize + "px";
+           }
+           body.style.overflow = 'hidden'
+         }
+       }
     })
 
     this.doneContainer.container.addEventListener('click', ( { target } ) => {
@@ -101,27 +129,11 @@ export class TaskView {
   
     this.inprogressContainer.container.addEventListener('click', ( { target } ) => {
       if (target.id === 'button_done_all') {
-        this.card.doneAllTasksInprogress(tasks);
         this.onDoneAllTasks();  
       }
     })
 
-    // document.addEventListener('click', ({ target }) => {
-    //   if (target.id === 'add') {
-    //     if (counters.inProgress >= 6) {
-    //       this.modalWarning = new ModalWarningView("modal_warning");
-    //       this.modalWarning.modal.style.visibility = 'visible'
-    //       const body = document.querySelector('body');
-    //       const marginSize = window.innerWidth - body.clientWidth;
-    //       if (marginSize) {
-    //         body.style.marginRight = marginSize + "px";
-    //       }
-    //       body.style.overflow = 'hidden'
-    //     }
-    //   }
-    // })
-
-    document.addEventListener('click', ({ target }) => {
+    /* document.addEventListener('click', ({ target }) => {
       if (target.id === 'editbtn') {
         this.modalAdd = new ModalView(
           "modal_edit",
@@ -142,12 +154,16 @@ export class TaskView {
         
         body.style.overflow = 'hidden'
       }
-    })
+    }) */
 
   }
+
+  renderNewCards=(tasks)=>{
+    this.card.doneAllTasksInprogress(tasks);
+  };
   
   createNewTask = (newTask, tasks) => {
-    this.card.createNewTaskCard(newTask, tasks)
+    this.card.createNewTaskCard(newTask, tasks);
   };
 
   deleteAllTasks = () => {
