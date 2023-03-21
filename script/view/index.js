@@ -171,7 +171,7 @@ export class TaskView {
   }
 
   updateCounters = (counters, counterId) => {
-    console.log(counters)
+    console.log(counters,counterId)
     if (counterId === 'counter_todo'){
        const todo = document.getElementById(counterId);
        todo.textContent = counters.ToDo;
@@ -182,6 +182,7 @@ export class TaskView {
        const done = document.getElementById(counterId);
        done.textContent = counters.Done;
     }
+    return counters;
   }
   
 }
