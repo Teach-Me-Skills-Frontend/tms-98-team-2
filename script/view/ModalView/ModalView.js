@@ -4,33 +4,27 @@ import { TaskStatus } from '../../constant.js';
 import { getDate } from '../utils.js';
 
 export class ModalView {
-    constructor(containerId, cancelId, confirmId, valueTitle, valueDescription, users, onTaskAdd, onEditTask, taskId) {
+    constructor(containerId, valueTitle, valueDescription, users, onTaskAdd, onEditTask, taskId) {
         this.onTaskAdd = onTaskAdd;
         this.onEditTask = onEditTask;
         this.taskId = taskId
         this.modal = document.getElementById(containerId);
-        this.modalForm = createTaskModal(cancelId, confirmId, valueTitle, valueDescription, users);
+        this.modalForm = createTaskModal(valueTitle, valueDescription, users);
         
         if (containerId === 'modal_add') {
             this.modal.append(this.modalForm);
-            this.modalForm.addEventListener('input', this.onAddTaskChange);
+            this.modalForm.addEventListener('input', this.onInputTaskChange);
             this.modal.addEventListener('submit', this.addNewTask)
             console.log('modal_add')
         } else if (containerId === 'modal_edit') {
             console.log('modal_edit')
-            this.modalForm.addEventListener('input', this.onEditTaskChange);
+            this.modalForm.addEventListener('input', this.onInputTaskChange);
             this.modal.append(this.modalForm);
             this.modal.addEventListener('submit', this.EditTask)
         }
         
         this.modalForm.addEventListener('click', ({ target }) => {
-            if (target.id === 'modal_add_cancel') {
-                this.modal.style.visibility = 'hidden'
-                this.modal.removeChild(this.modalForm)
-                const body = document.querySelector('body')
-                body.removeAttribute('style')
-            }
-            if (target.id === 'modal_edit_cancel') {
+            if (target.id === 'modal_cancel') {
                 this.modal.style.visibility = 'hidden'
                 this.modal.removeChild(this.modalForm)
                 const body = document.querySelector('body')
@@ -63,22 +57,16 @@ export class ModalView {
           }
     }
 
-    onAddTaskChange = () => {
+    onInputTaskChange = () => {
         const inputTittleValue = this.modalForm.elements[ModalInputAttr.TaskTitleInput].value.trim();
         const inputDescriptionValue = this.modalForm.elements[ModalInputAttr.TaskDescriptionInput].value.trim();
         if (inputTittleValue && inputDescriptionValue) {
-            const btn = document.getElementById('modal_add_confirm')
+            const btn = document.getElementById('modal_confirm')
             btn.disabled = false;
-        } 
-    }
-
-    onEditTaskChange = () => {
-        const inputTittleValue = this.modalForm.elements[ModalInputAttr.TaskTitleInput].value.trim();
-        const inputDescriptionValue = this.modalForm.elements[ModalInputAttr.TaskDescriptionInput].value.trim();
-        if (inputTittleValue && inputDescriptionValue) {
-            const btn = document.getElementById('modal_edit_confirm')
-            btn.disabled = false;
-        } 
+        } else {
+            const btn = document.getElementById('modal_confirm')
+            btn.disabled = true;
+        }
     }
 
     EditTask = (event) => {

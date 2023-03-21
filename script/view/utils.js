@@ -65,3 +65,12 @@ export function getDate() {
   month < 10 ? (month = "0" + month) : month;
   return `${day}.${month}.${year}`;
 }
+
+export function showModal () {
+  const body = document.querySelector('body')
+  const marginSize = window.innerWidth - body.clientWidth;
+  if (marginSize) {
+    body.style.marginRight = marginSize + "px";
+  }
+  body.style.overflow = 'hidden'
+}
