@@ -5,11 +5,10 @@ import { TaskStatus } from "./constant.js";
 export class TaskController {
   constructor() {
     this.model = new TaskModel();
-
     this.view = new TaskView({
-      tasks: this.model.getCurrentTasks(),
+      getTasks: this.model.getCurrentTasks,
       users: this.model.getUsers(),
-      counters: this.model.getValue(this.model.getCurrentTasks()),
+      getCounters: this.model.getValue, //(this.model.getCurrentTasks())
       onTaskAdd: this.createNewTask,
       onTaskDel:this.deleteTask,
       onTaskStatus:this.setStatus,

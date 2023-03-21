@@ -5,9 +5,9 @@ import { TaskCard } from "./CardView/TaskCard.js";
 import { Header } from "./header/index.js";
 
 export class TaskView {
-  constructor({ tasks,
+  constructor({ getTasks,
     users,
-    counters,
+    getCounters,
     onTaskAdd,
     onTaskDel,
     onTaskStatus,
@@ -17,7 +17,12 @@ export class TaskView {
     onDoneAllTasks,
     onEditTask
   }) {
+    this.getTasks = getTasks;
+    let tasks = this.getTasks();
+    this.getCounters = getCounters;
+    let counters = this.getCounters(tasks);
     this.onDoneAllTasks = onDoneAllTasks;
+
     this.header = new Header(users, onUserAdd, onUserDelete);
 
     this.todoContainer = new TaskContainer({
@@ -85,6 +90,8 @@ export class TaskView {
         body.style.overflow = 'hidden'
       }
       if(target.id === 'edit_button'){
+        tasks = this.getTasks();
+        console.log(tasks)
         for(const task of tasks){
           if(target.parentNode.parentNode.parentNode.id === task.id){
           const editmod = new ModalView("modal_edit", "modal_edit_cancel", "modal_edit_confirm", task.title, task.description, users, onTaskAdd, onEditTask, task.id);
@@ -97,9 +104,11 @@ export class TaskView {
           body.style.overflow = 'hidden'
           }
         }
-        
       }
       if (target.id === 'add') {
+        tasks = this.getTasks();
+        counters = this.getCounters(tasks);
+        console.log(tasks)
         console.log(counters)
          if (counters.InProgress === 6) {
           const btn = document.getElementById('add')
@@ -137,10 +146,10 @@ export class TaskView {
     })
   }
 
-  renderNewCards=(tasks)=>{
+  renderNewCards = (tasks) => {
     this.card.doneAllTasksInprogress(tasks);
   };
-  
+
   createNewTask = (newTask, tasks) => {
     this.card.createNewTaskCard(newTask, tasks);
   };
@@ -154,7 +163,6 @@ export class TaskView {
   }
 
   updateCounters = (counters, counterId) => {
-    console.log(counters,counterId)
     if (counterId === 'counter_todo'){
        const todo = document.getElementById(counterId);
        todo.textContent = counters.ToDo;
