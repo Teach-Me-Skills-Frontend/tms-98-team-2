@@ -43,6 +43,7 @@ export function buttonActions(task, navButtons, buttons, onTaskDel, onTaskStatus
     }
     case "InProgress": {
       const backBtn = createButton("Back", "edit_button");
+      backBtn.id = 'back';
       backBtn.addEventListener("click", ({ target }) => {
         statusActions(target, tasks, "todo", onTaskStatus, TaskStatus.toDo, createNewTaskCard);
       });

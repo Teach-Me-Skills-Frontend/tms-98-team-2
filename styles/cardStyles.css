@@ -82,6 +82,9 @@
   background-color: #4E6E81;
   width: 100%;
 }
+.add_button:disabled{
+  opacity: 0.5;
+}
 .complete_button {
   background-color: #245953;
   width: 40%;
