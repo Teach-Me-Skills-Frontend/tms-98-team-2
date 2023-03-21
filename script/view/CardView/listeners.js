@@ -1,4 +1,3 @@
-import { ModalView } from "../ModalView/ModalView.js";
 import { createButton, createElementWithClass } from "../utils.js";
 import { taskActions, statusActions } from "./utils.js";
 import { TaskStatus } from "../../constant.js";
@@ -8,29 +7,8 @@ export function buttonActions(task, navButtons, buttons, onTaskDel, onTaskStatus
     case "ToDo": {
       const editButtons = createElementWithClass("div", "card_edit");
 
-      const editModal = () => {
-        const editmod = new ModalView(
-          "modal_edit",
-          "modal_edit_cancel",
-          "modal_edit_confirm",
-          task.title,
-          task.description,
-          
-        );
-        editmod.modal.style.visibility = 'visible'
-        const body = document.querySelector('body')
-        const marginSize = window.innerWidth - body.clientWidth;
-            if (marginSize) {
-                body.style.marginRight = marginSize + "px";
-            }
-        
-        body.style.overflow = 'hidden'
-        // editBtn.removeEventListener("click", editModal);
-      };
-
       const editBtn = createButton("Edit", "edit_button");
-      // editBtn.addEventListener("click", editModal);
-      editBtn.id = 'editbtn'
+      editBtn.id = 'edit_button'
 
       const deleteBtn = createButton("Delete", "delete_button");
       deleteBtn.addEventListener("click", ({ target }) => {
@@ -46,7 +24,7 @@ export function buttonActions(task, navButtons, buttons, onTaskDel, onTaskStatus
       editButtons.append(editBtn, deleteBtn);
 
       const addBtn = createButton("Add", "add_button");
-      addBtn.setAttribute('id','add');
+      addBtn.id='add';
       addBtn.addEventListener("click", ({ target }) => {
         statusActions(
           target,

@@ -52,7 +52,7 @@ export class TaskCard {
         const root = document.getElementById(taskContainersId[key]);
 
         const card = createElementWithClass("div", "card");
-        card.setAttribute("id", task.id);
+        card.id = task.id;
 
         this.createInnerCard(card, task, this.onTaskDel, this.onTaskStatus, tasks, this.createNewTaskCard.bind(this));
 
