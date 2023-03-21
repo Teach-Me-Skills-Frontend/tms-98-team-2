@@ -53,6 +53,7 @@ export class TaskController {
   };
 
   doneAllTasks = () => {
+    this.view.renderNewCards(this.model.getCurrentTasks());
     this.model.doneAll(this.model.getCurrentTasks())
     this.updateToDo()
     this.updateInProg()

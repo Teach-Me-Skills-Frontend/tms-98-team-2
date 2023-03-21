@@ -64,7 +64,6 @@ export class TaskModel {
     }
 
     this.doneAll = () => {
-      
       for (const task of tasks) {
         if (task.status === TaskStatus.inProgress) {
           task.status = TaskStatus.done
