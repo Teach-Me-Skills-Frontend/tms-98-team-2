@@ -3,6 +3,7 @@ import { ModalWarningView } from "./ModalView/ModalWarning.js";
 import { TaskContainer } from "./TaskContainer/TaskContainer.js";
 import { TaskCard } from "./CardView/TaskCard.js";
 import { Header } from "./header/index.js";
+import { showModal } from "./utils.js";
 
 export class TaskView {
   constructor({ getTasks,
@@ -73,35 +74,22 @@ export class TaskView {
       if (target.id === 'button_add') {
         this.modalAdd = new ModalView(
           "modal_add",
-          "modal_add_cancel",
-          "modal_add_confirm",
           "",
           "",
           users,
           onTaskAdd,
         );
         this.modalAdd.modal.style.visibility = 'visible'
-        const body = document.querySelector('body')
-        const marginSize = window.innerWidth - body.clientWidth;
-            if (marginSize) {
-                body.style.marginRight = marginSize + "px";
-            }
-        
-        body.style.overflow = 'hidden'
+        showModal()
       }
       if(target.id === 'edit_button'){
         tasks = this.getTasks();
         console.log(tasks)
         for(const task of tasks){
           if(target.parentNode.parentNode.parentNode.id === task.id){
-          const editmod = new ModalView("modal_edit", "modal_edit_cancel", "modal_edit_confirm", task.title, task.description, users, onTaskAdd, onEditTask, task.id);
+          const editmod = new ModalView("modal_edit", task.title, task.description, users, onTaskAdd, onEditTask, task.id);
           editmod.modal.style.visibility = 'visible'
-          const body = document.querySelector('body')
-          const marginSize = window.innerWidth - body.clientWidth;
-          if (marginSize) {
-            body.style.marginRight = marginSize + "px";
-          }
-          body.style.overflow = 'hidden'
+          showModal()
           }
         }
       }
@@ -114,13 +102,9 @@ export class TaskView {
           const btn = document.getElementById('add');
           btn.disabled = true;
            this.modalWarning = new ModalWarningView("modal_warning");
-           this.modalWarning.modal.style.visibility = 'visible';
-           const body = document.querySelector('body');
-           const marginSize = window.innerWidth - body.clientWidth;
-           if (marginSize) {
-             body.style.marginRight = marginSize + "px";
-           }
-           body.style.overflow = 'hidden';
+
+           this.modalWarning.modal.style.visibility = 'visible'
+           showModal()
          }
        }
     })
@@ -129,12 +113,7 @@ export class TaskView {
       if (target.id === 'button_delete_all') {
         this.modalWarning = new ModalWarningView("modal_warning", 'Are you sure you want to delete all tasks?', onDeleteAllTasks);
         this.modalWarning.modal.style.visibility = 'visible';
-        const body = document.querySelector('body');
-        const marginSize = window.innerWidth - body.clientWidth;
-        if (marginSize) {
-          body.style.marginRight = marginSize + "px";
-        }
-        body.style.overflow = 'hidden';
+        showModal()
       }
     })
   
