@@ -1,7 +1,7 @@
-import { ModalNameAttr, ModalInputAttr, ListOptions, ListOptionsLength } from './constant.js';
+import { ModalNameAttr, ModalInputAttr, ButtonID } from './constant.js';
 import { createTextInput, createButton } from '../utils.js'; 
 
-export function createTaskModal (cancelId, confirmId, valueTitle, valueDescription, users = [1,2]) {
+export function createTaskModal (valueTitle, valueDescription, users = [1,2]) {
     const form = document.createElement('form');
     form.classList.add('modal');
     
@@ -42,13 +42,13 @@ export function createTaskModal (cancelId, confirmId, valueTitle, valueDescripti
         type: 'button',
         name: ModalNameAttr.TaskButtonCancel
     });
-    cancelBtn.id = cancelId;
+    cancelBtn.id = ButtonID.cancelId;
 
     const confirmBtn = createButton ('Confirm', 'modal_btn_confirm', {
         type: 'submit',
         name: ModalNameAttr.TaskButtonConfirm
     });
-    confirmBtn.id = confirmId;
+    confirmBtn.id = ButtonID.confirmId;
     confirmBtn.disabled = true;
 
     btnContainer.append(select, cancelBtn, confirmBtn);
@@ -86,4 +86,3 @@ export function createModalWarning (value) {
 
     return modal;
 }
-  
