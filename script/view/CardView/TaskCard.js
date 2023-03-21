@@ -70,4 +70,11 @@ export class TaskCard {
       }
     }
   }
+
+  showEditTaskCard = (tasks) => {
+    for(const task of tasks) {
+      document.getElementById(task.id).remove();
+      this.createNewTaskCard(task, tasks);
+    }
+  }
 }

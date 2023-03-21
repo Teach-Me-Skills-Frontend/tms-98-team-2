@@ -50,14 +50,14 @@ export class TaskModel {
       }
     };
 
-    this.editTask = (taskId, textTitle, textDescription) => {
+    this.editTask = (taskId, textTitle, textDescription, userSelect) => {
       const taskIndex = tasks.findIndex(({ id }) => id === taskId);
-
       if (taskIndex >= 0) {
         tasks[taskIndex] = {
           ...tasks[taskIndex],
           title: textTitle,
-          description: textDescription
+          description: textDescription,
+          user: userSelect,
         };
         localStorage.setItem(LocalStorageKey.Tasks, JSON.stringify(tasks));
       }
