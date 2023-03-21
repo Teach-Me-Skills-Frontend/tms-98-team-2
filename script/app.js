@@ -34,15 +34,11 @@ export class TaskController {
   createNewTask = (newTask) => {
     this.view.createNewTask(newTask, this.model.addTask(newTask));
     this.updateToDo()
-    this.updateInProg()
-    this.updateDone()
   };
 
   deleteTask=(taskId)=>{
     this.model.removeTask(taskId);
     this.updateToDo()
-    this.updateInProg()
-    this.updateDone()
   };
 
   setStatus=(taskId,toStatus)=>{
@@ -55,7 +51,6 @@ export class TaskController {
   doneAllTasks = () => {
     this.view.renderNewCards(this.model.getCurrentTasks());
     this.model.doneAll(this.model.getCurrentTasks())
-    this.updateToDo()
     this.updateInProg()
     this.updateDone()
   }
@@ -68,10 +63,8 @@ export class TaskController {
 
   deleteAllTask = () => {
    this.view.deleteAllTasks()
-   this.model.removeAllTask(this.model.getCurrentTasks());
-   this.updateToDo()
-   this.updateInProg()
-  //  this.updateDone()
+   this.model.removeAllTask()
+   this.updateDone()
   }
 
   editTask = () => {

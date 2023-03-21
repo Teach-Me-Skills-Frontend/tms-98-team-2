@@ -4,7 +4,7 @@ import { TaskStatus } from "../constant.js";
 export class TaskModel {
   constructor() {
     const savedTasks = localStorage.getItem(LocalStorageKey.Tasks);
-    const tasks = savedTasks ? JSON.parse(savedTasks) : [];
+    let tasks = savedTasks ? JSON.parse(savedTasks) : [];
 
     const savedUsers = localStorage.getItem(LocalStorageKey.Users);
     const users = savedUsers ? JSON.parse(savedUsers) : [];
@@ -32,7 +32,7 @@ export class TaskModel {
       return taskIndex > -1;
     };
 
-    this.removeAllTask = (tasks) => {
+    this.removeAllTask = () => {
       tasks = tasks.filter((task) => task.status !== TaskStatus.done);
       localStorage.setItem(LocalStorageKey.Tasks, JSON.stringify(tasks));
     }
