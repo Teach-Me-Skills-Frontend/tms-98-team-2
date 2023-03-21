@@ -87,7 +87,7 @@ export class TaskView {
       if(target.id === 'edit_button'){
         for(const task of tasks){
           if(target.parentNode.parentNode.parentNode.id === task.id){
-          const editmod = new ModalView("modal_edit", "modal_edit_cancel", "modal_edit_confirm", task.title, task.description);
+          const editmod = new ModalView("modal_edit", "modal_edit_cancel", "modal_edit_confirm", task.title, task.description, users, onTaskAdd, onEditTask, task.id);
           editmod.modal.style.visibility = 'visible'
           const body = document.querySelector('body')
           const marginSize = window.innerWidth - body.clientWidth;
@@ -97,11 +97,14 @@ export class TaskView {
           body.style.overflow = 'hidden'
           }
         }
+        
       }
       if (target.id === 'add') {
         console.log(counters)
-         if (counters.InProgress >= 6) {
-          console.log('add block')
+         if (counters.InProgress === 6) {
+          const btn = document.getElementById('add')
+          console.log(btn)
+          btn.disabled = true;
            this.modalWarning = new ModalWarningView("modal_warning");
            this.modalWarning.modal.style.visibility = 'visible'
            const body = document.querySelector('body');
@@ -132,30 +135,6 @@ export class TaskView {
         this.onDoneAllTasks();  
       }
     })
-
-    /* document.addEventListener('click', ({ target }) => {
-      if (target.id === 'editbtn') {
-        this.modalAdd = new ModalView(
-          "modal_edit",
-          "modal_edit_cancel",
-          "modal_edit_confirm",
-          "",
-          "",
-          users,
-          onTaskAdd,
-          onEditTask
-        );
-        this.modalAdd.modal.style.visibility = 'visible'
-        const body = document.querySelector('body')
-        const marginSize = window.innerWidth - body.clientWidth;
-            if (marginSize) {
-                body.style.marginRight = marginSize + "px";
-            }
-        
-        body.style.overflow = 'hidden'
-      }
-    }) */
-
   }
 
   renderNewCards=(tasks)=>{
@@ -165,6 +144,10 @@ export class TaskView {
   createNewTask = (newTask, tasks) => {
     this.card.createNewTaskCard(newTask, tasks);
   };
+
+  showEditTask = (tasks) => {
+    this.card.showEditTaskCard(tasks);
+  }
 
   deleteAllTasks = () => {
     this.doneContainer.deleteAllTasks();
