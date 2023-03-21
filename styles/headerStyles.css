@@ -9,6 +9,9 @@
   border: 2px solid #F9DBBB;
   border-radius: 8px;
 }
+#header > div {
+  margin: 5px;
+}
 .header h3 {
   font-size: 20px;
   font-weight: 400;
