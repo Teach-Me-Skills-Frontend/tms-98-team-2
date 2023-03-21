@@ -67,8 +67,9 @@ export class TaskController {
    this.updateDone()
   }
 
-  editTask = () => {
-    this.model.editTask()
+  editTask = (taskId, textTitle, textDescription, userSelect) => {
+    this.model.editTask(taskId, textTitle, textDescription, userSelect);
+    this.view.showEditTask(this.model.getCurrentTasks())
   }
 
   

@@ -4,9 +4,10 @@ import { TaskStatus } from '../../constant.js';
 import { getDate } from '../utils.js';
 
 export class ModalView {
-    constructor(containerId, cancelId, confirmId, valueTitle, valueDescription, users, onTaskAdd, onEditTask) {
+    constructor(containerId, cancelId, confirmId, valueTitle, valueDescription, users, onTaskAdd, onEditTask, taskId) {
         this.onTaskAdd = onTaskAdd;
         this.onEditTask = onEditTask;
+        this.taskId = taskId
         this.modal = document.getElementById(containerId);
         this.modalForm = createTaskModal(cancelId, confirmId, valueTitle, valueDescription, users);
         
@@ -22,13 +23,6 @@ export class ModalView {
             this.modal.addEventListener('submit', this.EditTask)
         }
         
-   
-        
-        
-        
-        
-        
-
         this.modalForm.addEventListener('click', ({ target }) => {
             if (target.id === 'modal_add_cancel') {
                 this.modal.style.visibility = 'hidden'
@@ -89,7 +83,11 @@ export class ModalView {
 
     EditTask = (event) => {
         event.preventDefault();
-        console.log('edit')
+        const inputTittleValue = this.modalForm.elements[ModalInputAttr.TaskTitleInput].value.trim();
+        const inputDescriptionValue = this.modalForm.elements[ModalInputAttr.TaskDescriptionInput].value.trim();
+        const select = this.modalForm.elements['users'].value;
+        console.log(select)
+        this.onEditTask(this.taskId, inputTittleValue, inputDescriptionValue, select)
         this.modalForm.reset()
         this.modal.style.visibility = 'hidden'
         
