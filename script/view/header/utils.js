@@ -1,4 +1,5 @@
-export function addUser(users) {
+export function addUser(getUsers) {
+  const users=getUsers();
   const input = document.getElementById("user_input");
   const userName = input.value;
   for(let i = 0; i < users.length; i++){
@@ -8,7 +9,6 @@ export function addUser(users) {
     }
   }
 
-  console.log(userName)
   document.getElementById('add_user').disabled = true;
   document.getElementById('delete_user').disabled=false;
   input.value = "";

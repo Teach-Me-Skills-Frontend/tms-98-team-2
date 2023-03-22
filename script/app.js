@@ -7,8 +7,8 @@ export class TaskController {
     this.model = new TaskModel();
     this.view = new TaskView({
       getTasks: this.model.getCurrentTasks,
-      users: this.model.getUsers(),
-      getCounters: this.model.getValue, //(this.model.getCurrentTasks())
+      getUsers: this.model.getUsers,
+      getCounters: this.model.getValue,
       onTaskAdd: this.createNewTask,
       onTaskDel:this.deleteTask,
       onTaskStatus:this.setStatus,
@@ -59,6 +59,7 @@ export class TaskController {
   };
   deleteUser=(index)=>{
     this.model.delUser(index);
+    
   }
 
   deleteAllTask = () => {
