@@ -100,12 +100,12 @@ body {
     padding: 0.5%;
  }
  
-
  @media only screen and (max-width: 1024px) and (min-width: 610px) {
 
     #clock{
         width: 20%;
     }
+
     #name_created{
         gap: 10%;
     }
@@ -125,6 +125,7 @@ body {
         font-size: 1em;
         height: 33%;
     }
+
     #name_created{
         gap: 1%;
     }
@@ -136,6 +137,7 @@ body {
         left: 50%;
         padding: 0.5%;
     }
+
 }
 
 @media only screen and (max-width: 610px) and (min-width: 410px) {
@@ -145,6 +147,7 @@ body {
         width: 25%;
         height: 20%;
     }
+
     #name_created{
         gap: 1%;
     }
