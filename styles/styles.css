@@ -21,4 +21,20 @@ body {
   justify-content: center;
   align-items: center;
   gap: 50px;
+  background-color: var(--background-body);
+}
+body.theme-dark{
+  --text-color-white: var(--dark-text-color-white);
+  --text-color-black: var(--dark-text-color-black);
+  --background-done-add: var(--dark-background-done-add);
+  --background-done-add-hover: var(--dark-background-done-add-hover);
+  --background-header: var(--dark-background-header);
+  --background-modal: var(--dark-background-modal);
+  --background-user-active: var(--dark-background-user-active);
+  --background-card: var(--dark-background-card);
+  --card-border-color: var(--dark-card-border-color);
+  --card-description:var(--dark-card-description);
+  --background-body: var(--dark-background-body);
+  --background-delete: var(--dark-background-delete);
+  --background-input: var(--dark-background-input);
 }

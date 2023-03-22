@@ -1,10 +1,12 @@
+@import url("./variables.css");
+
 footer {
-  background-color: #2e3840;
+  background-color: var(--background-done-add-hover);
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 2px solid #2e3840;
+  border: 2px solid var(--background-done-add-hover);
   border-radius: 8px 8px 0 0;
   color: white;
 }
@@ -43,4 +45,17 @@ hr {
 }
 a {
   margin-left: 10px;
+}
+.theme {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 5px;
+}
+.theme-select {
+  background-color: var(--background-body);
+  color: var(--text-color-black);
+  width: 60px;
+  height: 25px;
+  border-radius: 5px;
 }
