@@ -26,8 +26,10 @@ body {
 body.theme-dark{
   --text-color-white: var(--dark-text-color-white);
   --text-color-black: var(--dark-text-color-black);
-  --background-done-add: var(--dark-background-done-add);
-  --background-done-add-hover: var(--dark-background-done-add-hover);
+  --background-add: var(--dark-background-add);
+  --background-add-hover: var(--dark-background-add-hover);
+  --background-done: var(--dark-background-done);
+  --background-done-hover: var(--dark-background-done-hover);
   --background-header: var(--dark-background-header);
   --background-modal: var(--dark-background-modal);
   --background-user-active: var(--dark-background-user-active);

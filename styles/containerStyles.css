@@ -51,13 +51,13 @@
 
 #card_progress_add > button:hover,
 #card_progress_add > button:active {
-  background-color: var(--background-done-add-hover);
-  border: 1px solid var(--background-done-add-hover);
+  background-color: var(--background-add-hover);
+  border: 1px solid var(--background-add-hover);
 }
 
 #card_progress_add > button {
-  background-color: var(--background-done-add);
-  border: 1px solid var(--background-done-add);
+  background-color: var(--background-add);
+  border: 1px solid var(--background-add);
 }
 
 #card_progress_done > button {
@@ -74,12 +74,12 @@
     opacity: 0.5;
 }
 #card_progress_inprogress > button {
-  background-color: var(--background-done-add);
-  border: 1px solid var(--background-done-add);
+  background-color: var(--background-done);
+  border: 1px solid var(--background-done);
 }
 
 #card_progress_inprogress > button:active,
 #card_progress_inprogress > button:hover {
-  background-color: var(--background-done-add-hover);
-  border: 1px solid var(--background-done-add-hover);
+  background-color: var(--background-done-hover);
+  border: 1px solid var(--background-done-hover);
 }

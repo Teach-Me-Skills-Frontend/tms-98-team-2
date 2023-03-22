@@ -82,7 +82,7 @@
   width: 40%;
 }
 .undo_button {
-  background-color: var(--background-delete);
+  background-color: var(--background-user-active);
   width: 40%;
 }
 .add_button {
