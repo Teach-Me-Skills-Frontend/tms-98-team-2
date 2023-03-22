@@ -2,7 +2,7 @@ import { ModalView } from './ModalView/ModalView.js';
 import { ModalWarningView } from './ModalView/ModalWarning.js';
 import { TaskContainer } from './TaskContainer/TaskContainer.js';
 import { TaskCard } from './CardView/TaskCard.js';
-import { Header } from './Header/Header.js';
+import { Header } from './header/Header.js';
 import { showModal } from './utils.js';
 import { CountersId, ButtonsId, ModalText } from './constant.js';
 
