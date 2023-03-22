@@ -49,6 +49,8 @@
   width: 70%;
 }
 .users {
+  max-width: 150px;
+  min-width: 85px;
   height: 25px;
   border: 0;
   border-radius: 4px;

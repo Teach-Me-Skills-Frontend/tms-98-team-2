@@ -7,7 +7,7 @@ import { showModal } from "./utils.js";
 
 export class TaskView {
   constructor({ getTasks,
-    users,
+    getUsers,
     getCounters,
     onTaskAdd,
     onTaskDel,
@@ -20,11 +20,14 @@ export class TaskView {
   }) {
     this.getTasks = getTasks;
     let tasks = this.getTasks();
+    this.getUsers = getUsers;
+    //const users = this.getUsers();
+    
     this.getCounters = getCounters;
     let counters = this.getCounters(tasks);
     this.onDoneAllTasks = onDoneAllTasks;
 
-    this.header = new Header(users, onUserAdd, onUserDelete);
+    this.header = new Header(this.getUsers, onUserAdd, onUserDelete);
 
     this.todoContainer = new TaskContainer({
       containerId: "card_progress_add",
@@ -90,7 +93,7 @@ export class TaskView {
           "modal_add",
           "",
           "",
-          users,
+          this.getUsers(),
           onTaskAdd,
         );
         this.modalAdd.modal.style.visibility = 'visible'
@@ -98,20 +101,17 @@ export class TaskView {
       }
       if(target.id === 'edit_button'){
         tasks = this.getTasks();
-        console.log(tasks)
         for(const task of tasks){
           if(target.parentNode.parentNode.parentNode.id === task.id){
-          const editmod = new ModalView("modal_edit", task.title, task.description, users, onTaskAdd, onEditTask, task.id);
-          editmod.modal.style.visibility = 'visible'
-          showModal()
+            const editmod = new ModalView("modal_edit", task.title, task.description, this.getUsers(), onTaskAdd, onEditTask, task.id);
+            editmod.modal.style.visibility = 'visible'
+            showModal()
           }
         }
       }
       if (target.id === 'add') {
         tasks = this.getTasks();
         counters = this.getCounters(tasks);
-        console.log(tasks)
-        console.log(counters)
          if (counters.InProgress + 1 === 7) {
           const addBtns = document.getElementsByClassName('add_button');
           for(const btn of addBtns){
@@ -133,14 +133,12 @@ export class TaskView {
       if (target.id === 'button_delete_all') {
         this.modalWarning = new ModalWarningView("modal_warning", 'Are you sure you want to delete all tasks?', onDeleteAllTasks);
         this.modalWarning.modal.style.visibility = 'visible';
-        showModal()
+        showModal();
       }
       if(target.id === 'undo_button'){
         tasks = this.getTasks();
         counters = this.getCounters(tasks);
-        console.log(tasks)
-        console.log(counters)
-         if (counters.InProgress + 1 === 7) {
+        if (counters.InProgress + 1 === 7) {
           const addBtns = document.getElementsByClassName('add_button');
           for(const btn of addBtns){
             btn.disabled = true;
@@ -153,7 +151,7 @@ export class TaskView {
 
           this.modalWarning.modal.style.visibility = 'visible'
           showModal()
-         }
+        }
       }
     })
   
