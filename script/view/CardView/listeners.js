@@ -43,12 +43,13 @@ export function buttonActions(task, navButtons, buttons, onTaskDel, onTaskStatus
     }
     case "InProgress": {
       const backBtn = createButton("Back", "edit_button");
-      backBtn.id = 'back';
+      backBtn.id = 'back_button';
       backBtn.addEventListener("click", ({ target }) => {
         statusActions(target, tasks, "todo", onTaskStatus, TaskStatus.toDo, createNewTaskCard);
       });
 
       const completedBtn = createButton("Complete", "complete_button");
+      completedBtn.id = 'complete_button';
       completedBtn.addEventListener("click", ({ target }) => {
         statusActions(target, tasks, "done", onTaskStatus, TaskStatus.done, createNewTaskCard);
       });
@@ -58,7 +59,8 @@ export function buttonActions(task, navButtons, buttons, onTaskDel, onTaskStatus
       break;
     }
     case "Done": {
-      const undoBtn = createButton("Undo", "delete_button");
+      const undoBtn = createButton("Undo", "undo_button");
+      undoBtn.id = 'undo_button';
       undoBtn.addEventListener("click", ({ target }) => {
         statusActions(target, tasks, "toInProgress", onTaskStatus, TaskStatus.inProgress, createNewTaskCard);
       });
