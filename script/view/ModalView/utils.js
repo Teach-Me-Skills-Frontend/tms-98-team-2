@@ -1,88 +1,123 @@
-import { ModalNameAttr, ModalInputAttr, ButtonID } from './constant.js';
-import { createTextInput, createButton } from '../utils.js'; 
+import { ModalNameAttr, ModalInputAttr, ModalButtonId } from './constant.js';
+import { createTextInput, createButton } from '../utils.js';
 
-export function createTaskModal (valueTitle, valueDescription, users = [1,2]) {
-    const form = document.createElement('form');
-    form.classList.add('modal');
-    
-    const inputTitle = createTextInput ({ name: ModalInputAttr.TaskTitleInput, placeholder: 'Title'})
-    inputTitle.classList.add('input_title');
-    
-    if (!valueTitle) {
-        inputTitle.value = '';
-    } else {
-        inputTitle.value = valueTitle
-    }
+export function createTaskModal(valueTitle, valueDescription, users = [1, 2]) {
+  const form = document.createElement('form');
+  form.classList.add('modal');
 
-    const inputDescription = createTextInput ({ name: ModalInputAttr.TaskDescriptionInput, placeholder: 'Description' })
-    inputDescription.classList.add('input_info');
+  const inputTitle = createTextInput({
+    name: ModalInputAttr.TaskTitleInput,
+    placeholder: 'Title',
+  });
+  inputTitle.classList.add('input_title');
 
-    if (!valueDescription) {
-        inputDescription.value = '';
-    } else {
-        inputDescription.value = valueDescription;
-    }
-    
+  if (!valueTitle) {
+    inputTitle.value = '';
+  } else {
+    inputTitle.value = valueTitle;
+  }
 
-    const btnContainer = document.createElement('div')
-    btnContainer.classList.add('modal_btn');
+  const inputDescription = createTextInput({
+    name: ModalInputAttr.TaskDescriptionInput,
+    placeholder: 'Description',
+  });
+  inputDescription.classList.add('input_info');
 
-    const select = document.createElement('select');
-    select.classList.add('modal_select');
-    select.setAttribute('name', 'users');
-    const usersLength = users.length;
+  if (!valueDescription) {
+    inputDescription.value = '';
+  } else {
+    inputDescription.value = valueDescription;
+  }
+
+  const btnContainer = document.createElement('div');
+  btnContainer.classList.add('modal_btn');
+
+  const select = document.createElement('select');
+  select.classList.add('modal_select');
+  select.setAttribute('name', 'users');
+  const usersLength = users.length;
+  const option = document.createElement('option');
+  if (!usersLength) {
+    option.value = 'No user';
+    option.textContent = 'No user';
+    select.add(option);
+  } else {
     for (let i = 0; i < usersLength; i += 1) {
-        const option = document.createElement('option');
-        option.value = users[i];
-        option.text = users[i];
-        select.add(option)
+      option.value = users[i];
+      option.text = users[i];
+      select.add(option);
     }
-    
-    const cancelBtn = createButton ('Cancel', 'modal_btn_cancel', {
-        type: 'button',
-        name: ModalNameAttr.TaskButtonCancel
-    });
-    cancelBtn.id = ButtonID.cancelId;
+  }
 
-    const confirmBtn = createButton ('Confirm', 'modal_btn_confirm', {
-        type: 'submit',
-        name: ModalNameAttr.TaskButtonConfirm
-    });
-    confirmBtn.id = ButtonID.confirmId;
-    confirmBtn.disabled = true;
+  const cancelBtn = createButton('Cancel', 'modal_btn_cancel', {
+    type: 'button',
+    name: ModalNameAttr.TaskButtonCancel,
+  });
+  cancelBtn.id = ModalButtonId.cancelId;
 
-    btnContainer.append(select, cancelBtn, confirmBtn);
-    form.append(inputTitle, inputDescription, btnContainer);
+  const confirmBtn = createButton('Confirm', 'modal_btn_confirm', {
+    type: 'submit',
+    name: ModalNameAttr.TaskButtonConfirm,
+  });
+  confirmBtn.id = ModalButtonId.confirmId;
+  confirmBtn.disabled = true;
 
-    return form;
+  btnContainer.append(select, cancelBtn, confirmBtn);
+  form.append(inputTitle, inputDescription, btnContainer);
+
+  return form;
 }
 
-export function createModalWarning (value) {
-    const modal = document.createElement('div');
-    modal.classList.add('modal_warning');
+export function createModalWarningDelete(value) {
+  const modal = document.createElement('div');
+  modal.classList.add('modal_warning');
 
-    const text = document.createElement('p');
-    text.textContent = value
-    text.classList.add('modal_warning_text')
+  const text = document.createElement('p');
+  text.textContent = value;
+  text.classList.add('modal_warning_text');
 
-    const btnContainer = document.createElement('div')
-    btnContainer.classList.add('modal_warning_btn');
+  const btnContainer = document.createElement('div');
+  btnContainer.classList.add('modal_warning_btn');
 
-    const cancelBtn = createButton ('Cancel', 'modal_warning_cancel', {
-        type: 'button',
-        name: ModalNameAttr.TaskButtonCancel
-    });
-    cancelBtn.id = 'modal_warning_cancel'
+  const cancelBtn = createButton('Cancel', 'modal_warning_cancel', {
+    type: 'button',
+    name: ModalNameAttr.TaskButtonCancel,
+  });
+  cancelBtn.id = 'modal_warning_cancel';
 
-    const confirmBtn = createButton ('Confirm', 'modal_warning_confirm', {
-        type: 'submit',
-        name: ModalNameAttr.TaskButtonConfirm
-    });
-    confirmBtn.id = 'modal_warning_confirm'
+  const confirmBtn = createButton('Confirm', 'modal_warning_confirm', {
+    type: 'submit',
+    name: ModalNameAttr.TaskButtonConfirm,
+  });
+  confirmBtn.id = 'modal_warning_confirm';
 
-    btnContainer.append(cancelBtn, confirmBtn)
+  btnContainer.append(cancelBtn, confirmBtn);
 
-    modal.append(text, btnContainer);
+  modal.append(text, btnContainer);
 
-    return modal;
+  return modal;
+}
+
+export function createModalWarning(value) {
+  const modal = document.createElement('div');
+  modal.classList.add('modal_warning');
+
+  const text = document.createElement('p');
+  text.textContent = value;
+  text.classList.add('modal_warning_text');
+
+  const btnContainer = document.createElement('div');
+  btnContainer.classList.add('modal_warning_btn');
+
+  const okButton = createButton('Ok', 'modal_warning_cancel', {
+    type: 'button',
+    name: ModalNameAttr.TaskButtonOk,
+  });
+  okButton.id = 'modal_warning_ok';
+
+  btnContainer.append(okButton);
+
+  modal.append(text, btnContainer);
+
+  return modal;
 }

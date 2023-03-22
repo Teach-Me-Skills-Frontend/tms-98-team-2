@@ -1,112 +1,116 @@
 @media only screen and (max-width: 1280px) {
-   .delete_button,
-   .edit_button {
-      min-width: 40%;
-   }
-   .card_edit {
-      width: 120%;
-   }
-   #card_progress_add .card_navigation {
-      width: 85%;
-   }
+  .delete_button,
+  .edit_button {
+    min-width: 40%;
+  }
+  .card_edit {
+    width: 120%;
+  }
+  #card_progress_add .card_navigation {
+    width: 85%;
+  }
 }
 
 @media only screen and (max-width: 960px) {
-   #card_progress_add .card_navigation {
-      width: 50%;
-   }
-
+  #card_progress_add .card_navigation {
+    width: 50%;
+  }
 }
 
 @media only screen and (max-width: 820px) {
-   .header_date  {
-      text-align: center;
-      width: 35%;
-   }
-   #card_progress_add .card_navigation {
-      width: 50%;
-   }
-   .wrapper {
-      flex-direction: column;
-   }
-   .wrapper > div {
-      width: 80%;
-   }
-   #main{
-      flex-direction: column;
-      align-items: center;
-      gap: 20px;
-   } 
-   #header{
-      height: 200px;
-      width: 100%;
-      border-radius: 0 0 8px 8px;
-      flex-wrap: wrap;
-   } 
-   .card_edit {
-      width: 75%;
-   }
-   .user_form input {
-      width: 65%;
-   }
-   .modal_btn {
-      flex-direction: column;
-   }
-   .modal_select,
-   .modal_btn_cancel,
-   .modal_btn_confirm {
-      width: 100%;
-      margin-top: 20px;
-      height: 35px;
-   }
-   .modal {
-   padding: 25px;
-   width: 60%;
-   height: 50%;
-   justify-content: space-between;
-   }
-   .input_info {
-   margin-top:20px;
-   height: 50%;
-   }
-   .input_title {
-   width: 100%;
-   }
-   .subtitle {
-      max-width: 20%;
-   }
+  .header_date {
+    text-align: center;
+    width: 35%;
+  }
+  #card_progress_add .card_navigation {
+    width: 50%;
+  }
+  .wrapper {
+    flex-direction: column;
+  }
+  .wrapper > div {
+    width: 80%;
+  }
+  #main {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+  #header {
+    height: 200px;
+    width: 100%;
+    border-radius: 0 0 8px 8px;
+    flex-wrap: wrap;
+  }
+  .card_edit {
+    width: 75%;
+  }
+  .user_form input {
+    width: 65%;
+  }
+  .modal_btn {
+    flex-direction: column;
+  }
+  .modal_select,
+  .modal_btn_cancel,
+  .modal_btn_confirm {
+    width: 100%;
+    margin-top: 20px;
+    height: 40px;
+  }
+  .modal {
+    padding: 25px;
+    width: 60%;
+    height: 50%;
+    justify-content: space-between;
+  }
+  .input_info {
+    margin-top: 20px;
+    height: 50%;
+  }
+  .input_title {
+    width: 100%;
+  }
+  .subtitle {
+    max-width: 20%;
+  }
 }
 
 @media only screen and (max-width: 640px) {
-   #header{
-      flex-direction: column;
-      height: 300px;
-   } 
-   body {
-      gap: 15px;
-   }
-   .header_title {
-      font-size: 40px;
+  #header {
+    flex-direction: column;
+    height: 300px;
+  }
+  body {
+    gap: 15px;
+  }
+  .header_title {
+    font-size: 40px;
   }
   .header_date {
-   min-width: 20%;
-   text-align: center;
-}
-.footer_text{
-   flex-direction: column;
-   align-items: center;
-}
-.member_team {
-   margin-top: 7px;
-}
-.subtitle {
-   max-width: 80%;
-   margin-top: 15px;
-}
-.footer_title {
-   max-width: 80%;
-   align-items: center;
-   text-align: center;
-}
-
+    min-width: 20%;
+    text-align: center;
+  }
+  .footer_text {
+    flex-direction: column;
+    align-items: center;
+  }
+  .member_team {
+    margin-top: 7px;
+  }
+  .subtitle {
+    max-width: 80%;
+    margin-top: 15px;
+  }
+  .footer_title {
+    max-width: 80%;
+    align-items: center;
+    text-align: center;
+  }
+  .modal_warning_btn {
+   width: 100%;
+ }
+ .modal_warning_btn button {
+   width: 40%;
+ }
 }

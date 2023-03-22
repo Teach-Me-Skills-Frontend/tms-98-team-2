@@ -14,7 +14,7 @@
   padding: 10px;
   border-radius: 8px;
   border: 1px solid #919294;
-  background: transparent; /* green #7fffa38a  red #ff1f1f99 */
+  background: transparent;
 }
 .card_header {
   display: flex;
@@ -71,22 +71,22 @@
 }
 
 .edit_button {
-  background-color: #4E6E81;
+  background-color: #4e6e81;
   width: 40%;
 }
 .delete_button {
-  background-color: #CF0A0A;
+  background-color: #cf0a0a;
   width: 40%;
 }
-.undo_button{
-  background-color: #CF0A0A;
+.undo_button {
+  background-color: #cf0a0a;
   width: 40%;
 }
 .add_button {
-  background-color: #4E6E81;
+  background-color: #4e6e81;
   width: 100%;
 }
-.card_buttons button:disabled{
+.card_buttons button:disabled {
   cursor: default;
   opacity: 0.5;
 }

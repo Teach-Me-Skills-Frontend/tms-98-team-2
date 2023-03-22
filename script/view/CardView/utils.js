@@ -1,8 +1,8 @@
-import { TaskStatus } from "../../constant.js";
+import { TaskStatus } from '../../constant.js';
 
 export function taskActions(element, tasks, action, createNewTaskCard) {
   switch (action) {
-    case "todo": {
+    case 'todo': {
       for (const task of tasks) {
         if (element.id === task.id) {
           task.status = TaskStatus.toDo;
@@ -13,7 +13,7 @@ export function taskActions(element, tasks, action, createNewTaskCard) {
       }
       break;
     }
-    case "toInProgress": {
+    case 'toInProgress': {
       for (const task of tasks) {
         if (element.id === task.id) {
           task.status = TaskStatus.inProgress;
@@ -24,7 +24,7 @@ export function taskActions(element, tasks, action, createNewTaskCard) {
       }
       break;
     }
-    case "delete": {
+    case 'delete': {
       for (const task of tasks) {
         if (element.id === task.id) {
           const taskIndex = tasks.indexOf(task);
@@ -34,7 +34,7 @@ export function taskActions(element, tasks, action, createNewTaskCard) {
       element.remove();
       break;
     }
-    case "done": {
+    case 'done': {
       for (const task of tasks) {
         if (element.id === task.id) {
           task.status = TaskStatus.done;
@@ -48,7 +48,14 @@ export function taskActions(element, tasks, action, createNewTaskCard) {
   }
 }
 
-export function statusActions(target, tasks, action, onTaskStatus, status, createNewTaskCard) {
+export function statusActions(
+  target,
+  tasks,
+  action,
+  onTaskStatus,
+  status,
+  createNewTaskCard
+) {
   const element = target.parentNode.parentNode.parentNode;
   for (const task of tasks) {
     if (element.id === task.id) {

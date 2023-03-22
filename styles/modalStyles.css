@@ -19,7 +19,7 @@
   height: 50%;
   display: flex;
   flex-direction: column;
-  background-color: #4E6E81;
+  background-color: #4e6e81;
   justify-content: space-evenly;
   padding: 32px;
   border-radius: 8px;
@@ -49,7 +49,7 @@
 .modal_btn_cancel,
 .modal_btn_confirm {
   width: 30%;
-  height: 30px;
+  height: 40px;
   border: none;
   border-radius: 8px;
   text-align: center;
@@ -64,7 +64,7 @@
   cursor: default;
 }
 .modal_btn_cancel {
-  background-color: #CF0A0A;
+  background-color: #cf0a0a;
   color: white;
 }
 .modal_warning_wrapper {
@@ -85,8 +85,8 @@
 .modal_warning {
   width: 50%;
   height: 150px;
-  border-radius: 35px;
-  background-color: #F05454;
+  border-radius: 8px;
+  background-color: #f05454;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -94,6 +94,7 @@
 }
 .modal_warning p {
   color: white;
+  text-align: center;
 }
 .modal_warning_btn {
   width: 80%;
@@ -102,8 +103,8 @@
 }
 .modal_warning_btn button {
   cursor: pointer;
-  width: 30%;
-  height: 30px;
+  width: 40%;
+  height: 40px;
   border: none;
-  border-radius: 12px;
+  border-radius: 8px;
 }

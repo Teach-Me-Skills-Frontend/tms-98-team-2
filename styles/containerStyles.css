@@ -1,0 +1,82 @@
+.wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+.card_wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 27%;
+  border: 1px solid #919294;
+  border-radius: 8px;
+}
+
+.card_wrapper_header {
+  width: 100%;
+  height: 40px;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 10px;
+  align-items: center;
+  background-color: #f9dbbb;
+  border-radius: 7px 7px 0 0;
+}
+
+.card_status {
+  display: flex;
+  justify-content: space-between;
+}
+.card_status::after {
+  content: ':';
+}
+
+.counter_task {
+  font-size: 24px;
+}
+
+.card_wrapper > button {
+  width: 100%;
+  padding: 10px;
+  border-radius: 0 0 7px 7px;
+  cursor: pointer;
+  color: white;
+}
+
+#card_progress_add > button:hover,
+#card_progress_add > button:active {
+  background-color: #2e3866;
+  border: 1px solid #2e3866;
+}
+
+#card_progress_add > button {
+  background-color: #2e3840;
+  border: 1px solid #2e3840;
+}
+
+#card_progress_done > button {
+  background-color: #cf0a0a;
+  border: 1px solid #cf0a0a;
+}
+
+#card_progress_done > button:active,
+#card_progress_done > button:hover {
+  background-color: #c80d0d;
+  border: 1px solid #c80d0d;
+}
+#card_progress_done > button:disabled {
+    opacity: 0.5;
+}
+#card_progress_inprogress > button {
+  background-color: #245953;
+  border: 1px solid #245953;
+}
+
+#card_progress_inprogress > button:active,
+#card_progress_inprogress > button:hover {
+  background-color: #245930;
+  border: 1px solid #245930;
+}
