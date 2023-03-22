@@ -40,6 +40,9 @@ hr {
   margin: 10px 0;
   font-size: 1.5em;
 }
+.footer p {
+  align-items: center;
+}
 .footer_title {
   margin-top: 10px;
 }
