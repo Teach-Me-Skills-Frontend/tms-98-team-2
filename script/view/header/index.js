@@ -1,8 +1,10 @@
-import { createElementWithClass, getDate, createButton } from "../utils.js";
+import { createElementWithClass, getDate, createButton, createInput } from "../utils.js";
 import { addUser, emptyInput, inputEvent } from "./utils.js";
 
 export class Header {
-  constructor(users, onUserAdd, onUserDelete) {
+  constructor(getUsers, onUserAdd, onUserDelete) {
+    this.getUsers = getUsers;
+    let users = this.getUsers()
     this.onUserAdd = onUserAdd;
     this.onUserDelete = onUserDelete;
 
@@ -20,19 +22,22 @@ export class Header {
     titleUser.innerText = "Add user";
 
     const userForm = createElementWithClass("form", "user_form");
-    userForm.setAttribute('id', 'user_form');
+    userForm.id = 'user_form';
 
     userForm.addEventListener('input', inputEvent)
 
-    const inputAdd = document.createElement("input");
-    inputAdd.setAttribute("id", "user_input");
+    const inputAdd = createInput({id: "user_input"});
 
     const btnAdd = createButton("New user", "add_user", { id: "add_user" });
     btnAdd.disabled = true;
     btnAdd.addEventListener("click", (event) => {
-      if(users.length === 0){document.getElementById('no_users').remove();}
-      const newUser = addUser(users);
-      if(newUser){this.onUserAdd(newUser);}
+      if(users.length === 0){
+        document.getElementById('no_users').remove();
+      }
+      const newUser = addUser(this.getUsers);
+      if(newUser){
+        this.onUserAdd(newUser);
+      }
       event.preventDefault();
 
       userForm.removeEventListener('input', emptyInput);
@@ -62,16 +67,29 @@ export class Header {
 
     const deleteUser=createButton('Delete user','delete_button',{id: 'delete_user'});
     deleteUser.addEventListener('click',() => {
-      const userNumber = users.indexOf(prompt(`${users}\nEnter name of user which you want to delete: `));
-      if(userNumber >= 0){
-        this.onUserDelete(userNumber);
-        let selectChild = document.getElementById('user_names').firstChild;
-        for(let i = 0;i < userNumber + 1;i++){
-          if(i === userNumber){
-            selectChild.remove();
+      users = this.getUsers();
+      const select = document.getElementById('user_names')
+      for(const user of users){
+        if(user === select.value){
+          const userIndex = users.indexOf(user);
+          users.splice(userIndex,1);
+          this.onUserDelete(userIndex);
+          let selectChild = select.firstChild;
+          for(let i = 0; i < userIndex + 1; i++){
+            if(selectChild.value === user){
+              selectChild.remove();
+            }
+            selectChild = selectChild.nextSibling;
           }
-          selectChild = selectChild.nextSibling;
         }
+      }
+
+      if(!users.length){
+        document.getElementById('delete_user').disabled = true;
+        const option = document.createElement("option");
+        option.innerText = "No users";
+        option.setAttribute('id','no_users');
+        usersWrapName.append(option);
       }
     });
 
@@ -81,11 +99,11 @@ export class Header {
 
     root.append(title, users_add, currentUsers, date);
 
-    if (users.length === 0) {
+    if (!users.length) {
       document.getElementById('delete_user').disabled = true;
       const option = document.createElement("option");
       option.innerText = "No users";
-      option.setAttribute('id','no_users');
+      option.id = 'no_users';
       usersWrapName.append(option);
     } else {
       document.getElementById('delete_user').disabled = false;
