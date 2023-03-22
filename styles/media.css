@@ -60,8 +60,8 @@
   }
   .modal {
     padding: 25px;
-    width: 60%;
-    height: 50%;
+    width: 80%;
+    height: 70%;
     justify-content: space-between;
   }
   .input_info {
@@ -106,6 +106,9 @@
     max-width: 80%;
     align-items: center;
     text-align: center;
+  }
+  .modal_warning {
+   width: 85%;
   }
   .modal_warning_btn {
    width: 100%;
