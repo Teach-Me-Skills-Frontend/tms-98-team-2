@@ -2,8 +2,10 @@ body{
     --background-body: #fff;
     --text-color-white: #fff;
     --text-color-black: #000;
-    --background-done-add: #2E3866;
-    --background-done-add-hover: #2E3840;
+    --background-add: #2E3866;
+    --background-done: #245953;
+    --background-done-hover: #245935;
+    --background-add-hover: #2E3840;
     --background-header: #F9DBBB;
     --background-modal: #4E6E81;
     --background-user-active: #245953;
@@ -17,8 +19,10 @@ body{
     --dark-background-body: #2F1B41;
     --dark-text-color-white: #000;
     --dark-text-color-black: #fff;
-    --dark-background-done-add: #712B75;
-    --dark-background-done-add-hover: #46244C;
+    --dark-background-add: #712B75;
+    --dark-background-add-hover: #46244C;
+    --dark-background-done: #D49B54;
+    --dark-background-done-hover: #E0AA67;
     --dark-background-header: #712B75;
     --dark-background-modal: #535474;
     --dark-background-user-active: #D49B54;

@@ -92,6 +92,6 @@
 }
 .header button:disabled {
   cursor: default;
-  background: var(--background-done-add-hover);
-  border: 2px solid var(--background-done-add-hover);
+  background: var(--background-add-hover);
+  border: 2px solid var(--background-add-hover);
 }
