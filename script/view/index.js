@@ -69,6 +69,20 @@ export class TaskView {
     });
 
     this.card = new TaskCard(tasks, onTaskDel, onTaskStatus);
+    if (counters.InProgress + 1 === 7) {
+     const addBtns = document.getElementsByClassName('add_button');
+     for(const btn of addBtns){
+      btn.disabled = true;
+    }
+     const undoBtns = document.getElementsByClassName('undo_button');
+     for(const btn of undoBtns){
+      btn.disabled = true;
+    }
+      this.modalWarning = new ModalWarningView("modal_warning");
+
+      this.modalWarning.modal.style.visibility = 'visible'
+      showModal()
+    }
 
     this.todoContainer.container.addEventListener('click', ( { target } ) => {
       if (target.id === 'button_add') {
@@ -99,12 +113,18 @@ export class TaskView {
         console.log(tasks)
         console.log(counters)
          if (counters.InProgress + 1 === 7) {
-          const btn = document.getElementById('add');
-          btn.disabled = true;
-           this.modalWarning = new ModalWarningView("modal_warning");
+          const addBtns = document.getElementsByClassName('add_button');
+          for(const btn of addBtns){
+            btn.disabled = true;
+          }
+          const undoBtns = document.getElementsByClassName('undo_button');
+          for(const btn of undoBtns){
+            btn.disabled = true;
+          }
+          this.modalWarning = new ModalWarningView("modal_warning");
 
-           this.modalWarning.modal.style.visibility = 'visible'
-           showModal()
+          this.modalWarning.modal.style.visibility = 'visible'
+          showModal()
          }
        }
     })
@@ -115,18 +135,54 @@ export class TaskView {
         this.modalWarning.modal.style.visibility = 'visible';
         showModal()
       }
+      if(target.id === 'undo_button'){
+        tasks = this.getTasks();
+        counters = this.getCounters(tasks);
+        console.log(tasks)
+        console.log(counters)
+         if (counters.InProgress + 1 === 7) {
+          const addBtns = document.getElementsByClassName('add_button');
+          for(const btn of addBtns){
+            btn.disabled = true;
+          }
+          const undoBtns = document.getElementsByClassName('undo_button');
+          for(const btn of undoBtns){
+            btn.disabled = true;
+          }
+          this.modalWarning = new ModalWarningView("modal_warning");
+
+          this.modalWarning.modal.style.visibility = 'visible'
+          showModal()
+         }
+      }
     })
   
     this.inprogressContainer.container.addEventListener('click', ( { target } ) => {
       if (target.id === 'button_done_all') {
-        this.onDoneAllTasks();  
+        this.onDoneAllTasks();
+        if (counters.InProgress + 1 === 7) {
+          const addBtns = document.getElementsByClassName('add_button');
+          for(const btn of addBtns){
+            btn.disabled = false;
+          }
+          const undoBtns = document.getElementsByClassName('undo_button');
+          for(const btn of undoBtns){
+            btn.disabled = false;
+          }
+        }
       }
-      if(target.id === 'back'){
+      if(target.id === 'back_button' || target.id === 'complete_button'){
         tasks = this.getTasks();
         counters = this.getCounters(tasks);
         if (counters.InProgress < 6 ) {
-          const addBtn = document.getElementById('add');
-          addBtn.disabled = false;
+          const addBtns = document.getElementsByClassName('add_button');
+          for(const addBtn of addBtns){
+            addBtn.disabled = false;
+          }
+          const undoBtns = document.getElementsByClassName('undo_button');
+          for(const btn of undoBtns){
+            btn.disabled = false;
+          }
         }
       }
     })
@@ -138,6 +194,13 @@ export class TaskView {
 
   createNewTask = (newTask, tasks) => {
     this.card.createNewTaskCard(newTask, tasks);
+    const counters = this.getCounters(tasks);
+    if (counters.InProgress + 1 === 7 ) {
+      const addBtns = document.getElementsByClassName('add_button');
+      for(const addBtn of addBtns){
+        addBtn.disabled = true;
+      }
+    }
   };
 
   showEditTask = (tasks) => {

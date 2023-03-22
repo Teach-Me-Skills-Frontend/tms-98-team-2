@@ -78,11 +78,16 @@
   background-color: #CF0A0A;
   width: 40%;
 }
+.undo_button{
+  background-color: #CF0A0A;
+  width: 40%;
+}
 .add_button {
   background-color: #4E6E81;
   width: 100%;
 }
-.add_button:disabled{
+.card_buttons button:disabled{
+  cursor: default;
   opacity: 0.5;
 }
 .complete_button {
