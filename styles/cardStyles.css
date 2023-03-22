@@ -1,3 +1,5 @@
+@import url("./variables.css");
+
 .card_container {
   height: 500px;
   display: flex;
@@ -13,8 +15,9 @@
   gap: 10px;
   padding: 10px;
   border-radius: 8px;
-  border: 1px solid #919294;
-  background: transparent;
+  border: 1px solid var(--card-border-color);
+  background-color: var(--background-card);
+  color: var(--text-color-black);
 }
 .card_header {
   display: flex;
@@ -54,7 +57,7 @@
 .card_description p {
   border-radius: 4px;
   padding: 5px 7px;
-  background: #c3c3c3;
+  background: var(--card-description);
 }
 .card_information {
   display: flex;
@@ -67,23 +70,23 @@
   padding: 5px;
   border: 0;
   border-radius: 8px;
-  color: white;
+  color: var(--text-color-white);
 }
 
 .edit_button {
-  background-color: #4e6e81;
+  background-color: var(--background-modal);
   width: 40%;
 }
 .delete_button {
-  background-color: #cf0a0a;
+  background-color: var(--background-delete);
   width: 40%;
 }
 .undo_button {
-  background-color: #cf0a0a;
+  background-color: var(--background-delete);
   width: 40%;
 }
 .add_button {
-  background-color: #4e6e81;
+  background-color: var(--background-modal);
   width: 100%;
 }
 .card_buttons button:disabled {
@@ -91,6 +94,6 @@
   opacity: 0.5;
 }
 .complete_button {
-  background-color: #245953;
+  background-color: var(--background-user-active);
   width: 40%;
 }
