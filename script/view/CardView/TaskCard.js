@@ -1,7 +1,7 @@
-import { TaskStatus } from "../../constant.js";
-import { createInnerElement, createElementWithClass } from "../utils.js";
-import { taskConstants, taskContainersId } from "./constants.js";
-import { buttonActions } from "./listeners.js";
+import { TaskStatus } from '../../constant.js';
+import { createInnerElement, createElementWithClass } from '../utils.js';
+import { taskConstants, taskContainersId } from './constants.js';
+import { buttonActions } from './listeners.js';
 
 export class TaskCard {
   constructor(tasks, onTaskDel, onTaskStatus) {
@@ -11,37 +11,62 @@ export class TaskCard {
     if (tasks.length != 0) {
       for (const task of tasks) {
         this.createNewTaskCard(task, tasks);
-      } 
+      }
     }
   }
 
-  createInnerCard = (card, task, onTaskDel, onTaskStatus, tasks, createNewTaskCard) => {
-    const title = createInnerElement("div", [taskConstants.title], [task.title], "card_header");
-
-    const description = createInnerElement(
-      "div",
-      [taskConstants.tagHeader, taskConstants.tagInner],
-      [taskConstants.description, task.description],
-      "card_description"
+  createInnerCard = (
+    card,
+    task,
+    onTaskDel,
+    onTaskStatus,
+    tasks,
+    createNewTaskCard
+  ) => {
+    const title = createInnerElement(
+      'div',
+      [taskConstants.title],
+      [task.title],
+      'card_header'
     );
 
-    const information = createElementWithClass("div", "card_information");
+    const description = createInnerElement(
+      'div',
+      [taskConstants.tagHeader, taskConstants.tagInner],
+      [taskConstants.description, task.description],
+      'card_description'
+    );
+
+    const information = createElementWithClass('div', 'card_information');
 
     information.append(
       createInnerElement(
-        "div",
+        'div',
         [taskConstants.tagHeader, taskConstants.tagInner],
         [taskConstants.user, task.user],
-        "card_user"
+        'card_user'
       )
     );
     information.append(
-      createInnerElement("div", [taskConstants.tagHeader], [task.date], "card_user")
+      createInnerElement(
+        'div',
+        [taskConstants.tagHeader],
+        [task.date],
+        'card_user'
+      )
     );
 
-    const buttons = createElementWithClass("div", "card_buttons");
-    const navButtons = createElementWithClass("div", "card_navigation");
-    buttonActions(task, navButtons, buttons, onTaskDel, onTaskStatus, tasks, createNewTaskCard);
+    const buttons = createElementWithClass('div', 'card_buttons');
+    const navButtons = createElementWithClass('div', 'card_navigation');
+    buttonActions(
+      task,
+      navButtons,
+      buttons,
+      onTaskDel,
+      onTaskStatus,
+      tasks,
+      createNewTaskCard
+    );
 
     card.append(title, description, information, buttons);
   };
@@ -51,10 +76,17 @@ export class TaskCard {
       if (key === task.status) {
         const root = document.getElementById(taskContainersId[key]);
 
-        const card = createElementWithClass("div", "card");
+        const card = createElementWithClass('div', 'card');
         card.id = task.id;
 
-        this.createInnerCard(card, task, this.onTaskDel, this.onTaskStatus, tasks, this.createNewTaskCard.bind(this));
+        this.createInnerCard(
+          card,
+          task,
+          this.onTaskDel,
+          this.onTaskStatus,
+          tasks,
+          this.createNewTaskCard.bind(this)
+        );
 
         root.append(card);
       }
@@ -62,19 +94,19 @@ export class TaskCard {
   };
 
   doneAllTasksInprogress = (tasks) => {
-    for(const task of tasks) {
-      if(task.status === TaskStatus.inProgress){
+    for (const task of tasks) {
+      if (task.status === TaskStatus.inProgress) {
         document.getElementById(task.id).remove();
-        task.status='Done';
+        task.status = 'Done';
         this.createNewTaskCard(task, tasks);
       }
     }
-  }
+  };
 
   showEditTaskCard = (tasks) => {
-    for(const task of tasks) {
+    for (const task of tasks) {
       document.getElementById(task.id).remove();
       this.createNewTaskCard(task, tasks);
     }
-  }
+  };
 }

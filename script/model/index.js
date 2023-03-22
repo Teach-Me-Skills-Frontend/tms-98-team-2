@@ -1,5 +1,5 @@
-import { LocalStorageKey } from "./constants.js";
-import { TaskStatus } from "../constant.js";
+import { LocalStorageKey } from './constants.js';
+import { TaskStatus } from '../constant.js';
 
 export class TaskModel {
   constructor() {
@@ -21,7 +21,6 @@ export class TaskModel {
     };
 
     this.removeTask = (taskId) => {
-      
       const taskIndex = tasks.findIndex(({ id }) => id === taskId);
 
       if (taskIndex >= 0) {
@@ -35,10 +34,9 @@ export class TaskModel {
     this.removeAllTask = () => {
       tasks = tasks.filter((task) => task.status !== TaskStatus.done);
       localStorage.setItem(LocalStorageKey.Tasks, JSON.stringify(tasks));
-    }
+    };
 
     this.setTaskStatus = (taskId, taskStatus) => {
-      
       const taskIndex = tasks.findIndex(({ id }) => id === taskId);
 
       if (taskIndex >= 0) {
@@ -61,29 +59,31 @@ export class TaskModel {
         };
         localStorage.setItem(LocalStorageKey.Tasks, JSON.stringify(tasks));
       }
-    }
+    };
 
     this.doneAll = () => {
       for (const task of tasks) {
         if (task.status === TaskStatus.inProgress) {
-          task.status = TaskStatus.done
+          task.status = TaskStatus.done;
         }
       }
 
       localStorage.setItem(LocalStorageKey.Tasks, JSON.stringify(tasks));
-
-    }
+    };
 
     this.getValue = (tasks) => {
-      return tasks.reduce((acc, task) => {
-        acc[task.status] += 1;
-        return acc;
-      }, {
-        [TaskStatus.toDo]: 0,
-        [TaskStatus.inProgress]: 0,
-        [TaskStatus.done]: 0,
-      })
-      }
+      return tasks.reduce(
+        (acc, task) => {
+          acc[task.status] += 1;
+          return acc;
+        },
+        {
+          [TaskStatus.toDo]: 0,
+          [TaskStatus.inProgress]: 0,
+          [TaskStatus.done]: 0,
+        }
+      );
+    };
 
     this.getUsers = () => {
       return users.slice();

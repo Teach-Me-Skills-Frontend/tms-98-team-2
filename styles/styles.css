@@ -1,9 +1,10 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap");
-@import url("./cardStyles.css");
-@import url("./modalStyles.css");
-@import url("./headerStyles.css");
-@import url("./footer.css");
-@import url("./media.css");
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap');
+@import url('./containerStyles.css');
+@import url('./cardStyles.css');
+@import url('./modalStyles.css');
+@import url('./headerStyles.css');
+@import url('./footerStyles.css');
+@import url('./media.css');
 
 *,
 *:before,
@@ -13,90 +14,11 @@
   box-sizing: border-box;
 }
 body {
-  font-family: "Roboto";
+  font-family: 'Roboto';
   font-style: normal;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 50px;
-}
-.wrapper {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  width: 100%;
-}
-
-.card_wrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  width: 27%;
-  border: 1px solid #919294;
-  border-radius: 8px;
-}
-
-.card_wrapper_header {
-  width: 100%;
-  height: 40px;
-  display: flex;
-  justify-content: space-between;
-  padding: 0 10px;
-  align-items: center;
-  background-color: #F9DBBB;
-  border-radius: 7px 7px 0 0;
-}
-
-.card_status {
-  display: flex;
-  justify-content: space-between;
-}
-.card_status::after {
-  content: ":";
-}
-
-.counter_task {
-  font-size: 24px;
-}
-
-.card_wrapper > button {
-  width: 100%;
-  padding: 10px;
-  border-radius: 0 0 7px 7px;
-  cursor: pointer;
-  color: white;
-}
-
-#card_progress_add > button:hover,
-#card_progress_add > button:active {
-  background-color: #2E3866;
-  border: 1px solid #2E3866;
-}
-
-#card_progress_add > button {
-  background-color: #2E3840;
-  border: 1px solid #2E3840;
-}
-
-#card_progress_done > button {
-  background-color: #CF0A0A;
-  border: 1px solid #CF0A0A;
-}
-
-#card_progress_done > button:active,
-#card_progress_done > button:hover {
-  background-color: #c80d0d;
-  border: 1px solid #c80d0d;
-}
-#card_progress_inprogress > button {
-  background-color: #2E3840;
-  border: 1px solid #2E3840;
-}
-
-#card_progress_inprogress > button:active,
-#card_progress_inprogress > button:hover {
-  background-color: #2E3866;
-  border: 1px solid #2E3866;
 }
