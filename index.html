@@ -15,22 +15,46 @@
           <h3 class="card_status">TODO</h3>
         </div>
         <div class="card_container" id="card_container_add"></div>
+        <button class="button_add" type="button" name="addTaskButton" id="add_task_button">Add task</button>
       </div>
       <div class="card_wrapper" id="card_progress_inprogress">
         <div class="card_wrapper_header" id="header_inprogress">
           <h3 class="card_status">IN PROGRESS</h3>
         </div>
         <div class="card_container" id="card_container_inprogress"></div>
+        <button class="button_done_all" type="button" name="doneTaskButton" id="done_all_button">Done all</button>
       </div>
       <div class="card_wrapper" id="card_progress_done">
         <div class="card_wrapper_header" id="header_done">
           <h3 class="card_status">DONE</h3>
         </div>
         <div class="card_container" id="card_container_done"></div>
+        <button class="button_delete_all" type="button" name="deleteTaskButton" id="delete_all_button">Delete all</button>
       </div>
     </main>
+    <footer>
+      <div class="footer_title">This website is created by Team 2</div>
+      <div class="footer_text">
+        <p class="subtitle">Members of Team 2</p>
+        <p class="member_team">Сaptain<br>Vadim Gordeev</p>
+        <p class="member_team">Daniil Gilev</p>
+        <p class="member_team">Mikhail Vezhnovets</p>
+        <p class="member_team">Ignat Belskiy</p>
+      </div>
+      <hr>
+      <div class="footer">
+        <p class="footer_logo">Trello</p>
+        <div class="footer_social">
+          <a href="http://telegram.org" class="telegram"><img src="./styles/icon/tg.svg" alt=""></a>
+          <a href="http://instagram.com" class="instagram"><img src="./styles/icon/insta.svg" alt=""></a>
+          <a href="http://vk.com" class="vk"><img src="./styles/icon/vk.svg" alt=""></a>
+          <a href="http://gmail.com" class="mail"><img src="./styles/icon/email.svg" alt=""></a>
+        </div>
+      </div>
+    </footer>
     <div class="modal_add" id="modal_add"></div>
     <div class="modal_edit" id="modal_edit"></div>
+    <div class="modal_warning_wrapper" id="modal_delete"></div>
     <div class="modal_warning_wrapper" id="modal_warning"></div>
     <script src="./script/index.js" type="module"></script>
   </body>

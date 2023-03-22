@@ -72,6 +72,9 @@
    .input_title {
    width: 100%;
    }
+   .subtitle {
+      max-width: 20%;
+   }
 }
 
 @media only screen and (max-width: 640px) {
@@ -89,4 +92,21 @@
    min-width: 20%;
    text-align: center;
 }
+.footer_text{
+   flex-direction: column;
+   align-items: center;
+}
+.member_team {
+   margin-top: 7px;
+}
+.subtitle {
+   max-width: 80%;
+   margin-top: 15px;
+}
+.footer_title {
+   max-width: 80%;
+   align-items: center;
+   text-align: center;
+}
+
 }
