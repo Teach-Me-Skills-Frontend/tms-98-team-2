@@ -116,4 +116,11 @@
  .modal_warning_btn button {
    width: 40%;
  }
+ hr {
+   width: 100%;
+ }
+ .footer {
+   width: 100%;
+
+ }
 }
