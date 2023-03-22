@@ -1,4 +1,4 @@
 export const LocalStorageKey = {
-    Users: 'user-name',
-    Tasks: 'tasks'
-  };
+  Users: 'user-name',
+  Tasks: 'tasks',
+};

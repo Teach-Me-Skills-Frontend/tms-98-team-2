@@ -1,12 +1,14 @@
-import { ModalView } from "./ModalView/ModalView.js";
-import { ModalWarningView } from "./ModalView/ModalWarning.js";
-import { TaskContainer } from "./TaskContainer/TaskContainer.js";
-import { TaskCard } from "./CardView/TaskCard.js";
-import { Header } from "./header/index.js";
-import { showModal } from "./utils.js";
+import { ModalView } from './ModalView/ModalView.js';
+import { ModalWarningView } from './ModalView/ModalWarning.js';
+import { TaskContainer } from './TaskContainer/TaskContainer.js';
+import { TaskCard } from './CardView/TaskCard.js';
+import { Header } from './Header/Header.js';
+import { showModal } from './utils.js';
+import { CountersId, ButtonsId, ModalText } from './constant.js';
 
 export class TaskView {
-  constructor({ getTasks,
+  constructor({
+    getTasks,
     getUsers,
     getCounters,
     onTaskAdd,
@@ -16,13 +18,12 @@ export class TaskView {
     onUserDelete,
     onDeleteAllTasks,
     onDoneAllTasks,
-    onEditTask
+    onEditTask,
   }) {
     this.getTasks = getTasks;
     let tasks = this.getTasks();
     this.getUsers = getUsers;
-    //const users = this.getUsers();
-    
+
     this.getCounters = getCounters;
     let counters = this.getCounters(tasks);
     this.onDoneAllTasks = onDoneAllTasks;
@@ -30,160 +31,167 @@ export class TaskView {
     this.header = new Header(this.getUsers, onUserAdd, onUserDelete);
 
     this.todoContainer = new TaskContainer({
-      containerId: "card_progress_add",
-      headerId: "header_add",
-      title: "Add task",
-      className: "button_add",
-      buttonProps: {
-        type: "button",
-        name: "addTaskButton",
-      },
-      buttonId: "button_add",
+      containerId: 'card_progress_add',
+      headerId: 'header_add',
       value: counters.ToDo,
-      counterId: "counter_todo",
+      counterId: CountersId.toDo,
     });
 
     this.inprogressContainer = new TaskContainer({
-      containerId: "card_progress_inprogress",
-      headerId: "header_inprogress",
-      title: "Done all",
-      className: "button_done_all",
-      buttonProps: {
-        type: "button",
-        name: "doneTaskButton",
-      },
-      buttonId: "button_done_all",
+      containerId: 'card_progress_inprogress',
+      headerId: 'header_inprogress',
       value: counters.InProgress,
-      counterId: "counter_inprogress",
+      counterId: CountersId.inProgress,
     });
 
     this.doneContainer = new TaskContainer({
-      containerId: "card_progress_done",
-      headerId: "header_done",
-      title: "Delete all",
-      className: "button_delete_all",
-      buttonProps: {
-        type: "button",
-        name: "deleteTaskButton",
-      },
-      buttonId: "button_delete_all",
+      containerId: 'card_progress_done',
+      headerId: 'header_done',
       value: counters.Done,
-      counterId: "counter_done",
+      counterId: CountersId.done,
     });
 
     this.card = new TaskCard(tasks, onTaskDel, onTaskStatus);
-    if (counters.InProgress + 1 === 7) {
-     const addBtns = document.getElementsByClassName('add_button');
-     for(const btn of addBtns){
-      btn.disabled = true;
-    }
-     const undoBtns = document.getElementsByClassName('undo_button');
-     for(const btn of undoBtns){
-      btn.disabled = true;
-    }
-      this.modalWarning = new ModalWarningView("modal_warning");
+    if (counters.InProgress === 6) {
+      const addBtns = document.getElementsByClassName('add_button');
+      for (const btn of addBtns) {
+        btn.disabled = true;
+      }
+      const undoBtns = document.getElementsByClassName('undo_button');
+      for (const btn of undoBtns) {
+        btn.disabled = true;
+      }
+      this.modalWarning = new ModalWarningView(
+        'modal_warning',
+        ModalText.sixTasks
+      );
 
-      this.modalWarning.modal.style.visibility = 'visible'
-      showModal()
+      this.modalWarning.modal.style.visibility = 'visible';
+      showModal();
     }
 
-    this.todoContainer.container.addEventListener('click', ( { target } ) => {
-      if (target.id === 'button_add') {
+    this.todoContainer.container.addEventListener('click', ({ target }) => {
+      if (target.id === ButtonsId.addTaskBtn) {
         this.modalAdd = new ModalView(
-          "modal_add",
-          "",
-          "",
+          'modal_add',
+          '',
+          '',
           this.getUsers(),
-          onTaskAdd,
+          onTaskAdd
         );
-        this.modalAdd.modal.style.visibility = 'visible'
-        showModal()
-      }
-      if(target.id === 'edit_button'){
-        tasks = this.getTasks();
-        for(const task of tasks){
-          if(target.parentNode.parentNode.parentNode.id === task.id){
-            const editmod = new ModalView("modal_edit", task.title, task.description, this.getUsers(), onTaskAdd, onEditTask, task.id);
-            editmod.modal.style.visibility = 'visible'
-            showModal()
-          }
-        }
-      }
-      if (target.id === 'add') {
-        tasks = this.getTasks();
-        counters = this.getCounters(tasks);
-         if (counters.InProgress + 1 === 7) {
-          const addBtns = document.getElementsByClassName('add_button');
-          for(const btn of addBtns){
-            btn.disabled = true;
-          }
-          const undoBtns = document.getElementsByClassName('undo_button');
-          for(const btn of undoBtns){
-            btn.disabled = true;
-          }
-          this.modalWarning = new ModalWarningView("modal_warning");
-
-          this.modalWarning.modal.style.visibility = 'visible'
-          showModal()
-         }
-       }
-    })
-
-    this.doneContainer.container.addEventListener('click', ( { target } ) => {
-      if (target.id === 'button_delete_all') {
-        this.modalWarning = new ModalWarningView("modal_warning", 'Are you sure you want to delete all tasks?', onDeleteAllTasks);
-        this.modalWarning.modal.style.visibility = 'visible';
+        this.modalAdd.modal.style.visibility = 'visible';
         showModal();
       }
-      if(target.id === 'undo_button'){
+      if (target.id === ButtonsId.editTaskBtn) {
+        tasks = this.getTasks();
+        for (const task of tasks) {
+          if (target.parentNode.parentNode.parentNode.id === task.id) {
+            const editmod = new ModalView(
+              'modal_edit',
+              task.title,
+              task.description,
+              this.getUsers(),
+              onTaskAdd,
+              onEditTask,
+              task.id
+            );
+            editmod.modal.style.visibility = 'visible';
+            showModal();
+          }
+        }
+      }
+      if (target.id === ButtonsId.addBtn) {
         tasks = this.getTasks();
         counters = this.getCounters(tasks);
-        if (counters.InProgress + 1 === 7) {
+        if (counters.InProgress === 6) {
           const addBtns = document.getElementsByClassName('add_button');
-          for(const btn of addBtns){
+          for (const btn of addBtns) {
             btn.disabled = true;
           }
           const undoBtns = document.getElementsByClassName('undo_button');
-          for(const btn of undoBtns){
+          for (const btn of undoBtns) {
             btn.disabled = true;
           }
-          this.modalWarning = new ModalWarningView("modal_warning");
+          this.modalWarning = new ModalWarningView(
+            'modal_warning',
+            ModalText.sixTasks
+          );
 
-          this.modalWarning.modal.style.visibility = 'visible'
-          showModal()
+          this.modalWarning.modal.style.visibility = 'visible';
+          showModal();
         }
       }
-    })
-  
-    this.inprogressContainer.container.addEventListener('click', ( { target } ) => {
-      if (target.id === 'button_done_all') {
-        this.onDoneAllTasks();
-        if (counters.InProgress + 1 === 7) {
-          const addBtns = document.getElementsByClassName('add_button');
-          for(const btn of addBtns){
-            btn.disabled = false;
-          }
-          const undoBtns = document.getElementsByClassName('undo_button');
-          for(const btn of undoBtns){
-            btn.disabled = false;
-          }
-        }
+    });
+
+    this.doneContainer.container.addEventListener('click', ({ target }) => {
+      if (target.id === ButtonsId.deleteAllTaskBtn) {
+        this.modalWarning = new ModalWarningView(
+          'modal_delete',
+          ModalText.deleteAllTasks,
+          onDeleteAllTasks
+        );
+        this.modalWarning.modal.style.visibility = 'visible';
+        showModal();
+        showModal();
       }
-      if(target.id === 'back_button' || target.id === 'complete_button'){
+      if (target.id === ButtonsId.undoBtn) {
         tasks = this.getTasks();
         counters = this.getCounters(tasks);
-        if (counters.InProgress < 6 ) {
+        if (counters.InProgress === 6) {
           const addBtns = document.getElementsByClassName('add_button');
-          for(const addBtn of addBtns){
-            addBtn.disabled = false;
+          for (const btn of addBtns) {
+            btn.disabled = true;
           }
           const undoBtns = document.getElementsByClassName('undo_button');
-          for(const btn of undoBtns){
-            btn.disabled = false;
+          for (const btn of undoBtns) {
+            btn.disabled = true;
+          }
+          this.modalWarning = new ModalWarningView(
+            'modal_warning',
+            ModalText.sixTasks
+          );
+
+          this.modalWarning.modal.style.visibility = 'visible';
+          showModal();
+        }
+      }
+    });
+
+    this.inprogressContainer.container.addEventListener(
+      'click',
+      ({ target }) => {
+        if (target.id === ButtonsId.doneAllTaskBtn) {
+          this.onDoneAllTasks();
+          if (counters.InProgress === 6) {
+            const addBtns = document.getElementsByClassName('add_button');
+            for (const btn of addBtns) {
+              btn.disabled = false;
+            }
+            const undoBtns = document.getElementsByClassName('undo_button');
+            for (const btn of undoBtns) {
+              btn.disabled = false;
+            }
+          }
+        }
+        if (
+          target.id === ButtonsId.backBtn ||
+          target.id === ButtonsId.completeBtn
+        ) {
+          tasks = this.getTasks();
+          counters = this.getCounters(tasks);
+          if (counters.InProgress < 6) {
+            const addBtns = document.getElementsByClassName('add_button');
+            for (const addBtn of addBtns) {
+              addBtn.disabled = false;
+            }
+            const undoBtns = document.getElementsByClassName('undo_button');
+            for (const btn of undoBtns) {
+              btn.disabled = false;
+            }
           }
         }
       }
-    })
+    );
   }
 
   renderNewCards = (tasks) => {
@@ -193,9 +201,9 @@ export class TaskView {
   createNewTask = (newTask, tasks) => {
     this.card.createNewTaskCard(newTask, tasks);
     const counters = this.getCounters(tasks);
-    if (counters.InProgress + 1 === 7 ) {
+    if (counters.InProgress === 6) {
       const addBtns = document.getElementsByClassName('add_button');
-      for(const addBtn of addBtns){
+      for (const addBtn of addBtns) {
         addBtn.disabled = true;
       }
     }
@@ -210,17 +218,16 @@ export class TaskView {
   };
 
   updateCounters = (counters, counterId) => {
-    if (counterId === 'counter_todo'){
-       const todo = document.getElementById(counterId);
-       todo.textContent = counters.ToDo;
-    } else if (counterId === 'counter_inprogress') {
-       const inProgress = document.getElementById(counterId);
-       inProgress.textContent = counters.InProgress;
-    } else if (counterId === 'counter_done') {
-       const done = document.getElementById(counterId);
-       done.textContent = counters.Done;
+    if (counterId === CountersId.toDo) {
+      const todo = document.getElementById(counterId);
+      todo.textContent = counters.ToDo;
+    } else if (counterId === CountersId.inProgress) {
+      const inProgress = document.getElementById(counterId);
+      inProgress.textContent = counters.InProgress;
+    } else if (counterId === CountersId.done) {
+      const done = document.getElementById(counterId);
+      done.textContent = counters.Done;
     }
     return counters;
   };
-  
 }
