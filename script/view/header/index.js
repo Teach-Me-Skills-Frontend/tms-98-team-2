@@ -22,7 +22,7 @@ export class Header {
     titleUser.innerText = "Add user";
 
     const userForm = createElementWithClass("form", "user_form");
-    userForm.setAttribute('id', 'user_form');
+    userForm.id = 'user_form';
 
     userForm.addEventListener('input', inputEvent)
 
@@ -103,7 +103,7 @@ export class Header {
       document.getElementById('delete_user').disabled = true;
       const option = document.createElement("option");
       option.innerText = "No users";
-      option.setAttribute('id','no_users');
+      option.id = 'no_users';
       usersWrapName.append(option);
     } else {
       document.getElementById('delete_user').disabled = false;
