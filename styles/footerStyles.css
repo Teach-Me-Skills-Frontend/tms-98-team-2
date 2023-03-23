@@ -1,14 +1,14 @@
 @import url("./variables.css");
 
 footer {
-  background-color: var(--background-add-hover);
+  background-color: var(--background-header);
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 2px solid var(--background-add-hover);
+  border: 2px solid var(--background-header);
   border-radius: 8px 8px 0 0;
-  color: white;
+  color: var(--text-color-black);
 }
 .footer_title,
 .subtitle {
@@ -27,7 +27,7 @@ footer {
   margin-left: 15px;
 }
 hr {
-  border-bottom: 2px solid #919294;
+  border-bottom: 0px solid #919294;
   display: block;
   width: 90%;
   margin-top: 10px;
@@ -37,17 +37,12 @@ hr {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
   margin: 10px 0;
   font-size: 1.5em;
 }
-.footer p {
-  align-items: center;
-}
 .footer_title {
   margin-top: 10px;
-}
-a {
-  margin-left: 10px;
 }
 .theme {
   display: flex;
@@ -61,4 +56,16 @@ a {
   width: 60px;
   height: 25px;
   border-radius: 5px;
+}
+.footer_social {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 10px;
+  align-items: center;
+}
+.footer_social a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

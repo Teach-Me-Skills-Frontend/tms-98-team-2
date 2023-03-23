@@ -117,3 +117,8 @@
   border: none;
   border-radius: 8px;
 }
+
+.modal_warning_confirm {
+  color: var(--text-color-white);
+  background-color: var(--background-user-active);
+}

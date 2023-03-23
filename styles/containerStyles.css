@@ -64,6 +64,9 @@
   background-color: var(--background-delete);
   border: 1px solid var(--background-delete);
 }
+#card_progress_done > button:disabled {
+  cursor: default;
+}
 
 #card_progress_done > button:active,
 #card_progress_done > button:hover {
