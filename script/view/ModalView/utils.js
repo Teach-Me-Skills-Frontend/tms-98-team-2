@@ -1,7 +1,7 @@
 import { ModalNameAttr, ModalInputAttr, ModalButtonId } from './constant.js';
 import { createTextInput, createButton } from '../utils.js';
 
-export function createTaskModal(valueTitle, valueDescription, users = [1, 2]) {
+export function createTaskModal(valueTitle, valueDescription, users) {
   const form = document.createElement('form');
   form.classList.add('modal');
 
@@ -36,17 +36,18 @@ export function createTaskModal(valueTitle, valueDescription, users = [1, 2]) {
   select.classList.add('modal_select');
   select.setAttribute('name', 'users');
   const usersLength = users.length;
-  const option = document.createElement('option');
   if (!usersLength) {
+    const option = document.createElement('option');
     option.value = 'No user';
     option.textContent = 'No user';
     select.add(option);
   } else {
-    for (let i = 0; i < usersLength; i += 1) {
-      option.value = users[i];
-      option.text = users[i];
-      select.add(option);
-    }
+    users.forEach(user => {
+      const option = document.createElement('option');
+      option.value = user;
+      option.textContent = user;
+      select.append(option);
+    }) 
   }
 
   const cancelBtn = createButton('Cancel', 'modal_btn_cancel', {
