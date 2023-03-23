@@ -50,6 +50,13 @@ export class TaskView {
       value: counters.Done,
       counterId: CountersId.done,
     });
+    const deleteBtn = document.getElementById(ButtonsId.deleteAllTaskBtn);
+    if(!counters.Done){
+      deleteBtn.disabled = true;
+    }
+    else{
+      deleteBtn.disabled = false;
+    }
 
     this.card = new TaskCard(tasks, onTaskDel, onTaskStatus);
     if (counters.InProgress === 6) {
@@ -131,7 +138,6 @@ export class TaskView {
           onDeleteAllTasks
         );
         this.modalWarning.modal.style.visibility = 'visible';
-        showModal();
         showModal();
       }
       if (target.id === ButtonsId.undoBtn) {
@@ -218,6 +224,13 @@ export class TaskView {
   };
 
   updateCounters = (counters, counterId) => {
+    const deleteBtn = document.getElementById(ButtonsId.deleteAllTaskBtn);
+    if(!counters.Done){
+      deleteBtn.disabled = true;
+    }
+    else{
+      deleteBtn.disabled = false;
+    }
     if (counterId === CountersId.toDo) {
       const todo = document.getElementById(counterId);
       todo.textContent = counters.ToDo;

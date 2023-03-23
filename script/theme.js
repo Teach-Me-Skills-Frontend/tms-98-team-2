@@ -4,6 +4,12 @@ function applyTheme(theme) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+   document.querySelector("#theme").addEventListener("change", function() {
+        applyTheme(this.value);
+   });
+});
+
+document.addEventListener("DOMContentLoaded", () => {
     const savedTheme = localStorage.getItem("theme") || "auto";
 
     applyTheme(savedTheme);

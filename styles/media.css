@@ -1,3 +1,5 @@
+@import url('./variables.css');
+
 @media only screen and (max-width: 1280px) {
   .delete_button,
   .edit_button {
@@ -123,4 +125,23 @@
    width: 100%;
 
  }
+}
+@media (prefers-color-scheme: dark) {
+  body.theme-auto {
+    --text-color-white: var(--dark-text-color-white);
+    --text-color-black: var(--dark-text-color-black);
+    --background-add: var(--dark-background-add);
+    --background-add-hover: var(--dark-background-add-hover);
+    --background-done: var(--dark-background-done);
+    --background-done-hover: var(--dark-background-done-hover);
+    --background-header: var(--dark-background-header);
+    --background-modal: var(--dark-background-modal);
+    --background-user-active: var(--dark-background-user-active);
+    --background-card: var(--dark-background-card);
+    --card-border-color: var(--dark-card-border-color);
+    --card-description:var(--dark-card-description);
+    --background-body: var(--dark-background-body);
+    --background-delete: var(--dark-background-delete);
+    --background-input: var(--dark-background-input);
+  }
 }

@@ -3,7 +3,7 @@ import { ButtonsId } from '../constant.js';
 export function addUser(getUsers) {
   const users = getUsers();
   const input = document.getElementById('user_input');
-  const userName = input.value;
+  const userName = input.value.trim();
   for (let i = 0; i < users.length; i++) {
     if (users[i] === userName) {
       alert('You have the same name!');
