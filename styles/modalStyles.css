@@ -103,6 +103,7 @@
   justify-content: space-evenly;
 }
 .modal_warning p {
+  text-align: center;
   color: var(--text-color-white);
 }
 .modal_warning_btn {
