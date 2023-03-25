@@ -68,15 +68,16 @@ export class ModalView {
       this.modalForm.elements[ModalInputAttr.TaskTitleInput].value.trim();
     const inputDescriptionValue =
       this.modalForm.elements[ModalInputAttr.TaskDescriptionInput].value.trim();
+    const checkUsers = document.getElementById('no_user') === null;
     const btn = document.getElementById(ModalButtonId.confirmId);
-    if (inputTittleValue && inputDescriptionValue) {
+    if (inputTittleValue && inputDescriptionValue && checkUsers) {
       btn.disabled = false;
     } else {
       btn.disabled = true;
     }
   };
 
-  EditTask = (event) => {
+  editTask = (event) => {
     event.preventDefault();
     const inputTittleValue =
       this.modalForm.elements[ModalInputAttr.TaskTitleInput].value.trim();

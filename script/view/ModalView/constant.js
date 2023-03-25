@@ -13,6 +13,7 @@ export const ModalInputAttr = {
 export const ModalButtonId = {
   cancelId: 'modal_cancel',
   confirmId: 'modal_confirm',
+  noUserId: 'no_user',
   warningCancelId: 'modal_warning_cancel',
   warningConfirmId: 'modal_warning_confirm',
   warningOkId: 'modal_warning_ok',

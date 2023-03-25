@@ -39,6 +39,7 @@ export function createTaskModal(valueTitle, valueDescription, users) {
   if (!usersLength) {
     const option = document.createElement('option');
     option.value = 'No user';
+    option.id = ModalButtonId.noUserId;
     option.textContent = 'No user';
     select.add(option);
   } else {
