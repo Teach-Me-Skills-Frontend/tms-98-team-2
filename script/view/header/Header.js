@@ -39,14 +39,15 @@ export class Header {
     });
     btnAdd.disabled = true;
     btnAdd.addEventListener('click', (event) => {
+      event.preventDefault();
+      users = this.getUsers();
       if (users.length === 0) {
         document.getElementById('no_users').remove();
       }
-      const newUser = addUser(this.getUsers);
+      const newUser = addUser(users);
       if (newUser) {
         this.onUserAdd(newUser);
       }
-      event.preventDefault();
 
       userForm.removeEventListener('input', emptyInput);
       userForm.addEventListener('input', inputEvent);

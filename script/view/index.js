@@ -43,6 +43,13 @@ export class TaskView {
       value: counters.InProgress,
       counterId: CountersId.inProgress,
     });
+    const doneBtn = document.getElementById(ButtonsId.doneAllTaskBtn);
+    if(!counters.InProgress){
+      doneBtn.disabled = true;
+    }
+    else{
+      doneBtn.disabled = false;
+    }
 
     this.doneContainer = new TaskContainer({
       containerId: 'card_progress_done',
@@ -225,11 +232,18 @@ export class TaskView {
 
   updateCounters = (counters, counterId) => {
     const deleteBtn = document.getElementById(ButtonsId.deleteAllTaskBtn);
+    const doneBtn = document.getElementById(ButtonsId.doneAllTaskBtn);
     if(!counters.Done){
       deleteBtn.disabled = true;
     }
     else{
       deleteBtn.disabled = false;
+    }
+    if(!counters.InProgress){
+      doneBtn.disabled = true;
+    }
+    else{
+      doneBtn.disabled = false;
     }
     if (counterId === CountersId.toDo) {
       const todo = document.getElementById(counterId);

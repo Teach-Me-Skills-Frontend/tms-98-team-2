@@ -1,7 +1,6 @@
 import { ButtonsId } from '../constant.js';
 
-export function addUser(getUsers) {
-  const users = getUsers();
+export function addUser(users) {
   const input = document.getElementById('user_input');
   const userName = input.value.trim();
   for (let i = 0; i < users.length; i++) {
@@ -19,6 +18,7 @@ export function addUser(getUsers) {
   const select = document.getElementById('user_names');
   const option = document.createElement('option');
   option.innerText = users[users.length - 1];
+  option.selected = true;
   select.append(option);
   return userName;
 }
