@@ -84,7 +84,6 @@ export class ModalView {
     const inputDescriptionValue =
       this.modalForm.elements[ModalInputAttr.TaskDescriptionInput].value.trim();
     const select = this.modalForm.elements['users'].value;
-    console.log(select);
     this.onEditTask(
       this.taskId,
       inputTittleValue,

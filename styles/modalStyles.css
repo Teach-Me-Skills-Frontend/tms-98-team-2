@@ -18,7 +18,7 @@
 }
 .modal {
   width: 80%;
-  height: 50%;
+  height: 70%;
   display: flex;
   flex-direction: column;
   background-color: var(--background-modal);
@@ -38,7 +38,7 @@
 }
 .input_info {
   width: 100%;
-  height: 150px;
+  height: 50%;
   text-align: center;
   padding: 4px;
   border: none;
@@ -103,6 +103,7 @@
   justify-content: space-evenly;
 }
 .modal_warning p {
+  text-align: center;
   color: var(--text-color-white);
 }
 .modal_warning_btn {
@@ -117,7 +118,9 @@
   border: none;
   border-radius: 8px;
 }
-
+.modal_warning_cancel {
+  color: black
+}
 .modal_warning_confirm {
   color: var(--text-color-white);
   background-color: var(--background-user-active);
