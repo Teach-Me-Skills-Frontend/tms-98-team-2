@@ -4,15 +4,16 @@ import {
   createButton,
   createInput,
 } from '../utils.js';
-import { addUser, emptyInput, inputEvent } from './utils.js';
+import { addUser, emptyInput, inputEvent, deleteUser, optionNoUsers } from './utils.js';
 import { ButtonsId } from '../constant.js';
 
 export class Header {
-  constructor(getUsers, onUserAdd, onUserDelete) {
+  constructor(getUsers, onUserAdd, onUserDelete, onAllUsersDelete) {
     this.getUsers = getUsers;
     let users = this.getUsers();
     this.onUserAdd = onUserAdd;
     this.onUserDelete = onUserDelete;
+    this.onAllUsersDelete = onAllUsersDelete;
 
     const root = document.getElementById('header');
 
@@ -43,6 +44,10 @@ export class Header {
       users = this.getUsers();
       if (users.length === 0) {
         document.getElementById('no_users').remove();
+        const deleteAllUsers = document.createElement('option');
+        deleteAllUsers.innerText = 'Delete all';
+        deleteAllUsers.id = 'delete_all_users';
+        usersWrapName.append(deleteAllUsers);
       }
       const newUser = addUser(users);
       if (newUser) {
@@ -74,55 +79,59 @@ export class Header {
     const usersWrapName = createElementWithClass('select', 'users');
     usersWrapName.setAttribute('id', 'user_names');
 
-    const deleteUser = createButton('Delete user', 'delete_button', {
+    const deleteBtn = createButton('Delete user', 'delete_button', {
       id: ButtonsId.deleteUser,
     });
-    deleteUser.addEventListener('click', () => {
-      users = this.getUsers();
-      const select = document.getElementById('user_names');
-      for (const user of users) {
-        if (user === select.value) {
-          const userIndex = users.indexOf(user);
-          users.splice(userIndex, 1);
-          this.onUserDelete(userIndex);
-          let selectChild = select.firstChild;
-          for (let i = 0; i < userIndex + 1; i++) {
-            if (selectChild.value === user) {
-              selectChild.remove();
-            }
-            selectChild = selectChild.nextSibling;
-          }
-        }
-      }
-
-      if (!users.length) {
+    deleteBtn.addEventListener('click', () => {
+      if(deleteUser(this.getUsers(), this.onUserDelete)){
         document.getElementById(ButtonsId.deleteUser).disabled = true;
-        const option = document.createElement('option');
-        option.innerText = 'No users';
-        option.setAttribute('id', 'no_users');
+        const option = optionNoUsers();
         usersWrapName.append(option);
       }
     });
 
     usersWrap.append(usersWrapTitle, usersWrapName);
 
-    currentUsers.append(usersWrap, deleteUser);
+    currentUsers.append(usersWrap, deleteBtn);
 
     root.append(title, users_add, currentUsers, date);
 
     if (!users.length) {
       document.getElementById(ButtonsId.deleteUser).disabled = true;
-      const option = document.createElement('option');
-      option.innerText = 'No users';
-      option.id = 'no_users';
+      const option = optionNoUsers();
       usersWrapName.append(option);
     } else {
       document.getElementById(ButtonsId.deleteUser).disabled = false;
       for (let i = 0; i < users.length; i++) {
         const option = document.createElement('option');
         option.innerText = users[i];
-        usersWrapName.append(option);
+        option.value = users[i];
+        if (i === users.length - 1) {
+          option.selected = true;
+        }
+        usersWrapName.prepend(option);
       }
+      const deleteAllUsers = document.createElement('option');
+      deleteAllUsers.innerText = 'Delete all';
+      deleteAllUsers.id = 'delete_all_users';
+      usersWrapName.append(deleteAllUsers);
     }
+
+    const select = document.getElementById('user_names');
+    select.addEventListener('change', ({target}) => {
+      if (target.value === 'Delete all') {
+        if (confirm(`u want delete all users`)) {
+          while(select.options.length){
+            select.options[select.options.length - 1].remove();
+          }
+          document.getElementById(ButtonsId.deleteUser).disabled = true;
+          const option = optionNoUsers();
+          select.append(option);
+          this.onAllUsersDelete();
+        } else {
+          console.log('no delete')
+        }
+      }
+    })
   }
 } 

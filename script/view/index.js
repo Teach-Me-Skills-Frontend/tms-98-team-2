@@ -16,6 +16,7 @@ export class TaskView {
     onTaskStatus,
     onUserAdd,
     onUserDelete,
+    onAllUsersDelete,
     onDeleteAllTasks,
     onDoneAllTasks,
     onEditTask,
@@ -28,7 +29,7 @@ export class TaskView {
     let counters = this.getCounters(tasks);
     this.onDoneAllTasks = onDoneAllTasks;
 
-    this.header = new Header(this.getUsers, onUserAdd, onUserDelete);
+    this.header = new Header(this.getUsers, onUserAdd, onUserDelete, onAllUsersDelete);
 
     this.todoContainer = new TaskContainer({
       containerId: 'card_progress_add',
