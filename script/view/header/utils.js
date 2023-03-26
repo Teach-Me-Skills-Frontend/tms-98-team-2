@@ -18,8 +18,9 @@ export function addUser(users) {
   const select = document.getElementById('user_names');
   const option = document.createElement('option');
   option.innerText = users[users.length - 1];
+  option.value = users[users.length - 1];
   option.selected = true;
-  select.append(option);
+  select.prepend(option);
   return userName;
 }
 
@@ -44,3 +45,40 @@ export const inputEvent = ({ target }) => {
     userForm.addEventListener('input', emptyInput);
   }
 };
+
+export function deleteUser (users, onUserDelete) {
+  const select = document.getElementById('user_names');
+      for (const user of users) {
+        if (user === select.value) {
+          let userIndex = users.indexOf(user);
+          users.splice(userIndex, 1);
+          onUserDelete(userIndex);
+
+          let selectChild = select.firstChild;
+          do {
+            if (selectChild.value === user) {
+              if(!users.length){
+                document.getElementById('delete_all_users').remove();
+              }
+              selectChild.remove();
+              break;
+            }
+            selectChild = selectChild.nextSibling;
+            userIndex--;
+          }
+          while (userIndex)
+        }
+      }
+
+      if (!users.length) {
+        return 1;
+      }
+      return 0;
+}
+
+export function optionNoUsers () {
+  const option = document.createElement('option');
+  option.innerText = 'No users';
+  option.id = 'no_users';
+  return option;
+}

@@ -13,6 +13,7 @@ export class TaskController {
       onTaskStatus: this.setStatus,
       onUserAdd: this.newUser,
       onUserDelete: this.deleteUser,
+      onAllUsersDelete: this.deleteAllUsers,
       onDeleteAllTasks: this.deleteAllTask,
       onDoneAllTasks: this.doneAllTasks,
       onEditTask: this.editTask,
@@ -71,6 +72,10 @@ export class TaskController {
 
   deleteUser = (index) => {
     this.model.delUser(index);
+  };
+
+  deleteAllUsers = () => {
+    this.model.delAllUsers();
   };
 
   deleteAllTask = () => {
